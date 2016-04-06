@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ModelDocumentManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Documents>
+    <Document FullPath="E:\repo\DBAD\Projects\LightSwitch_HTML\LightSwitch_HTML\LightSwitch_HTML.HTMLClient\Properties\Client.lsml" Checksum="970E94B241C3BD354AE99549E14F85313627F9EE51D64F94CEB0BB18F5C9DA6E" />
+    <Document FullPath="E:\repo\DBAD\Projects\LightSwitch_HTML\LightSwitch_HTML\LightSwitch_HTML.HTMLClient\Properties\Proxies.lsml" Checksum="165D16F9993556F4F2B304DE7D988100B11C6CB3ADC7C66A7AF4EE84FCF82D93" />
+    <Document FullPath="E:\repo\DBAD\Projects\LightSwitch_HTML\LightSwitch_HTML\LightSwitch_HTML.HTMLClient\Screens\AddEditPatient_Main.lsml" Checksum="2F9290E11D6C995B087D7DA20A95AFE28AB182ECE89B5DC41D3D329228EBE3FE" />
+    <Document FullPath="E:\repo\DBAD\Projects\LightSwitch_HTML\LightSwitch_HTML\LightSwitch_HTML.HTMLClient\Screens\Patient_Mains\ViewPatient_Main1.lsml" Checksum="3635DEAFA6ACE3A352B286517E093A919AE17685AD1061661972526E1B3E96BF" />
+    <Document FullPath="E:\repo\DBAD\Projects\LightSwitch_HTML\LightSwitch_HTML\LightSwitch_HTML.HTMLClient\Properties\NeuroPatData\Patient_Mains.lsml" Checksum="AD003F1ADE723814E5DAFEE11A7282589D77A610AE17E67089BB19A54D040869" />
+    <Document FullPath="E:\repo\DBAD\Projects\LightSwitch_HTML\LightSwitch_HTML\LightSwitch_HTML.HTMLClient\Screens\Patient_Mains\BrowsePatient_Mains1.lsml" Checksum="9DB9A73FC4E61224C9153F11C3C67AC736573951888E9FCBC1FF91CE7CB79D5E" />
+  </Documents>
+</ModelDocumentManifest>

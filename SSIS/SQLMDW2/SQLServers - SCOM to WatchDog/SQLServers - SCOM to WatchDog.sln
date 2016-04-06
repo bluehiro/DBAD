@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SQLServers - SCOM to WatchDog", "SQLServers - SCOM to WatchDog\SQLServers - SCOM to WatchDog.dtproj", "{25980AFC-4569-4DDC-909B-36E41A8F158B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{25980AFC-4569-4DDC-909B-36E41A8F158B}.Development|Default.ActiveCfg = Development
+		{25980AFC-4569-4DDC-909B-36E41A8F158B}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

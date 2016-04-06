@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "DBA_Failed_Jobs_and_Backups", "DBA_Failed_Jobs\DBA_Failed_Jobs_and_Backups.dtproj", "{5F50BCB0-A542-46E0-9BE3-0B68D6F689AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F50BCB0-A542-46E0-9BE3-0B68D6F689AE}.Development|Default.ActiveCfg = Development
+		{5F50BCB0-A542-46E0-9BE3-0B68D6F689AE}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

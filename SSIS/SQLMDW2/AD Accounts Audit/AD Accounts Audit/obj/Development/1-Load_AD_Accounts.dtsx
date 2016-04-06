@@ -1,0 +1,1055 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/9/2015 2:46:44 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="SQLMDW2"
+  DTS:CreatorName="OHSUM01\jamesv"
+  DTS:DTSID="{4198B52A-25A4-4699-BFDF-D0FF9F675FC7}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="1-Load_AD_Accounts"
+  DTS:PackageType="5"
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{4165DE76-4D8C-43FD-8E0F-F25224F9ADD7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AD_Acc_Export.txt]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{86E46974-99C9-4ED1-9438-5BE9B77E001F}"
+      DTS:ObjectName="AD_Acc_Export.txt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="FixedWidth"
+          DTS:LocaleID="1033"
+          DTS:Unicode="True"
+          DTS:HeaderRowsToSkip="2"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="F:\AD_Account_Stage\AD_Acc_Export.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="47"
+              DTS:MaximumWidth="47"
+              DTS:DataType="130"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{CB6CF72A-C953-4CBA-B06D-511116B4DD77}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="7"
+              DTS:MaximumWidth="7"
+              DTS:DataType="130"
+              DTS:ObjectName="Enabled"
+              DTS:DTSID="{EBAABC27-EE98-43A0-B1B3-881F6D30D841}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="28"
+              DTS:MaximumWidth="28"
+              DTS:DataType="130"
+              DTS:ObjectName="ObjectClass"
+              DTS:DTSID="{9E9C1146-C75E-43A8-8444-ACA1F43C245E}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AD_Disable_Acc.csv]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="AD_Disable_Acc.csv"
+      DTS:DTSID="{7372C40D-4652-4C36-B023-F798A33B239F}"
+      DTS:ObjectName="AD_Disable_Acc.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="AD_Disable_Acc.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="samAccountName"
+              DTS:DTSID="{89737FE7-8AD7-4C1F-914A-877D11A88EA5}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQLMDW2.WatchDog]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{88B02923-4B78-415B-979D-EF4072E9F8DC}"
+      DTS:ObjectName="SQLMDW2.WatchDog">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQLMDW2;Initial Catalog=WatchDog;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C038094D-27AF-47B6-8BBF-FF8C59118250}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DeleteFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">AD_Delete_Acc</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E039C8F8-1CED-460F-98AA-AC992B064957}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::DestPath] + @[User::DeleteFileName] + &quot;_&quot; +  @[User::FileNameDate] + &quot;.csv&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DestDeleteName">
+      <DTS:VariableValue
+        DTS:DataType="8">F:\AD_Account_Stage\archive\AD_Delete_Acc_20160224101602.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B6306C47-76E0-419F-9A77-73B8F8C8490C}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::DestPath] + @[User::DisableFileName] + &quot;_&quot; +  @[User::FileNameDate] + &quot;.csv&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DestDisableName">
+      <DTS:VariableValue
+        DTS:DataType="8">F:\AD_Account_Stage\archive\AD_Disable_Acc_20160224101602.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{400F226B-C050-492B-A5E4-252559D1829E}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::DestPath] + @[User::FileName] + &quot;_&quot; +  @[User::FileNameDate] + &quot;.txt&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DestName">
+      <DTS:VariableValue
+        DTS:DataType="8">F:\AD_Account_Stage\archive\AD_Acc_Export_20160224101602.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{07077B59-982B-435E-8BE1-03CF3709B904}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DestPath">
+      <DTS:VariableValue
+        DTS:DataType="8">F:\AD_Account_Stage\archive\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5E205939-5185-484F-9D80-8E979526F408}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DisableFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">AD_Disable_Acc</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4B580EE8-8244-48F0-98FC-1D6D53FDD35A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8">AD_Acc_Export</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{415B9986-B46A-43B4-882A-E0201A0B4B81}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_STR, 4 , 1252)DATEPART( &quot;year&quot; , GETDATE() ) + &quot;&quot; + RIGHT( &quot;00&quot; + (DT_STR, 2 , 1252)DATEPART( &quot;month&quot; , GETDATE() ) , 2 ) + &quot;&quot; + RIGHT( &quot;00&quot; + (DT_STR, 2 , 1252)DATEPART( &quot;day&quot; , GETDATE() ) , 2 ) + &quot;&quot; + RIGHT( &quot;00&quot; + (DT_STR, 2 , 1252)DATEPART( &quot;hour&quot; , GETDATE() ) , 2 ) + &quot;&quot; + RIGHT( &quot;00&quot; + (DT_STR, 2 , 1252)DATEPART( &quot;minute&quot; , GETDATE() ) , 2 ) + &quot;&quot; + RIGHT( &quot;00&quot; + (DT_STR, 2 , 1252)DATEPART( &quot;second&quot; , GETDATE() ) , 2 )"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileNameDate">
+      <DTS:VariableValue
+        DTS:DataType="8">20160224101602</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7250E6DA-1BB1-4C60-A84A-589C436BF68D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::SourcePath] + @[User::DisableFileName] + &quot;.csv&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceDisableName">
+      <DTS:VariableValue
+        DTS:DataType="8">F:\AD_Account_Stage\AD_Disable_Acc.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1739B1F4-03A4-4187-8BFC-55B5307092F1}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::SourcePath] + @[User::FileName] + &quot;.txt&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceName">
+      <DTS:VariableValue
+        DTS:DataType="8">F:\AD_Account_Stage\AD_Acc_Export.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{82014773-72F9-47B4-8A54-3E3297C3D847}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourcePath">
+      <DTS:VariableValue
+        DTS:DataType="8">F:\AD_Account_Stage\</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\1 List of Service accounts using PowerShell"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteProcess.ExecuteProcess, Microsoft.SqlServer.ExecProcTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute Process Task"
+      DTS:DTSID="{9C1CF215-D38E-4819-944C-0AB8946B2587}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteProcess.ExecuteProcess, Microsoft.SqlServer.ExecProcTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="1 List of Service accounts using PowerShell"
+      DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecuteProcessData
+          Executable="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+          Arguments="F:\AD_Account_Stage\scripts\retrieve_sql_service_accounts.ps1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\2 Truncate AD_Staging"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{18002D02-A9E5-4A2B-BA1E-2A6E5ED7FBA4}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="2 Truncate AD_Staging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{88B02923-4B78-415B-979D-EF4072E9F8DC}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE AD_Staging" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\3 Load Flat file into table"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1698B4B8-6EF4-41F1-B97E-75842B0737BA}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="3 Load Flat file into table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID"
+              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add Var FileNameDate as BatchID"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Outputs[Derived Column Output].Columns[BatchID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="14"
+                      lineageId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Outputs[Derived Column Output].Columns[BatchID]"
+                      name="BatchID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::FileNameDate]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::FileNameDate]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="AD_Service_Accounts_Staging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AD_Staging]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SQLMDW2.WatchDog]"
+                  connectionManagerRefId="Package.ConnectionManagers[SQLMDW2.WatchDog]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="47"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input].ExternalColumns[AccountName]"
+                      lineageId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input].Columns[Enabled]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="Enabled"
+                      externalMetadataColumnId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input].ExternalColumns[AccountEnabled]"
+                      lineageId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].Columns[Enabled]" />
+                    <inputColumn
+                      refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input].Columns[ObjectClass]"
+                      cachedDataType="wstr"
+                      cachedLength="28"
+                      cachedName="ObjectClass"
+                      externalMetadataColumnId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input].ExternalColumns[AccountClass]"
+                      lineageId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].Columns[ObjectClass]" />
+                    <inputColumn
+                      refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input].Columns[BatchID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="BatchID"
+                      externalMetadataColumnId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                      lineageId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Outputs[Derived Column Output].Columns[BatchID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input].ExternalColumns[AccountName]"
+                      dataType="wstr"
+                      length="50"
+                      name="AccountName" />
+                    <externalMetadataColumn
+                      refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input].ExternalColumns[AccountEnabled]"
+                      dataType="wstr"
+                      length="7"
+                      name="AccountEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input].ExternalColumns[AccountClass]"
+                      dataType="wstr"
+                      length="50"
+                      name="AccountClass" />
+                    <externalMetadataColumn
+                      refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                      dataType="wstr"
+                      length="14"
+                      name="BatchID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\3 Load Flat file into table\Flat File Source"
+              componentClassID="{D23FD76B-F51D-420F-BBCB-19CBF6AC1AB4}"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\3 Load Flat file into table\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AD_Acc_Export.txt]"
+                  connectionManagerRefId="Package.ConnectionManagers[AD_Acc_Export.txt]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Name]"
+                      length="47"
+                      lineageId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].Columns[Enabled]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Enabled]"
+                      length="7"
+                      lineageId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].Columns[Enabled]"
+                      name="Enabled"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].Columns[ObjectClass]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ObjectClass]"
+                      length="28"
+                      lineageId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].Columns[ObjectClass]"
+                      name="ObjectClass"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="47"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Enabled]"
+                      dataType="wstr"
+                      length="7"
+                      name="Enabled" />
+                    <externalMetadataColumn
+                      refId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ObjectClass]"
+                      dataType="wstr"
+                      length="28"
+                      name="ObjectClass" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      dataType="nText"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\3 Load Flat file into table.Paths[Derived Column Output]"
+              endId="Package\3 Load Flat file into table\AD_Service_Accounts_Staging.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\3 Load Flat file into table.Paths[Flat File Source Output]"
+              endId="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\3 Load Flat file into table\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\4 Copy to archive folder &amp; append datetime"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="File System Task"
+      DTS:DTSID="{A965DDCD-5396-4DC6-BDF3-DEBC6686A6C7}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="4 Copy to archive folder &amp; append datetime"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskSourcePath="User::SourceName"
+          TaskIsSourceVariable="True"
+          TaskDestinationPath="User::DestName"
+          TaskIsDestinationVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\5 Delete AD_Acc_Export"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="File System Task"
+      DTS:DTSID="{85043E2D-F215-4C16-8595-EFB25EA9F2BF}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="5 Delete AD_Acc_Export"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="DeleteFile"
+          TaskSourcePath="User::SourceName"
+          TaskIsSourceVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\6 insert_sp_ETL_AD_Audit_Accounts"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Audits accounts and loads them into Disable &amp; Delete queues"
+      DTS:DTSID="{EBA70A3B-15E4-4F2C-BCDA-8CAED92E330B}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="6 insert_sp_ETL_AD_Audit_Accounts"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{88B02923-4B78-415B-979D-EF4072E9F8DC}"
+          SQLTask:SqlStatementSource="EXEC insert_sp_ETL_AD_Audit_Accounts" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\7 Log Job Completion"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{d990c6ac-9bd0-47fb-93a5-209cfee68553}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="7 Log Job Completion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{88B02923-4B78-415B-979D-EF4072E9F8DC}"
+          SQLTask:SqlStatementSource="INSERT INTO DBA_Rep.dbo.SSIS_Job_History&#xA;( machinename&#xA;, packagename&#xA;, username&#xA;, packagestartdate&#xA;, retrievedate&#xA;)&#xA;VALUES&#xA;( ? ,&#xA;? ,&#xA;? ,&#xA;GETDATE() ,&#xA;GETDATE()&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::MachineName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{80222A0F-50C3-47C4-BEC8-6ECE3923C0E7}"
+      DTS:From="Package\1 List of Service accounts using PowerShell"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\2 Truncate AD_Staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{523F52D0-AF65-4665-A9A0-3DA1CEA52C9A}"
+      DTS:From="Package\3 Load Flat file into table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\4 Copy to archive folder &amp; append datetime" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{BC72FFFE-4E1C-4BA5-862E-E1FEC68E72BD}"
+      DTS:From="Package\2 Truncate AD_Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\3 Load Flat file into table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{986F756C-03F5-493E-8D8C-255F52352613}"
+      DTS:From="Package\4 Copy to archive folder &amp; append datetime"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\5 Delete AD_Acc_Export" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{8F05C46F-C336-470C-9506-10ECE5499CF4}"
+      DTS:From="Package\5 Delete AD_Acc_Export"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\6 insert_sp_ETL_AD_Audit_Accounts" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{236D14A3-3CCA-4632-8CF8-FF5FD901A6F5}"
+      DTS:From="Package\6 insert_sp_ETL_AD_Audit_Accounts"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\7 Log Job Completion" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="284,42"
+          Id="Package\1 List of Service accounts using PowerShell"
+          TopLeft="27,23" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\2 Truncate AD_Staging"
+          TopLeft="348,23" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\3 Load Flat file into table"
+          TopLeft="350,91" />
+        <NodeLayout
+          Size="287,42"
+          Id="Package\4 Copy to archive folder &amp; append datetime"
+          TopLeft="299,157" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\5 Delete AD_Acc_Export"
+          TopLeft="617,156" />
+        <NodeLayout
+          Size="254,42"
+          Id="Package\6 insert_sp_ETL_AD_Audit_Accounts"
+          TopLeft="585,226" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\7 Log Job Completion"
+          TopLeft="624,299" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="311,44">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="37,0"
+              Start="0,0"
+              End="29.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="29.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="445.75,133">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24"
+              Start="0,0"
+              End="0,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="446,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="586,177.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31,0"
+              Start="0,0"
+              End="23.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="23.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="713.25,198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="713.75,268">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Created by Vince James on 20150417"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="214,39"
+          Id="367b43d5-9d38-4ce4-814c-f32c53aa1bac"
+          TopLeft="591,22" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\3 Load Flat file into table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="223,42"
+          Id="Package\3 Load Flat file into table\AD_Service_Accounts_Staging"
+          TopLeft="32.5,208.5" />
+        <NodeLayout
+          Size="242,42"
+          Id="Package\3 Load Flat file into table\Add Var FileNameDate as BatchID"
+          TopLeft="26,137" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\3 Load Flat file into table\Flat File Source"
+          TopLeft="65.5,65.5" />
+        <EdgeLayout
+          Id="Package\3 Load Flat file into table.Paths[Flat File Source Output]"
+          TopLeft="144.5,107.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.5"
+              Start="0,0"
+              End="0,22">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\3 Load Flat file into table.Paths[Derived Column Output]"
+          TopLeft="145.5,179">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.5"
+              Start="0,0"
+              End="0,22">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\3 Load Flat file into table\AD_Service_Accounts_Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

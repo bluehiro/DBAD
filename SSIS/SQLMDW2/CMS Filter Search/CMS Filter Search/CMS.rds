@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="CMS">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=SQLMDW2;Initial Catalog=MDWMetrics</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>199ea7e7-4148-491d-b2f5-b7949631caaa</DataSourceID>
+</RptDataSource>

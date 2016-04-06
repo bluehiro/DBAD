@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "ThePool EMP Job v2", "ThePool EMP Job v2\ThePool EMP Job v2.dtproj", "{FE6A3A0A-B6E6-4CA8-971D-13D818F88A15}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE6A3A0A-B6E6-4CA8-971D-13D818F88A15}.Development|Default.ActiveCfg = Development
+		{FE6A3A0A-B6E6-4CA8-971D-13D818F88A15}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

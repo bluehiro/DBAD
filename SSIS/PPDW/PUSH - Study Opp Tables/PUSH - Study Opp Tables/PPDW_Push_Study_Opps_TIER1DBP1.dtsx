@@ -1,0 +1,3078 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/12/2015 3:40:17 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="MSBC477W7"
+  DTS:CreatorName="OHSUM01\jamesv"
+  DTS:DTSID="{B86DE888-7C1A-487C-A3D7-05FC305724D5}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="PPDW_Push_Study_Opps_TIER1DBP1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{05286070-213A-47B6-8948-D080BE7885C6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQL2012PHIPRD1.PublicPool_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{88C792C9-998D-42D5-A4CD-CC4FEE7CBC9F}"
+      DTS:ObjectName="SQL2012PHIPRD1.PublicPool_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQL2012PHIPRD1;Initial Catalog=PublicPool_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQLMDW2.DBA_Rep]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{397FBC5C-E89B-4CDD-99D5-3A7E40EE0E97}"
+      DTS:ObjectName="SQLMDW2.DBA_Rep">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQLMDW2;Initial Catalog=DBA_Rep;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TIER1DBP1.ThePublicPool]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{152C7E2D-23FD-4633-B5DB-36C7AB55EFB5}"
+      DTS:ObjectName="TIER1DBP1.ThePublicPool">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=TIER1DBP1;Initial Catalog=ThePublicPool;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7B745B42-F38B-47C8-B6B1-77844C3E54BD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceRows">
+      <DTS:VariableValue
+        DTS:DataType="8">No</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\1a - Check Source - PPDW so_categories"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3302a962-1e54-44fe-87f2-ac20c5044091}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="1a - Check Source - PPDW so_categories"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{88C792C9-998D-42D5-A4CD-CC4FEE7CBC9F}"
+          SQLTask:SqlStatementSource="SELECT TOP 1 CASE WHEN COUNT(*) &gt; 0 THEN 'Yes' ELSE 'No' END AS SourceRows  FROM so_categories s&#xA;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="SourceRows"
+            SQLTask:DtsVariableName="User::SourceRows" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\1b - Truncate Target Table - so_categories"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{80757168-10a6-4ce2-aeb0-8291e7df4a1b}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="1b - Truncate Target Table - so_categories"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{152C7E2D-23FD-4633-B5DB-36C7AB55EFB5}"
+          SQLTask:SqlStatementSource="  USE [ThePublicPool]&#xA;DECLARE @TARGETrows TINYINT &#xA;SET @TARGETrows = (SELECT TOP 1 CASE WHEN COUNT(*) &gt; 0 THEN 1 ELSE 0 END FROM ThePublicPool.dbo.so_categories ds)&#xA;IF @TARGETrows = 0&#xA;BEGIN&#xA; PRINT 'ThePublicPool.dbo.so_categories is empty, no action taken'&#xA;END &#xA;IF @TARGETrows &gt; 0&#xA;BEGIN&#xA; TRUNCATE TABLE ThePublicPool.dbo.so_categories&#xA; PRINT 'Truncating ThePublicPool.dbo.so_categories'&#xA;END&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\1c - Load table data from Source to Target"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{90e76253-834d-4c92-b252-670b973d4bdb}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="1c - Load table data from Source to Target"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\1c - Load table data from Source to Target\OLE DB Destination"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[so_categories]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TIER1DBP1.ThePublicPool]"
+                  connectionManagerRefId="Package.ConnectionManagers[TIER1DBP1.ThePublicPool]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[STUDY_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STUDY_ID"
+                      externalMetadataColumnId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[STUDY_ID]"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[STUDY_ID]" />
+                    <inputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SUB_CATEGORY]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SUB_CATEGORY"
+                      externalMetadataColumnId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SUB_CATEGORY]"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[SUB_CATEGORY]" />
+                    <inputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CATEGORY]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CATEGORY"
+                      externalMetadataColumnId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CATEGORY]"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[CATEGORY]" />
+                    <inputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HEADER_CATEGORY]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="HEADER_CATEGORY"
+                      externalMetadataColumnId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HEADER_CATEGORY]"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[HEADER_CATEGORY]" />
+                    <inputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DISPLAY_ORDER]"
+                      cachedDataType="i4"
+                      cachedName="DISPLAY_ORDER"
+                      externalMetadataColumnId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DISPLAY_ORDER]"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[DISPLAY_ORDER]" />
+                    <inputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RETRIEVEDATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="RETRIEVEDATE"
+                      externalMetadataColumnId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RETRIEVEDATE]"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[RETRIEVEDATE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[STUDY_ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="STUDY_ID" />
+                    <externalMetadataColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SUB_CATEGORY]"
+                      dataType="wstr"
+                      length="255"
+                      name="SUB_CATEGORY" />
+                    <externalMetadataColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CATEGORY]"
+                      dataType="wstr"
+                      length="255"
+                      name="CATEGORY" />
+                    <externalMetadataColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HEADER_CATEGORY]"
+                      dataType="wstr"
+                      length="255"
+                      name="HEADER_CATEGORY" />
+                    <externalMetadataColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DISPLAY_ORDER]"
+                      dataType="i4"
+                      name="DISPLAY_ORDER" />
+                    <externalMetadataColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RETRIEVEDATE]"
+                      dataType="dbTimeStamp"
+                      name="RETRIEVEDATE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\1c - Load table data from Source to Target\OLE DB Source"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[so_categories]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">DECLARE @RetrieveDate DATETIME 
+SET @RetrieveDate = GETDATE()
+
+SELECT [STUDY_ID]
+      ,[SUB_CATEGORY]
+      ,[CATEGORY]
+      ,[HEADER_CATEGORY]
+      ,[DISPLAY_ORDER]
+	  , @RetrieveDate AS RETRIEVEDATE
+  FROM [SO].[dbo].[so_categories]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\1c - Load table data from Source to Target\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SQL2012PHIPRD1.PublicPool_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[SQL2012PHIPRD1.PublicPool_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[STUDY_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[STUDY_ID]"
+                      length="255"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[STUDY_ID]"
+                      name="STUDY_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[SUB_CATEGORY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SUB_CATEGORY]"
+                      length="255"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[SUB_CATEGORY]"
+                      name="SUB_CATEGORY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[CATEGORY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CATEGORY]"
+                      length="255"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[CATEGORY]"
+                      name="CATEGORY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[HEADER_CATEGORY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HEADER_CATEGORY]"
+                      length="255"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[HEADER_CATEGORY]"
+                      name="HEADER_CATEGORY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[DISPLAY_ORDER]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DISPLAY_ORDER]"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[DISPLAY_ORDER]"
+                      name="DISPLAY_ORDER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[RETRIEVEDATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RETRIEVEDATE]"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[RETRIEVEDATE]"
+                      name="RETRIEVEDATE"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[STUDY_ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="STUDY_ID" />
+                    <externalMetadataColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SUB_CATEGORY]"
+                      dataType="wstr"
+                      length="255"
+                      name="SUB_CATEGORY" />
+                    <externalMetadataColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CATEGORY]"
+                      dataType="wstr"
+                      length="255"
+                      name="CATEGORY" />
+                    <externalMetadataColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HEADER_CATEGORY]"
+                      dataType="wstr"
+                      length="255"
+                      name="HEADER_CATEGORY" />
+                    <externalMetadataColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DISPLAY_ORDER]"
+                      dataType="i4"
+                      name="DISPLAY_ORDER" />
+                    <externalMetadataColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RETRIEVEDATE]"
+                      dataType="dbTimeStamp"
+                      name="RETRIEVEDATE" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[STUDY_ID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[STUDY_ID]"
+                      name="STUDY_ID" />
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SUB_CATEGORY]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SUB_CATEGORY]"
+                      name="SUB_CATEGORY" />
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CATEGORY]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CATEGORY]"
+                      name="CATEGORY" />
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HEADER_CATEGORY]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HEADER_CATEGORY]"
+                      name="HEADER_CATEGORY" />
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DISPLAY_ORDER]"
+                      dataType="i4"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DISPLAY_ORDER]"
+                      name="DISPLAY_ORDER" />
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RETRIEVEDATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RETRIEVEDATE]"
+                      name="RETRIEVEDATE" />
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\1c - Load table data from Source to Target.Paths[OLE DB Source Output]"
+              endId="Package\1c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\1c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\2a - Check Source - PPDW so_drugs"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1d8bb1eb-a475-4deb-97fd-3ce4de8d6bc9}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="2a - Check Source - PPDW so_drugs"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{88C792C9-998D-42D5-A4CD-CC4FEE7CBC9F}"
+          SQLTask:SqlStatementSource="SELECT TOP 1 CASE WHEN COUNT(*) &gt; 0 THEN 'Yes' ELSE 'No' END AS SourceRows  FROM so_drugs s"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="SourceRows"
+            SQLTask:DtsVariableName="User::SourceRows" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\2b - Truncate Target Table - so_drugs"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{c8e8a0b5-4d51-4939-b93e-9bebe4d89e80}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="2b - Truncate Target Table - so_drugs"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{152C7E2D-23FD-4633-B5DB-36C7AB55EFB5}"
+          SQLTask:SqlStatementSource="USE [ThePublicPool]&#xA;DECLARE @TARGETrows TINYINT &#xA;SET @TARGETrows = (SELECT TOP 1 CASE WHEN COUNT(*) &gt; 0 THEN 1 ELSE 0 END FROM ThePublicPool.dbo.so_drugs ds)&#xA;IF @TARGETrows = 0&#xA;BEGIN&#xA; PRINT 'ThePublicPool.dbo.so_drugs is empty, no action taken'&#xA;END &#xA;IF @TARGETrows &gt; 0&#xA;BEGIN&#xA; TRUNCATE TABLE ThePublicPool.dbo.so_drugs&#xA; PRINT 'Truncating ThePublicPool.dbo.so_drugs'&#xA;END&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\2c - Load table data from Source to Target"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{d0660ace-f730-41ff-a7bb-887849016562}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="2c - Load table data from Source to Target"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\2c - Load table data from Source to Target\OLE DB Destination"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[so_drugs]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\2c - Load table data from Source to Target\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TIER1DBP1.ThePublicPool]"
+                  connectionManagerRefId="Package.ConnectionManagers[TIER1DBP1.ThePublicPool]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[STUDY_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STUDY_ID"
+                      externalMetadataColumnId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[STUDY_ID]"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[STUDY_ID]" />
+                    <inputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RETRIEVEDATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="RETRIEVEDATE"
+                      externalMetadataColumnId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RETRIEVEDATE]"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[RETRIEVEDATE]" />
+                    <inputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DRUG_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DRUG_NAME"
+                      externalMetadataColumnId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DRUG_NAME]"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[DRUG_NAME]" />
+                    <inputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DRUG_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DRUG_TYPE"
+                      externalMetadataColumnId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DRUG_TYPE]"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[DRUG_TYPE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[STUDY_ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="STUDY_ID" />
+                    <externalMetadataColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RETRIEVEDATE]"
+                      dataType="dbTimeStamp"
+                      name="RETRIEVEDATE" />
+                    <externalMetadataColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DRUG_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="DRUG_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DRUG_TYPE]"
+                      dataType="wstr"
+                      length="255"
+                      name="DRUG_TYPE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\2c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\2c - Load table data from Source to Target\OLE DB Source"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[so_drugs]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">DECLARE @RetrieveDate DATETIME 
+SET @RetrieveDate = GETDATE()
+
+SELECT [STUDY_ID]
+      ,[SUB_CATEGORY]
+      ,[CATEGORY]
+      ,[HEADER_CATEGORY]
+      ,[DISPLAY_ORDER]
+	  , @RetrieveDate AS RETRIEVEDATE
+  FROM [SO].[dbo].[so_categories]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\2c - Load table data from Source to Target\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SQL2012PHIPRD1.PublicPool_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[SQL2012PHIPRD1.PublicPool_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[STUDY_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[STUDY_ID]"
+                      length="255"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[STUDY_ID]"
+                      name="STUDY_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[RETRIEVEDATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RETRIEVEDATE]"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[RETRIEVEDATE]"
+                      name="RETRIEVEDATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[DRUG_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DRUG_NAME]"
+                      length="255"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[DRUG_NAME]"
+                      name="DRUG_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[DRUG_TYPE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DRUG_TYPE]"
+                      length="255"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[DRUG_TYPE]"
+                      name="DRUG_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[STUDY_ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="STUDY_ID" />
+                    <externalMetadataColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RETRIEVEDATE]"
+                      dataType="dbTimeStamp"
+                      name="RETRIEVEDATE" />
+                    <externalMetadataColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DRUG_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="DRUG_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DRUG_TYPE]"
+                      dataType="wstr"
+                      length="255"
+                      name="DRUG_TYPE" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[STUDY_ID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[STUDY_ID]"
+                      name="STUDY_ID" />
+                    <outputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DRUG_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DRUG_NAME]"
+                      name="DRUG_NAME" />
+                    <outputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DRUG_TYPE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DRUG_TYPE]"
+                      name="DRUG_TYPE" />
+                    <outputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RETRIEVEDATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RETRIEVEDATE]"
+                      name="RETRIEVEDATE" />
+                    <outputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\2c - Load table data from Source to Target.Paths[OLE DB Source Output]"
+              endId="Package\2c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\2c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\3a - Check Source - PPDW study_opportunity"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{d6b6fd99-3226-40f3-bb42-d3476f85db49}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="3a - Check Source - PPDW study_opportunity"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{88C792C9-998D-42D5-A4CD-CC4FEE7CBC9F}"
+          SQLTask:SqlStatementSource="SELECT TOP 1 CASE WHEN COUNT(*) &gt; 0 THEN 'Yes' ELSE 'No' END AS SourceRows  FROM study_opportunity s"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="SourceRows"
+            SQLTask:DtsVariableName="User::SourceRows" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\3b - Truncate Target Table - study_opportunity"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{533b366e-5243-4a28-818c-7c8242181b0f}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="3b - Truncate Target Table - study_opportunity"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{152C7E2D-23FD-4633-B5DB-36C7AB55EFB5}"
+          SQLTask:SqlStatementSource="USE [ThePublicPool]&#xA;DECLARE @TARGETrows TINYINT &#xA;SET @TARGETrows = (SELECT TOP 1 CASE WHEN COUNT(*) &gt; 0 THEN 1 ELSE 0 END FROM ThePublicPool.dbo.study_opportunity ds)&#xA;IF @TARGETrows = 0&#xA;BEGIN&#xA; PRINT 'ThePublicPool.dbo.study_opportunity is empty, no action taken'&#xA;END &#xA;IF @TARGETrows &gt; 0&#xA;BEGIN&#xA; TRUNCATE TABLE ThePublicPool.dbo.study_opportunity&#xA; PRINT 'Truncating ThePublicPool.dbo.study_opportunity'&#xA;END&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\3c - Load table data from Source to Target"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2815c6f4-122d-4031-9919-d12352779aa9}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="3c - Load table data from Source to Target"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\3c - Load table data from Source to Target\OLE DB Destination"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[study_opportunity]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TIER1DBP1.ThePublicPool]"
+                  connectionManagerRefId="Package.ConnectionManagers[TIER1DBP1.ThePublicPool]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[eirb_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="eirb_number"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[eirb_number]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[eirb_number]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[short_title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="short_title"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[short_title]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[short_title]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[pi]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="pi"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pi]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[subjects_to_consent]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="subjects_to_consent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[subjects_to_consent]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[subjects_to_consent]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[healthy_volunteers]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="healthy_volunteers"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[healthy_volunteers]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[healthy_volunteers]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[recruitment_end]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="recruitment_end"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[recruitment_end]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[recruitment_end]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[compensation]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="compensation"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[compensation]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[compensation]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[minors]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="minors"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[minors]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[minors]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[publish]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="publish"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[publish]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[publish]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[notified]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="notified"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[notified]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[notified]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[pi_first_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="pi_first_name"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pi_first_name]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_first_name]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[pi_last_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="pi_last_name"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pi_last_name]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_last_name]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[age_range_from]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="age_range_from"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[age_range_from]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[age_range_from]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[age_range_to]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="age_range_to"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[age_range_to]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[age_range_to]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[kci_required]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="kci_required"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[kci_required]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[kci_required]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[long_title]"
+                      cachedDataType="nText"
+                      cachedName="long_title"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[long_title]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[long_title]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[study_purpose]"
+                      cachedDataType="nText"
+                      cachedName="study_purpose"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[study_purpose]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[study_purpose]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[medical_condition]"
+                      cachedDataType="nText"
+                      cachedName="medical_condition"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[medical_condition]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[medical_condition]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[eligibility_criteria]"
+                      cachedDataType="nText"
+                      cachedName="eligibility_criteria"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[eligibility_criteria]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[eligibility_criteria]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[placebo_chance]"
+                      cachedDataType="nText"
+                      cachedName="placebo_chance"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[placebo_chance]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[placebo_chance]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[duration]"
+                      cachedDataType="nText"
+                      cachedName="duration"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[duration]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[duration]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[contact]"
+                      cachedDataType="nText"
+                      cachedName="contact"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[contact]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[contact]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[sponsor]"
+                      cachedDataType="nText"
+                      cachedName="sponsor"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sponsor]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[sponsor]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[compensation_amount]"
+                      cachedDataType="nText"
+                      cachedName="compensation_amount"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[compensation_amount]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[compensation_amount]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date_published]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="date_published"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_published]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_published]" />
+                    <inputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[retrievedate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="retrievedate"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[retrievedate]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[retrievedate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[eirb_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="eirb_number" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[short_title]"
+                      dataType="wstr"
+                      length="255"
+                      name="short_title" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pi]"
+                      dataType="wstr"
+                      length="255"
+                      name="pi" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[subjects_to_consent]"
+                      dataType="wstr"
+                      length="255"
+                      name="subjects_to_consent" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[healthy_volunteers]"
+                      dataType="wstr"
+                      length="3"
+                      name="healthy_volunteers" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[recruitment_end]"
+                      dataType="dbTimeStamp"
+                      name="recruitment_end" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[compensation]"
+                      dataType="wstr"
+                      length="3"
+                      name="compensation" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[minors]"
+                      dataType="wstr"
+                      length="3"
+                      name="minors" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[publish]"
+                      dataType="wstr"
+                      length="3"
+                      name="publish" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[notified]"
+                      dataType="wstr"
+                      length="3"
+                      name="notified" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pi_first_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="pi_first_name" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pi_last_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="pi_last_name" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[age_range_from]"
+                      dataType="wstr"
+                      length="255"
+                      name="age_range_from" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[age_range_to]"
+                      dataType="wstr"
+                      length="255"
+                      name="age_range_to" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[kci_required]"
+                      dataType="wstr"
+                      length="3"
+                      name="kci_required" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[long_title]"
+                      dataType="nText"
+                      name="long_title" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[study_purpose]"
+                      dataType="nText"
+                      name="study_purpose" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[medical_condition]"
+                      dataType="nText"
+                      name="medical_condition" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[eligibility_criteria]"
+                      dataType="nText"
+                      name="eligibility_criteria" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[placebo_chance]"
+                      dataType="nText"
+                      name="placebo_chance" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[duration]"
+                      dataType="nText"
+                      name="duration" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[contact]"
+                      dataType="nText"
+                      name="contact" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sponsor]"
+                      dataType="nText"
+                      name="sponsor" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[compensation_amount]"
+                      dataType="nText"
+                      name="compensation_amount" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_published]"
+                      dataType="dbTimeStamp"
+                      name="date_published" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[retrievedate]"
+                      dataType="dbTimeStamp"
+                      name="retrievedate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\3c - Load table data from Source to Target\OLE DB Source"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[study_opportunity]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">DECLARE @RetrieveDate DATETIME 
+SET @RetrieveDate = GETDATE()
+
+SELECT [STUDY_ID]
+      ,[SUB_CATEGORY]
+      ,[CATEGORY]
+      ,[HEADER_CATEGORY]
+      ,[DISPLAY_ORDER]
+	  , @RetrieveDate AS RETRIEVEDATE
+  FROM [SO].[dbo].[so_categories]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\3c - Load table data from Source to Target\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SQL2012PHIPRD1.PublicPool_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[SQL2012PHIPRD1.PublicPool_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[eirb_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[eirb_number]"
+                      length="50"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[eirb_number]"
+                      name="eirb_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[short_title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[short_title]"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[short_title]"
+                      name="short_title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pi]"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi]"
+                      name="pi"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[subjects_to_consent]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[subjects_to_consent]"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[subjects_to_consent]"
+                      name="subjects_to_consent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[healthy_volunteers]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[healthy_volunteers]"
+                      length="3"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[healthy_volunteers]"
+                      name="healthy_volunteers"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[recruitment_end]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[recruitment_end]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[recruitment_end]"
+                      name="recruitment_end"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[compensation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[compensation]"
+                      length="3"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[compensation]"
+                      name="compensation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[minors]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[minors]"
+                      length="3"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[minors]"
+                      name="minors"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[publish]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[publish]"
+                      length="3"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[publish]"
+                      name="publish"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[notified]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[notified]"
+                      length="3"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[notified]"
+                      name="notified"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_first_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pi_first_name]"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_first_name]"
+                      name="pi_first_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_last_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pi_last_name]"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_last_name]"
+                      name="pi_last_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[age_range_from]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[age_range_from]"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[age_range_from]"
+                      name="age_range_from"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[age_range_to]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[age_range_to]"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[age_range_to]"
+                      name="age_range_to"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[kci_required]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[kci_required]"
+                      length="3"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[kci_required]"
+                      name="kci_required"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[long_title]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[long_title]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[long_title]"
+                      name="long_title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[study_purpose]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[study_purpose]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[study_purpose]"
+                      name="study_purpose"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[medical_condition]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[medical_condition]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[medical_condition]"
+                      name="medical_condition"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[eligibility_criteria]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[eligibility_criteria]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[eligibility_criteria]"
+                      name="eligibility_criteria"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[placebo_chance]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[placebo_chance]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[placebo_chance]"
+                      name="placebo_chance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[duration]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[duration]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[duration]"
+                      name="duration"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[contact]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[contact]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[contact]"
+                      name="contact"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[sponsor]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[sponsor]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[sponsor]"
+                      name="sponsor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[compensation_amount]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[compensation_amount]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[compensation_amount]"
+                      name="compensation_amount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_published]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date_published]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_published]"
+                      name="date_published"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[retrievedate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[retrievedate]"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[retrievedate]"
+                      name="retrievedate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[eirb_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="eirb_number" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[short_title]"
+                      dataType="wstr"
+                      length="255"
+                      name="short_title" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pi]"
+                      dataType="wstr"
+                      length="255"
+                      name="pi" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[subjects_to_consent]"
+                      dataType="wstr"
+                      length="255"
+                      name="subjects_to_consent" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[healthy_volunteers]"
+                      dataType="wstr"
+                      length="3"
+                      name="healthy_volunteers" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[recruitment_end]"
+                      dataType="dbTimeStamp"
+                      name="recruitment_end" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[compensation]"
+                      dataType="wstr"
+                      length="3"
+                      name="compensation" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[minors]"
+                      dataType="wstr"
+                      length="3"
+                      name="minors" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[publish]"
+                      dataType="wstr"
+                      length="3"
+                      name="publish" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[notified]"
+                      dataType="wstr"
+                      length="3"
+                      name="notified" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pi_first_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="pi_first_name" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pi_last_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="pi_last_name" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[age_range_from]"
+                      dataType="wstr"
+                      length="255"
+                      name="age_range_from" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[age_range_to]"
+                      dataType="wstr"
+                      length="255"
+                      name="age_range_to" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[kci_required]"
+                      dataType="wstr"
+                      length="3"
+                      name="kci_required" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[long_title]"
+                      dataType="nText"
+                      name="long_title" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[study_purpose]"
+                      dataType="nText"
+                      name="study_purpose" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[medical_condition]"
+                      dataType="nText"
+                      name="medical_condition" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[eligibility_criteria]"
+                      dataType="nText"
+                      name="eligibility_criteria" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[placebo_chance]"
+                      dataType="nText"
+                      name="placebo_chance" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[duration]"
+                      dataType="nText"
+                      name="duration" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[contact]"
+                      dataType="nText"
+                      name="contact" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[sponsor]"
+                      dataType="nText"
+                      name="sponsor" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[compensation_amount]"
+                      dataType="nText"
+                      name="compensation_amount" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date_published]"
+                      dataType="dbTimeStamp"
+                      name="date_published" />
+                    <externalMetadataColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[retrievedate]"
+                      dataType="dbTimeStamp"
+                      name="retrievedate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[eirb_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[eirb_number]"
+                      name="eirb_number" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[short_title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[short_title]"
+                      name="short_title" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pi]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pi]"
+                      name="pi" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[subjects_to_consent]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[subjects_to_consent]"
+                      name="subjects_to_consent" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[healthy_volunteers]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[healthy_volunteers]"
+                      name="healthy_volunteers" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[recruitment_end]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[recruitment_end]"
+                      name="recruitment_end" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[compensation]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[compensation]"
+                      name="compensation" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[minors]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[minors]"
+                      name="minors" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[publish]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[publish]"
+                      name="publish" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[notified]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[notified]"
+                      name="notified" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pi_first_name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pi_first_name]"
+                      name="pi_first_name" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pi_last_name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pi_last_name]"
+                      name="pi_last_name" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[age_range_from]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[age_range_from]"
+                      name="age_range_from" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[age_range_to]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[age_range_to]"
+                      name="age_range_to" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[kci_required]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[kci_required]"
+                      name="kci_required" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[long_title]"
+                      dataType="nText"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[long_title]"
+                      name="long_title" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[study_purpose]"
+                      dataType="nText"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[study_purpose]"
+                      name="study_purpose" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[medical_condition]"
+                      dataType="nText"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[medical_condition]"
+                      name="medical_condition" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[eligibility_criteria]"
+                      dataType="nText"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[eligibility_criteria]"
+                      name="eligibility_criteria" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[placebo_chance]"
+                      dataType="nText"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[placebo_chance]"
+                      name="placebo_chance" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[duration]"
+                      dataType="nText"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[duration]"
+                      name="duration" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[contact]"
+                      dataType="nText"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[contact]"
+                      name="contact" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[sponsor]"
+                      dataType="nText"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[sponsor]"
+                      name="sponsor" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[compensation_amount]"
+                      dataType="nText"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[compensation_amount]"
+                      name="compensation_amount" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date_published]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date_published]"
+                      name="date_published" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[retrievedate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[retrievedate]"
+                      name="retrievedate" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\3c - Load table data from Source to Target.Paths[OLE DB Source Output]"
+              endId="Package\3c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\3c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\4a - Check Source - PPDW so_keywords"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7e260526-a02c-4715-a11e-d16f8315aa15}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="4a - Check Source - PPDW so_keywords"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{88C792C9-998D-42D5-A4CD-CC4FEE7CBC9F}"
+          SQLTask:SqlStatementSource="SELECT TOP 1 CASE WHEN COUNT(*) &gt; 0 THEN 'Yes' ELSE 'No' END AS SourceRows  FROM so_keywords s"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="SourceRows"
+            SQLTask:DtsVariableName="User::SourceRows" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\4b - Truncate Target Table - so_keywords_staging"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{e51b0f61-155f-4d6e-bebb-5c7c8269a91a}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="4b - Truncate Target Table - so_keywords_staging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{152C7E2D-23FD-4633-B5DB-36C7AB55EFB5}"
+          SQLTask:SqlStatementSource="USE [ThePublicPool]&#xA;DECLARE @TARGETrows TINYINT &#xA;SET @TARGETrows = (SELECT TOP 1 CASE WHEN COUNT(*) &gt; 0 THEN 1 ELSE 0 END FROM ThePublicPool.dbo.so_keywords ds)&#xA;IF @TARGETrows = 0&#xA;BEGIN&#xA; PRINT 'ThePublicPool.dbo.so_keywords is empty, no action taken'&#xA;END &#xA;IF @TARGETrows &gt; 0&#xA;BEGIN&#xA; TRUNCATE TABLE ThePublicPool.dbo.so_keywords&#xA; PRINT 'Truncating ThePublicPool.dbo.so_keywords'&#xA;END&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\4c - Load table data from Source to Target"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{aa2417cd-8c9f-4317-b00a-190b8efbe2f3}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="4c - Load table data from Source to Target"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\4c - Load table data from Source to Target\OLE DB Destination"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[so_keywords]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\4c - Load table data from Source to Target\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TIER1DBP1.ThePublicPool]"
+                  connectionManagerRefId="Package.ConnectionManagers[TIER1DBP1.ThePublicPool]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\4c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[retrievedate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="retrievedate"
+                      externalMetadataColumnId="Package\4c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[retrievedate]"
+                      lineageId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[retrievedate]" />
+                    <inputColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[keyword]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="keyword"
+                      externalMetadataColumnId="Package\4c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[keyword]"
+                      lineageId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[keyword]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[retrievedate]"
+                      dataType="dbTimeStamp"
+                      name="retrievedate" />
+                    <externalMetadataColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[keyword]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="keyword" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\4c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\4c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\4c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\4c - Load table data from Source to Target\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\4c - Load table data from Source to Target\OLE DB Source"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[so_keywords]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">DECLARE @RetrieveDate DATETIME 
+SET @RetrieveDate = GETDATE()
+
+SELECT [STUDY_ID]
+      ,[SUB_CATEGORY]
+      ,[CATEGORY]
+      ,[HEADER_CATEGORY]
+      ,[DISPLAY_ORDER]
+	  , @RetrieveDate AS RETRIEVEDATE
+  FROM [SO].[dbo].[so_categories]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\4c - Load table data from Source to Target\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SQL2012PHIPRD1.PublicPool_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[SQL2012PHIPRD1.PublicPool_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[retrievedate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[retrievedate]"
+                      lineageId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[retrievedate]"
+                      name="retrievedate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[keyword]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[keyword]"
+                      length="100"
+                      lineageId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].Columns[keyword]"
+                      name="keyword"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[retrievedate]"
+                      dataType="dbTimeStamp"
+                      name="retrievedate" />
+                    <externalMetadataColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[keyword]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="keyword" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[keyword]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[keyword]"
+                      name="keyword" />
+                    <outputColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[retrievedate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[retrievedate]"
+                      name="retrievedate" />
+                    <outputColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\4c - Load table data from Source to Target.Paths[OLE DB Source Output]"
+              endId="Package\4c - Load table data from Source to Target\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\4c - Load table data from Source to Target\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\5 - Log to SSIS_Job_History"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{641186e3-1015-4352-a407-b8fcaef27c1c}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="5 - Log to SSIS_Job_History"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{397FBC5C-E89B-4CDD-99D5-3A7E40EE0E97}"
+          SQLTask:SqlStatementSource="INSERT INTO [dbo].[SSIS_Job_History]&#xA;           ([machinename]&#xA;           ,[packagename]&#xA;           ,[username]&#xA;           ,[packagestartdate]&#xA;           ,[retrievedate])&#xA;     VALUES&#xA;           ( ? ,&#xA;            ?, &#xA;            ?, &#xA;            GETDATE() ,&#xA;            GETDATE() &#xA;           )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::MachineName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4e4636de-a959-48f3-b95f-40a44ed1a2db}"
+      DTS:From="Package\1b - Truncate Target Table - so_categories"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\1c - Load table data from Source to Target" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{a304df69-1392-4455-b344-0bab0eff86a0}"
+      DTS:EvalOp="3"
+      DTS:Expression="@SourceRows == &quot;Yes&quot;"
+      DTS:From="Package\1a - Check Source - PPDW so_categories"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\1b - Truncate Target Table - so_categories" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{36ceab2d-fe8a-49c7-ac14-ccd3cbbeed84}"
+      DTS:EvalOp="3"
+      DTS:Expression="@SourceRows == &quot;Yes&quot;"
+      DTS:From="Package\2a - Check Source - PPDW so_drugs"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1 1"
+      DTS:To="Package\2b - Truncate Target Table - so_drugs" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1 1 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{085b8ea1-8759-4a3d-aa4b-5aa20ca0feb7}"
+      DTS:EvalOp="3"
+      DTS:Expression="@SourceRows == &quot;Yes&quot;"
+      DTS:From="Package\3a - Check Source - PPDW study_opportunity"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1 1 1"
+      DTS:To="Package\3b - Truncate Target Table - study_opportunity" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1 1 1 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{a890b675-4e73-491a-83ec-28e556a1500a}"
+      DTS:EvalOp="3"
+      DTS:Expression="@SourceRows == &quot;Yes&quot;"
+      DTS:From="Package\4a - Check Source - PPDW so_keywords"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1 1 1 1"
+      DTS:To="Package\4b - Truncate Target Table - so_keywords_staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{2ad4a7bc-fa00-4b26-b90e-26d43086fce4}"
+      DTS:From="Package\2b - Truncate Target Table - so_drugs"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\2c - Load table data from Source to Target" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{a2de0020-5d15-43b6-a71e-e84ad029563f}"
+      DTS:From="Package\3b - Truncate Target Table - study_opportunity"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2 1"
+      DTS:To="Package\3c - Load table data from Source to Target" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2 1 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{7e407e14-4170-47f9-b4d9-b2458d3588f0}"
+      DTS:From="Package\4b - Truncate Target Table - so_keywords_staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2 1 1"
+      DTS:To="Package\4c - Load table data from Source to Target" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{bbde7fbc-cc46-4583-9a07-d0dc726a605c}"
+      DTS:From="Package\1c - Load table data from Source to Target"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\2a - Check Source - PPDW so_drugs" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{814c97d9-8104-4040-8c87-0d487edcb3b7}"
+      DTS:From="Package\2c - Load table data from Source to Target"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\3a - Check Source - PPDW study_opportunity" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{303F6E34-B32C-4CE2-A69B-2FFDB6CF2795}"
+      DTS:From="Package\3c - Load table data from Source to Target"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\4a - Check Source - PPDW so_keywords" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{E709B0D4-8F72-4D2B-9088-03D226AEE5FB}"
+      DTS:From="Package\4c - Load table data from Source to Target"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\5 - Log to SSIS_Job_History" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="273,42"
+          Id="Package\1a - Check Source - PPDW so_categories"
+          TopLeft="68,60" />
+        <NodeLayout
+          Size="283,42"
+          Id="Package\1b - Truncate Target Table - so_categories"
+          TopLeft="65,141" />
+        <NodeLayout
+          Size="283,42"
+          Id="Package\1c - Load table data from Source to Target"
+          TopLeft="60,215" />
+        <NodeLayout
+          Size="252,42"
+          Id="Package\2a - Check Source - PPDW so_drugs"
+          TopLeft="411,195" />
+        <NodeLayout
+          Size="261,42"
+          Id="Package\2b - Truncate Target Table - so_drugs"
+          TopLeft="408,276" />
+        <NodeLayout
+          Size="283,42"
+          Id="Package\2c - Load table data from Source to Target"
+          TopLeft="404,351" />
+        <NodeLayout
+          Size="294,42"
+          Id="Package\3a - Check Source - PPDW study_opportunity"
+          TopLeft="747,314" />
+        <NodeLayout
+          Size="304,42"
+          Id="Package\3b - Truncate Target Table - study_opportunity"
+          TopLeft="744,395" />
+        <NodeLayout
+          Size="283,42"
+          Id="Package\3c - Load table data from Source to Target"
+          TopLeft="755,469" />
+        <NodeLayout
+          Size="270,42"
+          Id="Package\4a - Check Source - PPDW so_keywords"
+          TopLeft="356,468" />
+        <NodeLayout
+          Size="319,42"
+          Id="Package\4b - Truncate Target Table - so_keywords_staging"
+          TopLeft="337,557" />
+        <NodeLayout
+          Size="283,42"
+          Id="Package\4c - Load table data from Source to Target"
+          TopLeft="348,631" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\5 - Log to SSIS_Job_History"
+          TopLeft="739,630" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="204,183">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="205.5,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,7.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1 1]"
+          TopLeft="537.75,237">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,7.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1 1 1]"
+          TopLeft="895,356">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,7.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1 1 1 1]"
+          TopLeft="493.75,510">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,11.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="542,318">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2 1]"
+          TopLeft="896.25,437">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2 1 1]"
+          TopLeft="493,599">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="343,236">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="68,-20"
+              Start="0,0"
+              End="60.5,-20">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="30,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30,0"
+                    Point2="34,0"
+                    Point3="34,-4" />
+                  <mssgle:LineSegment
+                    End="34,-16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34,-16"
+                    Point2="34,-20"
+                    Point3="38,-20" />
+                  <mssgle:LineSegment
+                    End="60.5,-20" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="687,372">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60,-37"
+              Start="0,0"
+              End="52.5,-37">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="26,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="26,0"
+                    Point2="30,0"
+                    Point3="30,-4" />
+                  <mssgle:LineSegment
+                    End="30,-33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30,-33"
+                    Point2="30,-37"
+                    Point3="34,-37" />
+                  <mssgle:LineSegment
+                    End="52.5,-37" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="755,489.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-129,0"
+              Start="0,0"
+              End="-121.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-121.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="631,651.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="108,0"
+              Start="0,0"
+              End="100.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="100.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="20150512 VMJ&#xA;This SSIS Package loads 3 tables from SQL2012PHIPRD1.PublicPool_DW to TIER1DBP1.ThePublicPool&#xA;so_categories&#xA;so_drugs&#xA;study_opportunities"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="526,92"
+          Id="a676366c-5afc-4574-8b98-475bcdaa1ad3"
+          TopLeft="394,49" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\1c - Load table data from Source to Target">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\1c - Load table data from Source to Target\OLE DB Source"
+          TopLeft="10.5,139.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\1c - Load table data from Source to Target\OLE DB Destination"
+          TopLeft="4.5,262.5" />
+        <EdgeLayout
+          Id="Package\1c - Load table data from Source to Target.Paths[OLE DB Source Output]"
+          TopLeft="88.75,181.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81"
+              Start="0,0"
+              End="0,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\1c - Load table data from Source to Target\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\1c - Load table data from Source to Target\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\2c - Load table data from Source to Target">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\2c - Load table data from Source to Target\OLE DB Source"
+          TopLeft="10.5,139.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\2c - Load table data from Source to Target\OLE DB Destination"
+          TopLeft="4.5,262.5" />
+        <EdgeLayout
+          Id="Package\2c - Load table data from Source to Target.Paths[OLE DB Source Output]"
+          TopLeft="88.75,181.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81"
+              Start="0,0"
+              End="0,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\2c - Load table data from Source to Target\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\2c - Load table data from Source to Target\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\3c - Load table data from Source to Target">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="173,42"
+          Id="Package\3c - Load table data from Source to Target\OLE DB Destination"
+          TopLeft="69.5,196.5" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\3c - Load table data from Source to Target\OLE DB Source"
+          TopLeft="76.5,83.5" />
+        <EdgeLayout
+          Id="Package\3c - Load table data from Source to Target.Paths[OLE DB Source Output]"
+          TopLeft="154.25,125.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71"
+              Start="0,0"
+              End="0,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\3c - Load table data from Source to Target\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\3c - Load table data from Source to Target\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\4c - Load table data from Source to Target">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\4c - Load table data from Source to Target\OLE DB Source"
+          TopLeft="76.5,83.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\4c - Load table data from Source to Target\OLE DB Destination"
+          TopLeft="69.5,196.5" />
+        <EdgeLayout
+          Id="Package\4c - Load table data from Source to Target.Paths[OLE DB Source Output]"
+          TopLeft="154.25,125.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71"
+              Start="0,0"
+              End="0,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\4c - Load table data from Source to Target\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\4c - Load table data from Source to Target\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

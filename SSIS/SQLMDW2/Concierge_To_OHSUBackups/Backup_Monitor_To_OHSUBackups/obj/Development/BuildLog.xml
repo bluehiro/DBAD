@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectInfo>
+    <Name>Report_Missing_Backups</Name>
+    <LastWriteTime>2015-11-02T16:57:46.1807122Z</LastWriteTime>
+    <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+    <Salt>M1Uzq3x+</Salt>
+    <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAKm5+miU3gkyGAvwsnY1URwAAAAACAAAAAAADZgAAwAAAABAAAACKYgGQ0suODbRO7V2hYtV4AAAAAASAAACgAAAAEAAAANa0G1jNv/76IVt6+wHzxcwoAAAAN8nI7SdkSVfq+kkz2puql4ibzrCIAAvB6w6bUNto1smWLEjnw0+qGxQAAAAfeqhE0zRR0jOJMhnwL+JKS9N8FQ==</LastKnownProtectedHashedPassword>
+  </ProjectInfo>
+  <LastBuildInfos>
+    <ProjectBuildItemInfo>
+      <Name>Concierge_To_OHSUBackups.dtsx</Name>
+      <LastWriteTime>2015-11-02T16:57:43.0918924Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+      <Salt>NAh0WccS</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAKm5+miU3gkyGAvwsnY1URwAAAAACAAAAAAADZgAAwAAAABAAAAAqXc62VWSteqHWtfjcy37tAAAAAASAAACgAAAAEAAAABt2iz7L5zvrLwKX7A2j/UwoAAAAuo6f0/4sz2KtCEXoMpMHLErSuykuxQqIPbtZ3Sxv9t6YqM96eUh38RQAAAAUce/x0ZayQy+M1f6l+bdjM+hREA==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+  </LastBuildInfos>
+</BuildLog>

@@ -1,0 +1,888 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/7/2015 11:31:31 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="MSBC477W7"
+  DTS:CreatorName="OHSUM01\jamesv"
+  DTS:DTSID="{A30E2F1C-5AD7-4052-A284-22B0E1C98DA3}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Oncolog_to_Octri_OLCHEMOTHERAPY"
+  DTS:PackageType="5"
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{5DBF7EC4-3F27-4EA8-A8FD-9EEFDF0972FB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load OLCHEMOTHERAPY_STG"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2534DE78-1294-42D2-9926-34B1D97DE314}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load OLCHEMOTHERAPY_STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion"
+              componentClassID="{62B1106C-7DB8-4EC8-ADD6-4C664DFFC54A}"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Inputs[Data Conversion Input].Columns[personser]"
+                      cachedDataType="i4"
+                      cachedName="personser"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[personser]" />
+                    <inputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Inputs[Data Conversion Input].Columns[diagnosticser]"
+                      cachedDataType="i4"
+                      cachedName="diagnosticser"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[diagnosticser]" />
+                    <inputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Inputs[Data Conversion Input].Columns[courseser]"
+                      cachedDataType="i4"
+                      cachedName="courseser"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[courseser]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of personser]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of personser]"
+                      name="Copy of personser"
+                      precision="38"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[personser]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of diagnosticser]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of diagnosticser]"
+                      name="Copy of diagnosticser"
+                      precision="38"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[diagnosticser]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of courseser]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of courseser]"
+                      name="Copy of courseser"
+                      precision="38"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[courseser]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select personser
+,diagnosticser
+,courseser
+,convert(varchar(20),chemocoursestartdate,103) as chemocoursestartdate
+,chemotherapy
+,convert(varchar(20),hstrydatetime,103) as hstrydatetime 
+,GETDATE() AS CREATE_DT
+from OlChemotherapy 
+where chemocoursestartdate is not null 
+and personser in (select personser from OlPatientFacility where facility = 4444)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{3C733916-5460-46AC-A3B0-AC61FD62BBB7}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ONCOLOGTESTDB oncologtest]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[hstrydatetime]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hstrydatetime]"
+                      length="20"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[hstrydatetime]"
+                      name="hstrydatetime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[personser]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[personser]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[personser]"
+                      name="personser"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[diagnosticser]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[diagnosticser]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[diagnosticser]"
+                      name="diagnosticser"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[courseser]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[courseser]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[courseser]"
+                      name="courseser"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CREATE_DT]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CREATE_DT]"
+                      name="CREATE_DT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[chemocoursestartdate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[chemocoursestartdate]"
+                      length="20"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[chemocoursestartdate]"
+                      name="chemocoursestartdate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[chemotherapy]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[chemotherapy]"
+                      length="10"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[chemotherapy]"
+                      name="chemotherapy"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hstrydatetime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="hstrydatetime" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[personser]"
+                      dataType="i4"
+                      name="personser" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[diagnosticser]"
+                      dataType="i4"
+                      name="diagnosticser" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[courseser]"
+                      dataType="i4"
+                      name="courseser" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      name="CREATE_DT" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[chemocoursestartdate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="chemocoursestartdate" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[chemotherapy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="chemotherapy" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[personser]"
+                      dataType="i4"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[personser]"
+                      name="personser" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[diagnosticser]"
+                      dataType="i4"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[diagnosticser]"
+                      name="diagnosticser" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[courseser]"
+                      dataType="i4"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[courseser]"
+                      name="courseser" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[chemocoursestartdate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[chemocoursestartdate]"
+                      name="chemocoursestartdate" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[chemotherapy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[chemotherapy]"
+                      name="chemotherapy" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hstrydatetime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hstrydatetime]"
+                      name="hstrydatetime" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CREATE_DT]"
+                      name="CREATE_DT" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination"
+              componentClassID="{96F6C478-E5BE-45A4-B39A-055F9787CCD4}"
+              contactInfo="Oracle Destination;Microsoft Connector for Oracle by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;4"
+              description="Microsoft Oracle Destination Component by Attunity"
+              name="Oracle Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Apply fast 'Direct Path' load."
+                  name="FastLoad">true</property>
+                <property
+                  dataType="System.String"
+                  description="Destination table"
+                  expressionType="Notify"
+                  name="TableName">"XXBIOLIBONC"."OLCHEMOTHERAPY_STG"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum errors allowed."
+                  expressionType="Notify"
+                  name="MaxErrors">0</property>
+                <property
+                  dataType="System.String"
+                  description="Table sub-name (Partition, SubPartition)."
+                  expressionType="Notify"
+                  name="TableSubname"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Enables parallel loading of the target table."
+                  expressionType="Notify"
+                  name="Parallel">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Disables target table logging. Used to minimize the amount of redo generated."
+                  expressionType="Notify"
+                  name="NoLogging">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Trasfer data buffer size (KB)."
+                  expressionType="Notify"
+                  name="TransferBufferSize">64</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted in a batch."
+                  expressionType="Notify"
+                  name="BatchSize">100</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">100</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Connections[MSOraConnection]"
+                  connectionManagerID="{D220BFDD-2389-4D5B-A302-C5F6F6436976}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OCTRIUSR]"
+                  description="The Oracle runtime connection"
+                  name="MSOraConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Oracle Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[hstrydatetime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="hstrydatetime"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[HSTRYDATETIME]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[hstrydatetime]" />
+                    <inputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[chemocoursestartdate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="chemocoursestartdate"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[CHEMOCOURSESTARTDATE]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[chemocoursestartdate]" />
+                    <inputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[chemotherapy]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="chemotherapy"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[CHEMOTHERAPY]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[chemotherapy]" />
+                    <inputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[Copy of personser]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of personser"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PERSONSER]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of personser]" />
+                    <inputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[Copy of diagnosticser]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of diagnosticser"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[DIAGNOSTICSER]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of diagnosticser]" />
+                    <inputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[Copy of courseser]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of courseser"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COURSESER]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of courseser]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PERSONSER]"
+                      dataType="numeric"
+                      name="PERSONSER"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[DIAGNOSTICSER]"
+                      dataType="numeric"
+                      name="DIAGNOSTICSER"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COURSESER]"
+                      dataType="numeric"
+                      name="COURSESER"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[CHEMOCOURSESTARTDATE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="CHEMOCOURSESTARTDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[CHEMOTHERAPY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="CHEMOTHERAPY" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[HSTRYDATETIME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="HSTRYDATETIME" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      name="CREATE_DT" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output]"
+                  isErrorOut="true"
+                  name="Oracle Destination Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[PERSONSER]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PERSONSER]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[PERSONSER]"
+                      name="PERSONSER"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[DIAGNOSTICSER]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[DIAGNOSTICSER]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[DIAGNOSTICSER]"
+                      name="DIAGNOSTICSER"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COURSESER]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COURSESER]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COURSESER]"
+                      name="COURSESER"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[CHEMOCOURSESTARTDATE]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[CHEMOCOURSESTARTDATE]"
+                      length="20"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[CHEMOCOURSESTARTDATE]"
+                      name="CHEMOCOURSESTARTDATE" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[CHEMOTHERAPY]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[CHEMOTHERAPY]"
+                      length="10"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[CHEMOTHERAPY]"
+                      name="CHEMOTHERAPY" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[HSTRYDATETIME]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[HSTRYDATETIME]"
+                      length="20"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[HSTRYDATETIME]"
+                      name="HSTRYDATETIME" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[CREATE_DT]"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[CREATE_DT]"
+                      name="CREATE_DT" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load OLCHEMOTHERAPY_STG.Paths[Data Conversion Output]"
+              endId="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination.Inputs[Oracle Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Load OLCHEMOTHERAPY_STG.Paths[OLE DB Source Output]"
+              endId="Package\Load OLCHEMOTHERAPY_STG\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Log to SSIS_Job_History"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2196FC51-BD47-45D5-A760-9227E0935A8A}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Log to SSIS_Job_History"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{03BCF62A-22E5-45D3-85CA-804A67ED3236}"
+          SQLTask:SqlStatementSource="INSERT INTO [dbo].[SSIS_Job_History]&#xA;           ([machinename]&#xA;           ,[packagename]&#xA;           ,[username]&#xA;           ,[packagestartdate]&#xA;           ,[retrievedate])&#xA;     VALUES&#xA;           ( ? ,&#xA;            ?, &#xA;            ?, &#xA;            GETDATE() ,&#xA;            GETDATE() &#xA;           )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::MachineName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate OLCHEMOTHERAPY_STG"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D53C6F84-13E0-4305-9623-54149EECD9D1}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate OLCHEMOTHERAPY_STG"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AEB74F69-5028-46C9-89A4-8277387709FE}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE xxbiolibonc.olchemotherapy_stg" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{B7F8A5A8-CFE5-4E2A-85DB-1B80DADD07E0}"
+      DTS:From="Package\Truncate OLCHEMOTHERAPY_STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load OLCHEMOTHERAPY_STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{8A3BEDAB-D0BA-424D-A817-A1BEC5601F17}"
+      DTS:From="Package\Load OLCHEMOTHERAPY_STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Log to SSIS_Job_History" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="225,42"
+          Id="Package\Load OLCHEMOTHERAPY_STG"
+          TopLeft="118,163" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Log to SSIS_Job_History"
+          TopLeft="127,250" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Truncate OLCHEMOTHERAPY_STG"
+          TopLeft="109,79" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="230.75,121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="228,205">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load OLCHEMOTHERAPY_STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source"
+          TopLeft="115,110" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Load OLCHEMOTHERAPY_STG\Data Conversion"
+          TopLeft="113,190" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination"
+          TopLeft="114,287" />
+        <EdgeLayout
+          Id="Package\Load OLCHEMOTHERAPY_STG.Paths[OLE DB Source Output]"
+          TopLeft="191.5,152">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load OLCHEMOTHERAPY_STG.Paths[Data Conversion Output]"
+          TopLeft="194.75,232">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load OLCHEMOTHERAPY_STG\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load OLCHEMOTHERAPY_STG\Oracle Destination">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,9 @@
+C:\repo\SQLScripts\PublicPool_DW\PublicPool_DW\bin\Debug\PublicPool_DW.dacpac
+C:\repo\SQLScripts\PublicPool_DW\PublicPool_DW\obj\Debug\Model.xml
+C:\repo\SQLScripts\PublicPool_DW\PublicPool_DW\obj\Debug\refactor.xml
+C:\repo\SQLScripts\PublicPool_DW\PublicPool_DW\obj\Debug\postdeploy.sql
+C:\repo\SQLScripts\PublicPool_DW\PublicPool_DW\obj\Debug\predeploy.sql
+C:\repo\SQLScripts\PublicPool_DW\PublicPool_DW\obj\Debug\PublicPool_DW.dll
+C:\repo\SQLScripts\PublicPool_DW\PublicPool_DW\obj\Debug\PublicPool_DW.pdb
+C:\repo\SQLScripts\PublicPool_DW\PublicPool_DW\bin\Debug\PublicPool_DW.dll
+C:\repo\SQLScripts\PublicPool_DW\PublicPool_DW\bin\Debug\PublicPool_DW.pdb

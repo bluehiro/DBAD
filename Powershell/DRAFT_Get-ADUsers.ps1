@@ -1,0 +1,1 @@
+Get-ADUser -Server ohsum01dc1 -SearchBase “OU-SQL Service Accounts,OU=Service Accounts,OU=Special Account, DC=ohsum01,DC=ohsu,DC=edu” -filter {samAccountName -like “*”} | select name, enabled

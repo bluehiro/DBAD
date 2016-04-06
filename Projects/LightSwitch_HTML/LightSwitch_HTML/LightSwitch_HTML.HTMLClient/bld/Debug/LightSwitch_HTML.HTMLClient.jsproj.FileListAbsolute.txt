@@ -1,0 +1,2 @@
+E:\repo\DBAD\Projects\LightSwitch_HTML\LightSwitch_HTML\LightSwitch_HTML.HTMLClient\bin\Debug\LSResourceGeneratorsTask.mcs
+E:\repo\DBAD\Projects\LightSwitch_HTML\LightSwitch_HTML\LightSwitch_HTML.HTMLClient\bin\Debug\LSClientCodeGeneratorsTask.mcs

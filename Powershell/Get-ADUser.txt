@@ -1,0 +1,1 @@
+Get-ADUser -Server ohsum01dc1 -SearchBase "OU=SQL Service Accounts,OU=Service Accounts,OU=Special Accounts,dc=ohsum01,DC=ohsu,DC=edu" -Filter {samAccountName -like "*"} | select Name, Enabled, ObjectClass | Out-File F:\AD_Account_Stage\AD_Acc_Export.txt -Width 80

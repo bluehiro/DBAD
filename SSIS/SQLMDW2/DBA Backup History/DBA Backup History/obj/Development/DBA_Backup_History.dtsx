@@ -1,0 +1,2338 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/4/2007 8:25:39 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="NONE"
+  DTS:CreatorName="rlandrum"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{7EDC13D9-0DED-418F-9C59-17F6B7AFE0A5}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="200"
+  DTS:ObjectName="DBA_Backup_History"
+  DTS:PackageType="5"
+  DTS:VersionBuild="778"
+  DTS:VersionGUID="{2C902543-6832-48DB-B961-F171B0B46F78}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DBA_Rep]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{C07BF91E-4E39-4ACC-97DD-3A395E4ED95D}"
+      DTS:ObjectName="DBA_Rep">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQLMDW2;Initial Catalog=DBA_Rep;Integrated Security=True;Application Name=SSIS-Populate_DBA_REP-{C07BF91E-4E39-4ACC-97DD-3A395E4ED95D}sqlmdw1,1344.DBA_Rep;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Local.DBA_REP]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B881E014-FB6E-4983-8B15-7F0C82830F82}"
+      DTS:ObjectName="Local.DBA_REP">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQLMDW2;Initial Catalog=DBA_REP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Populate_DBA_REP-{B881E014-FB6E-4983-8B15-7F0C82830F82}Local.DBA_REP;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MultiServer]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A7985E11-D652-4081-8254-220A0B91B658}"
+      DTS:ObjectName="MultiServer">
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::SRV_Conn]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=&quot;localhost&quot;;Initial Catalog=msdb;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-BackupHistory-{A7985E11-D652-4081-8254-220A0B91B658}localhost.msdb;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
+      DTS:CreationName="SMTP"
+      DTS:DTSID="{D2AE0FD0-6647-42BE-975B-9D1A7E1478D7}"
+      DTS:ObjectName="SMTP Connection Manager">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=mail.ohsu.edu;UseWindowsAuthentication=True;EnableSsl=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CE1446DD-A1E6-4683-B4B1-F1CE5A1562F5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DaysToPull">
+      <DTS:VariableValue
+        DTS:DataType="3">150</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D2EE3738-D7D0-4A90-BBB5-3F9C57230FBC}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="emailList">
+      <DTS:VariableValue
+        DTS:DataType="8">ottod@ohsu.edu</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B41C491E-989B-4A9B-94FE-78FFFC6CAA39}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServerErrors">
+      <DTS:VariableValue
+        DTS:DataType="8">""</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D37F849A-1B85-490E-8187-E76038AB5C17}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQLStatement">
+      <DTS:VariableValue
+        DTS:DataType="8">select * from sys.objects</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C7DC9846-B2FB-4085-ACCD-24B9E629AE49}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_9">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CD36D7FD-037F-4449-8F49-596E723C366F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_RS">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{735DFF61-A15A-4579-8CAA-803B7119D025}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SRV_Conn">
+      <DTS:VariableValue
+        DTS:DataType="8">"localhost"</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2CDD2FD7-20C7-41C9-B6B7-A4D917BE9C15}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SRV_Conn_9">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">7,7,OnError,19,OnExecStatusChanged,13,OnInformation,13,OnPostExecute,12,OnTaskFailed,22,OnVariableValueChanged,9,OnWarning</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnExecStatusChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnWarning"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\1 - Populate ADO Variable with Server Names from CMS view"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7E585F84-EAE0-4697-A5A9-432EA1325275}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:FailPackageOnFailure="True"
+      DTS:FailParentOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="1 - Populate ADO Variable with Server Names from CMS view"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{D2F8DD2E-C52E-4335-8DC1-D65D6047177D}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="Conns"
+          DTS:RaiseChangedEvent="True">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:LoggingOptions
+        DTS:FilterKind="0">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">3,7,OnError,19,OnExecStatusChanged,22,OnVariableValueChanged</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnExecStatusChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C07BF91E-4E39-4ACC-97DD-3A395E4ED95D}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="SELECT LTRIM(RTRIM(name)) AS servername&#xA;FROM DBA_Rep.dbo.cms_servers_vw&#xA;order by LTRIM(RTRIM(name))"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::SQL_RS" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\4 - Send Errors Mail Task"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.SendMailTask.SendMailTask, Microsoft.SqlServer.SendMailTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Send Errors Mail Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{88C4197F-A11A-4CBF-8D54-12F9A0D03DFD}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.SendMailTask.SendMailTask, Microsoft.SqlServer.SendMailTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="4 - Send Errors Mail Task"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{D2AE0FD0-6647-42BE-975B-9D1A7E1478D7}"
+          SendMailTask:From="dbsq@ohsu.edu"
+          SendMailTask:To="dbsq@ohsu.edu"
+          SendMailTask:Subject="Failed Jobs Errors"
+          SendMailTask:MessageSourceType="Variable"
+          SendMailTask:MessageSource="User::ServerErrors" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\5 - ETL from Stage to Archive + clean up insert_sp_ETL_DBA_Backup_History"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{4A8C7E6F-7B11-482C-92D6-09394C6D1FE9}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:FailPackageOnFailure="True"
+      DTS:FailParentOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="5 - ETL from Stage to Archive + clean up insert_sp_ETL_DBA_Backup_History"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B881E014-FB6E-4983-8B15-7F0C82830F82}"
+          SQLTask:SqlStatementSource="EXEC insert_sp_ETL_DBA_Backup_History" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\6 - Log Job Completion"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DDBE8148-F92D-41FE-B7F6-F7C55569788A}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="6 - Log Job Completion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B881E014-FB6E-4983-8B15-7F0C82830F82}"
+          SQLTask:SqlStatementSource="INSERT INTO [dbo].[SSIS_Job_History]&#xA;           ([machinename]&#xA;           ,[packagename]&#xA;           ,[username]&#xA;           ,[packagestartdate]&#xA;           ,[retrievedate])&#xA;     VALUES&#xA;           ( ? ,&#xA;            ?, &#xA;            ?, &#xA;            GETDATE() ,&#xA;            GETDATE() &#xA;           )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::MachineName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Backup History"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Failed Jobs"
+      DTS:DTSID="{653C7593-1640-47FC-9035-D480716F48B2}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:FailPackageOnFailure="True"
+      DTS:FailParentOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Backup History">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.SqlServer.Dts.Runtime.Enumerators.ADO.ForEachADOEnumerator, Microsoft.SqlServer.ForEachADOEnumerator, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+        DTS:DTSID="{A9316096-9930-4FC0-A48D-064CFC90203B}"
+        DTS:ObjectName="{A9316096-9930-4FC0-A48D-064CFC90203B}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::SQL_RS" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{41987DED-77BB-4DCF-8DCC-11AF13A53286}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="ConnectionSuccessful">
+          <DTS:VariableValue
+            DTS:DataType="11">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{24658836-9856-4A94-8CF6-E5629C6621E6}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="SQLVersionNbr">
+          <DTS:VariableValue
+            DTS:DataType="8">"0"</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Backup History\2 Test Connection"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptTask, Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Script Task"
+          DTS:DTSID="{D802EFC0-9CAD-4069-BFB9-40AB449F369A}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptTask, Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailPackageOnFailure="True"
+          DTS:FailParentOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="2 Test Connection"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_44cb731586be4d269e2a0d78a29f9fe2"
+              VSTAMajorVersion="3"
+              VSTAMinorVersion="0"
+              Language="VisualBasic"
+              ReadOnlyVariables="User::SRV_Conn"
+              ReadWriteVariables="User::ConnectionSuccessful,User::ServerErrors">
+              <ProjectItem
+                Name="My Project\AssemblyInfo.vb"
+                Encoding="UTF8"><![CDATA[Imports System
+Imports System.Reflection
+Imports System.Runtime.InteropServices
+
+' General Information about an assembly is controlled through the following 
+' set of attributes. Change these attribute values to modify the information
+' associated with an assembly.
+
+' Review the values of the assembly attributes
+
+<Assembly: AssemblyTitle("ST_44cb731586be4d269e2a0d78a29f9fe2.vbproj")> 
+<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyCompany("Microsoft")> 
+<Assembly: AssemblyProduct("ST_44cb731586be4d269e2a0d78a29f9fe2.vbproj")> 
+<Assembly: AssemblyCopyright("Copyright @ Microsoft 2012")> 
+<Assembly: AssemblyTrademark("")> 
+<Assembly: CLSCompliant(True)> 
+
+<Assembly: ComVisible(False)> 
+
+'The following GUID is for the ID of the typelib if this project is exposed to COM
+<Assembly: Guid("078c8b0e-66a7-4d91-98b4-638e64124840")> 
+
+' Version information for an assembly consists of the following four values:
+'
+'      Major Version
+'      Minor Version 
+'      Build Number
+'      Revision
+'
+' You can specify all the values or you can default the Build and Revision Numbers 
+' by using the '*' as shown below:
+' <Assembly: AssemblyVersion("1.0.*")>
+
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("1.0.0.0")> ]]></ProjectItem>
+              <ProjectItem
+                Name="st_44cb731586be4d269e2a0d78a29f9fe2.vbproj"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ST_44cb731586be4d269e2a0d78a29f9fe2.vbproj</RootNamespace>
+    <AssemblyName>ST_44cb731586be4d269e2a0d78a29f9fe2.vbproj</AssemblyName>
+    <StartupObject></StartupObject>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <ProjectGuid>{2BCFD077-FCB3-441A-9556-65F31F109CA3}</ProjectGuid>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DefineConstants></DefineConstants>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DefineConstants></DefineConstants>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=11.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <!-- Visual Basic supports Importing namespaces (equivalent to using statements in C#).-->
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="My Project\" />
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ScriptMain.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a VB project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="vb" TemplatesPath="" DebugInfoExeName="#HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\9.0\InstallDir#\devenv.exe" />
+        <Host Name="SSIS_ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST110</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+              <ProjectItem
+                Name="My Project\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)" GeneratedClassNamespace="$safeprojectname" GeneratedClassName="MySettings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="My Project\Settings.Designer.vb"
+                Encoding="UTF8"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+
+Partial Friend NotInheritable Class MySettings
+    Inherits System.Configuration.ApplicationSettingsBase
+
+    Private Shared m_Value As MySettings
+
+    Private Shared m_SyncObject As Object = New Object
+
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Public Shared ReadOnly Property Value() As MySettings
+        Get
+            If (MySettings.m_Value Is Nothing) Then
+                System.Threading.Monitor.Enter(MySettings.m_SyncObject)
+                If (MySettings.m_Value Is Nothing) Then
+                    Try
+                        MySettings.m_Value = New MySettings
+                    Finally
+                        System.Threading.Monitor.Exit(MySettings.m_SyncObject)
+                    End Try
+                End If
+            End If
+            Return MySettings.m_Value
+        End Get
+    End Property
+End Class]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>st_44cb731586be4d269e2a0d78a29f9fe2</msb:CodeName>
+		<msb:DisplayName>st_44cb731586be4d269e2a0d78a29f9fe2</msb:DisplayName>
+		<msb:ProjectId>{5A847D9D-11FA-4E88-B457-17EBBB5286BE}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="st_44cb731586be4d269e2a0d78a29f9fe2.vbproj"/>
+		<msb:File Include="My Project\AssemblyInfo.vb"/>
+		<msb:File Include="My Project\Resources.resx"/>
+		<msb:File Include="ScriptMain.vb"/>
+		<msb:File Include="My Project\Resources.Designer.vb"/>
+		<msb:File Include="My Project\Settings.settings"/>
+		<msb:File Include="My Project\Settings.Designer.vb"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="ScriptMain.vb"
+                Encoding="UTF8"><![CDATA[' Microsoft SQL Server Integration Services Script Task
+' Write scripts using Microsoft Visual Basic 2008.
+' The ScriptMain is the entry point class of the script.
+'
+'20141118 VMJ - Added error logging to User::ServerErrors which I can then log to a SQL table
+
+Imports System
+Imports System.Data
+Imports System.Data.SqlClient
+Imports System.Math
+Imports Microsoft.SqlServer.Dts.Runtime
+Imports System.IO
+
+<Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute> _
+<System.CLSCompliantAttribute(False)> _
+Partial Public Class ScriptMain
+	Inherits Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+
+	Enum ScriptResults
+		Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success
+		Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+	End Enum
+	
+
+	Public Sub Main()
+
+        Dts.Variables("ServerErrors").Value = ""
+        Dim strtest As String
+
+        Try
+            strtest = "Server=" & Dts.Variables("SRV_Conn").Value.ToString & "; Trusted_Connection=True"
+            Dim conn As New SqlConnection(strtest)
+            conn.Open()
+            conn.Close()
+            Dts.Variables("ConnectionSuccessful").Value = True
+
+
+
+        Catch ex As Exception
+
+            Dts.Variables("ConnectionSuccessful").Value = False
+            'Dts.Variables("ServerErrors").Value = vbCrLf & Dts.Variables("ServerErrors").Value & _
+            '        " Test Conn Failed: " & Dts.Variables("SRV_Conn").Value
+            Dts.Variables("ServerErrors").Value = "Connection Error: " & ex.Message.ToString
+
+        End Try
+
+
+
+
+
+
+        Dts.TaskResult = ScriptResults.Success
+    End Sub
+
+End Class]]></ProjectItem>
+              <ProjectItem
+                Name="My Project\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="My Project\Resources.Designer.vb"
+                Encoding="UTF8"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+Namespace My.Resources
+    
+    '''<summary>
+    '''   A strongly-typed resource class, for looking up localized strings, etc.
+    '''</summary>
+    'This class was auto-generated by the Strongly Typed Resource Builder
+    'class via a tool like ResGen or Visual Studio.NET.
+    'To add or remove a member, edit your .ResX file then rerun ResGen
+    'with the /str option, or rebuild your VS project.
+    Class MyResources
+        
+        Private Shared _resMgr As System.Resources.ResourceManager
+        
+        Private Shared _resCulture As System.Globalization.CultureInfo
+        
+        Friend Sub New()
+            MyBase.New
+        End Sub
+        
+        '''<summary>
+        '''   Returns the cached ResourceManager instance used by this class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared ReadOnly Property ResourceManager() As System.Resources.ResourceManager
+            Get
+                If (_resMgr Is Nothing) Then
+                    Dim temp As System.Resources.ResourceManager = New System.Resources.ResourceManager("My.Resources.MyResources", GetType(MyResources).Assembly)
+                    _resMgr = temp
+                End If
+                Return _resMgr
+            End Get
+        End Property
+        
+        '''<summary>
+        '''   Overrides the current thread's CurrentUICulture property for all
+        '''   resource lookups using this strongly typed resource class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared Property Culture() As System.Globalization.CultureInfo
+            Get
+                Return _resCulture
+            End Get
+            Set
+                _resCulture = value
+            End Set
+        End Property
+    End Class
+End Namespace]]></ProjectItem>
+              <BinaryItem
+                Name="ST_44cb731586be4d269e2a0d78a29f9fe2.vbproj.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAIyQa1QAAAAAAAAAAOAAAiELAQsAAB4AAAAIAAAAAAAA/jsA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAIAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAALA7AABLAAAAAEAAAGAEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAABBwAAAAgAAAAHgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAGAEAAAAQAAAAAYAAAAgAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAJgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADg
+OwAAAAAAAEgAAAACAAUAdCQAADwXAAABAAAAAAAAALwjAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKAEAAAoqHgIoBAAACiqmcwYAAAqAAQAABHMHAAAKgAIA
+AARzCAAACoADAAAEcwkAAAqABAAABCoAABMwAQALAAAAAQAAEX4BAAAEbwoAAAoqABMwAQALAAAA
+AgAAEX4CAAAEbwsAAAoqABMwAQALAAAAAwAAEX4DAAAEbwwAAAoqABMwAQALAAAABAAAEX4EAAAE
+bw0AAAoqABMwAgANAAAABQAAEQIDKBEAAAooEgAACioAAAATMAEABwAAAAYAABECKBMAAAoqABMw
+AQALAAAABwAAEdAFAAACKBQAAAoqABMwAQAHAAAACAAAEQIoFQAACioAEzABABAAAAAJAAARAowB
+AAAbLQYoAQAAKyoCKhMwAgAQAAAACgAAEQMSAP4VAgAAGwaBAgAAGyoeAigXAAAKKhMwAgAoAAAA
+CwAAEQJ7GQAACm8aAAAKCweMAwAAGy0SKAIAACsLAnsZAAAKB28bAAAKBypKAigXAAAKAnMcAAAK
+fRkAAAoqAB4CKBcAAAoqEzACAC0AAAAMAAARfgYAAAQtIHIBAABw0AcAAAIoFAAACm8eAAAKcx8A
+AAoLB4AGAAAEfgYAAAQqAAAAEzABAAYAAAANAAARfgcAAAQqAAAeAoAHAAAEKkJzFwAACigRAAAK
+gAkAAAQqAAAAHgIoIAAACiobMAEAPwAAAA4AABF+CAAABC0yfgkAAAQoEQAACighAAAKfggAAAQt
+HHMWAAAGgAgAAATeEH4JAAAEKBEAAAooIgAACtx+CAAABCoAARAAAAIAHQAMKQAQAAAAAB4CKCQA
+AAoqGzADAO0AAAAPAAARAm8lAAAKbyYAAApyMwAAcG8nAAAKck0AAHBvKAAACnJPAABwAm8lAAAK
+byYAAApyXwAAcG8nAAAKbykAAApvFQAACnJxAABwKCoAAAoKBnMrAAAKCwdvLAAACgdvLQAACgJv
+JQAACm8mAAAKcqUAAHBvJwAACheMIQAAAW8oAAAK3l0lKC4AAAoMAm8lAAAKbyYAAApypQAAcG8n
+AAAKFowhAAABbygAAAoCbyUAAApvJgAACnIzAABwbycAAApyzwAAcAhvLwAACm8wAAAKKDEAAApv
+KAAACigyAAAK3gACbyUAAAoWbzMAAAoqAAAAARAAAAAAHwBkgwBdHAAAAbQAAADOyu++AQAAAJEA
+AABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4w
+LjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5
+c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAABC
+U0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwAAAAUCAAAI34AAIAIAADsCQAAI1N0cmlu
+Z3MAAAAAbBIAAPgAAAAjVVMAZBMAABAAAAAjR1VJRAAAAHQTAADIAwAAI0Jsb2IAAAAAAAAAAgAA
+AVcdogkJDwAAAPolMwAWAAABAAAALwAAAAoAAAAMAAAAGQAAAAQAAABAAAAAAgAAADYAAAAPAAAA
+BAAAAAgAAAAJAAAACQAAAAEAAAAGAAAAAQAAAAMAAAADAAAAAgAAAAAAvAkBAAAAAAAKAGABNgEK
+AJQBdgEGAKQBnQEKAPwBNgEGAHoCnQEKAPwC0gIGADIDIQMGAF8DSgMOAMYDsQMSAEUEHAQGAGYE
+nQEOAJkEgwQOALIEgwQOAN8ExwQGAAkF9gQKAEgFIQUKAGAFEwAOAJUFeAUGAMoFqgUGAOgFnQEG
+AAwGnQEKACUGEwAGAGkGSgYGAI8GfQYGALYGpQYGAMkG9gQWAAgH8gYGABYHnQESACAHHAQaAHkH
+WQcaAJEHWQcGAKMHnQEGALwHnQEKAMQHIQUGAA0InQESACMIHAQGAIQIqgUGAKQIqgUGANwIwggG
+APUIfQYGABIJSgYGACAJfQYGADsJfQYGAFYJfQYGAG8JfQYGAIgJfQYGAKUJfQYAAAAAAQAAAAAA
+AQABAAAAAAApADcABQABAAEAAAAAAGUANwAJAAEAAgAAARAAcAA3AA0AAQADAAUBAAB6AAAADQAF
+AAgABQEAAIgAAAANAAUADwAAAAAAowCvAA0ABgARAAABEADnAPIAJQAIABUAAQAAAB0B8gApAAoA
+GAACAQAAKAEAAC0ACgAaADEAvwEgADEA6AEtADEACgI6ADEALwJHACEACwOQABEAQgOdABEAawOh
+ABEA3gO/ABEA5gPDAAYGawTZAFaAcwTcAFaAewTcAFAgAAAAAAYYcAETAAEAWCAAAAAABhhwARMA
+AQBgIAAAAAARGKsBFwABAIwgAAAAABMIsgEbAAEApCAAAAAAEwjYASgAAQC8IAAAAAATCAECNQAB
+ANQgAAAAABMIHwJCAAEA7CAAAAAARgJlAmMAAQAIIQAAAABGAm4CaAACABwhAAAAAIMAfwJsAAIA
+NCEAAAAARgKHAnEAAgBIIQAAAAARAJACeAACAGQhAAAAAAEArgKAAAMAgCEAAAAABhhwARMABACI
+IQAAAAADCMICiwAEALwhAAAAAAYYcAETAAQA0CEAAAAAAxhwARMABADYIQAAAAAWCHcDpQAEABQi
+AAAAABYIiwOqAAQAKCIAAAAAFgiXA68ABAAwIgAAAAARGKsBFwAFAEQiAAAAAAYYcAETAAUATCIA
+AAAAFgjzA8YABQCoIgAAAAAGGHABEwAFALAiAAAAAAYAYQQTAAUAAAABAGwCAAABAKUCAAABAKUC
+AAABAKMDCQBwARMAYQBwAeoAcQBwAfkAEQBwARMAeQBwARMAJABwARMALABwARMANABwARMAPABw
+ARMAJADCAosALADCAosANADCAosAPADCAosAgQBwARMAiQBwARMAkQBwAUgBmQDZBZMBGQBlAmMA
+GQBuAmgAKQD6BaABGQCHAnEAqQAWBrABGQBwARMAsQBwAcABRAALA5AATADzA4sATABABj0CTABw
+ARMAuQBwAUwCKQCYBlcCOQBwAVwCSQBwARMAyQC+BngCyQDEBngC0QBwARMAUQBwARMAUQAyB4IC
+6QCDB4cC8QCaB4wC+QBABpIC+QDzA5cCAQGqB5sC2QBwAUgB2QCxBxMA2QC2BxMAEQHQB6IC4QDg
+B3EAAQGHAnEAAQGqB6gCEQHsBxcA6QD+B64CGQFwAUwCIQFwARMAKQFwAa4CMQFwARMAOQFwAUgB
+QQFwAUgBSQFwAUgBUQFwAUgBWQFwAUgBYQFwAUgBaQFwAUgBcQFwAUgBeQFwAUgBCAAsAOAACAAw
+AOUAKQCDAE0BLgD7AVECLgDzAbgDLgDLASsDLgDrAYgDLgADAogDLgCzAbsCLgC7AcQCLgDDAeMC
+LgDTATgDLgDrAFECLgCjAWIDLgDbAVECLgDjAWgDQAArAOUAQAATAPAAQwATAPAAQwAbAP8ASQCD
+AGsBYwATAPAAYwAbAP8AaQCDAF4BgAArAOUAgwAbAP8AgwBzAOUAgwB7AOUAiQCDAH8BoAArAOUA
+owDDAMgBowATAPAAwAArAOUAwwATAPAAwwDrAFECyQATAG8C4AArAOUA6QATAG8CAAETAPAAAAEr
+AOUACQEbAeUAIAETAPAAIAErAOUAIwGjAVECIwGrAeUAQAETAPAAQAErAOUAYAETAPAAYAErAOUA
+gAErAOUAoAErAOUAwAErAOUAwAETAPAA4AErAOUAAAIrAOUAAAITAPAANAE5AT4BQwGYAZwBpwGs
+AbsBuwFDAmMCagJ9ArMCBAABAAYABQAHAAYACAAIAAAAlAFPAAAATQJUAAAA/AFZAAAAWQJeAAAA
+FQOYAAAAMgO1AAAAqQO6AAAAowPLAAIABAADAAIABQAFAAIABgAHAAIABwAJAAIADwALAAIAEgAN
+AAIAEwAPAAEAFAAPAAIAFwARAHUAdQCIABgBHwEmAS0BKgIxAgSAAAABAAAAAAAAAAAAAAAAAPIA
+AAAEAAAAAAAAAAAAAAABAAoAAAAAAAoAAAAAAAAAAAAAAAoAEwAAAAAABAAAAAAAAAAAAAAAAQCd
+AQAAAAALAAAAAAAAAAAAAADQAP0DAAAAAAQAAAAAAAAAAAAAAAEA5gYAAAAACwAAAAAAAAAAAAAA
+0AA6BwAAAAAAAAAAAQAAAEUIAAAFAAQABgAEAAoACQAAABAADACjAgAAEAAZAKMCAAAAABsAowIt
+ALYBLQA4AgAAADxNb2R1bGU+AG1zY29ybGliAE1pY3Jvc29mdC5WaXN1YWxCYXNpYwBNeUFwcGxp
+Y2F0aW9uAFNUXzQ0Y2I3MzE1ODZiZTRkMjY5ZTJhMGQ3OGEyOWY5ZmUyLnZicHJvai5NeQBNeUNv
+bXB1dGVyAE15UHJvamVjdABNeVdlYlNlcnZpY2VzAFRocmVhZFNhZmVPYmplY3RQcm92aWRlcmAx
+AE15UmVzb3VyY2VzAFNUXzQ0Y2I3MzE1ODZiZTRkMjY5ZTJhMGQ3OGEyOWY5ZmUyLnZicHJvai5N
+eS5SZXNvdXJjZXMATXlTZXR0aW5ncwBTVF80NGNiNzMxNTg2YmU0ZDI2OWUyYTBkNzhhMjlmOWZl
+Mi52YnByb2oAU2NyaXB0TWFpbgBTY3JpcHRSZXN1bHRzAE1pY3Jvc29mdC5WaXN1YWxCYXNpYy5B
+cHBsaWNhdGlvblNlcnZpY2VzAEFwcGxpY2F0aW9uQmFzZQAuY3RvcgBNaWNyb3NvZnQuVmlzdWFs
+QmFzaWMuRGV2aWNlcwBDb21wdXRlcgBTeXN0ZW0AT2JqZWN0AC5jY3RvcgBnZXRfQ29tcHV0ZXIA
+bV9Db21wdXRlck9iamVjdFByb3ZpZGVyAGdldF9BcHBsaWNhdGlvbgBtX0FwcE9iamVjdFByb3Zp
+ZGVyAFVzZXIAZ2V0X1VzZXIAbV9Vc2VyT2JqZWN0UHJvdmlkZXIAZ2V0X1dlYlNlcnZpY2VzAG1f
+TXlXZWJTZXJ2aWNlc09iamVjdFByb3ZpZGVyAEFwcGxpY2F0aW9uAFdlYlNlcnZpY2VzAEVxdWFs
+cwBvAEdldEhhc2hDb2RlAFR5cGUAR2V0VHlwZQBUb1N0cmluZwBDcmVhdGVfX0luc3RhbmNlX18A
+VABpbnN0YW5jZQBEaXNwb3NlX19JbnN0YW5jZV9fAGdldF9HZXRJbnN0YW5jZQBNaWNyb3NvZnQu
+VmlzdWFsQmFzaWMuTXlTZXJ2aWNlcy5JbnRlcm5hbABDb250ZXh0VmFsdWVgMQBtX0NvbnRleHQA
+R2V0SW5zdGFuY2UAU3lzdGVtLlJlc291cmNlcwBSZXNvdXJjZU1hbmFnZXIAX3Jlc01ncgBTeXN0
+ZW0uR2xvYmFsaXphdGlvbgBDdWx0dXJlSW5mbwBfcmVzQ3VsdHVyZQBnZXRfUmVzb3VyY2VNYW5h
+Z2VyAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAFZhbHVlAEN1bHR1cmUAU3lzdGVtLkNvbmZpZ3Vy
+YXRpb24AQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UAbV9WYWx1ZQBtX1N5bmNPYmplY3QAZ2V0X1Zh
+bHVlAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNyb3NvZnQuU3FsU2VydmVyLkR0
+cy5UYXNrcy5TY3JpcHRUYXNrAFZTVEFSVFNjcmlwdE9iamVjdE1vZGVsQmFzZQBNYWluAEVudW0A
+dmFsdWVfXwBTdWNjZXNzAEZhaWx1cmUAU3lzdGVtLkNvbXBvbmVudE1vZGVsAEVkaXRvckJyb3dz
+YWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBTeXN0ZW0uQ29kZURvbS5Db21waWxl
+cgBHZW5lcmF0ZWRDb2RlQXR0cmlidXRlAFN5c3RlbS5EaWFnbm9zdGljcwBEZWJ1Z2dlckhpZGRl
+bkF0dHJpYnV0ZQBNaWNyb3NvZnQuVmlzdWFsQmFzaWMuQ29tcGlsZXJTZXJ2aWNlcwBTdGFuZGFy
+ZE1vZHVsZUF0dHJpYnV0ZQBIaWRlTW9kdWxlTmFtZUF0dHJpYnV0ZQBTeXN0ZW0uQ29tcG9uZW50
+TW9kZWwuRGVzaWduAEhlbHBLZXl3b3JkQXR0cmlidXRlAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVy
+U2VydmljZXMAUnVudGltZUhlbHBlcnMAR2V0T2JqZWN0VmFsdWUAUnVudGltZVR5cGVIYW5kbGUA
+R2V0VHlwZUZyb21IYW5kbGUAQWN0aXZhdG9yAENyZWF0ZUluc3RhbmNlAE15R3JvdXBDb2xsZWN0
+aW9uQXR0cmlidXRlAHNldF9WYWx1ZQBTeXN0ZW0uUnVudGltZS5JbnRlcm9wU2VydmljZXMAQ29t
+VmlzaWJsZUF0dHJpYnV0ZQBTeXN0ZW0uUmVmbGVjdGlvbgBBc3NlbWJseQBnZXRfQXNzZW1ibHkA
+U3lzdGVtLlRocmVhZGluZwBNb25pdG9yAEVudGVyAEV4aXQARGVidWdnZXJOb25Vc2VyQ29kZUF0
+dHJpYnV0ZQBTeXN0ZW0uRGF0YQBTeXN0ZW0uRGF0YS5TcWxDbGllbnQAU3FsQ29ubmVjdGlvbgBF
+eGNlcHRpb24AU2NyaXB0T2JqZWN0TW9kZWwAZ2V0X0R0cwBNaWNyb3NvZnQuU3FsU2VydmVyLk1h
+bmFnZWREVFMATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGltZQBWYXJpYWJsZXMAZ2V0X1Zh
+cmlhYmxlcwBWYXJpYWJsZQBnZXRfSXRlbQBTdHJpbmcAQ29uY2F0AE9wZW4AQ2xvc2UAQm9vbGVh
+bgBQcm9qZWN0RGF0YQBTZXRQcm9qZWN0RXJyb3IAZ2V0X01lc3NhZ2UAQ2xlYXJQcm9qZWN0RXJy
+b3IAc2V0X1Rhc2tSZXN1bHQAQ0xTQ29tcGxpYW50QXR0cmlidXRlAFNTSVNTY3JpcHRUYXNrRW50
+cnlQb2ludEF0dHJpYnV0ZQBTVF80NGNiNzMxNTg2YmU0ZDI2OWUyYTBkNzhhMjlmOWZlMi52YnBy
+b2ouUmVzb3VyY2VzLnJlc291cmNlcwBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAFJ1
+bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAFN5c3RlbS5SdW50aW1lLlZlcnNpb25pbmcAVGFy
+Z2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5RmlsZVZlcnNpb25BdHRyaWJ1dGUAR3VpZEF0
+dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJp
+YnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55QXR0cmlidXRlAEFz
+c2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBTVF80NGNi
+NzMxNTg2YmU0ZDI2OWUyYTBkNzhhMjlmOWZlMi52YnByb2ouZGxsAAAAMU0AeQAuAFIAZQBzAG8A
+dQByAGMAZQBzAC4ATQB5AFIAZQBzAG8AdQByAGMAZQBzAAAZUwBlAHIAdgBlAHIARQByAHIAbwBy
+AHMAAAEAD1MAZQByAHYAZQByAD0AABFTAFIAVgBfAEMAbwBuAG4AADM7ACAAVAByAHUAcwB0AGUA
+ZABfAEMAbwBuAG4AZQBjAHQAaQBvAG4APQBUAHIAdQBlAAApQwBvAG4AbgBlAGMAdABpAG8AbgBT
+AHUAYwBjAGUAcwBzAGYAdQBsAAAlQwBvAG4AbgBlAGMAdABpAG8AbgAgAEUAcgByAG8AcgA6ACAA
+AAAAAP1OKnFm2tBCqNi45+U39zEACLd6XFYZNOCJCLA/X38R1Qo6AyAAAQMAAAEEAAASDAcGFRIY
+ARIMBAAAEggHBhUSGAESCAQAABIRBwYVEhgBEhEEAAASFAcGFRIYARIUBAgAEgwECAASCAQIABIR
+BAgAEhQEIAECHAMgAAgEIAASFQMgAA4CHgAHEAEBHgAeAAcwAQEBEB4AAhMABCAAEwAHBhUSGQET
+AAQoABMAAwYSHQMGEiEEAAASHQQAABIhBQABARIhBAgAEh0ECAASIQMGEiACBhwEAAASIAQIABIg
+CImEXc2AgMyRAgYIAwYRKAQAAAAABAEAAAAFIAEBETUIAQABAAAAAAAFIAIBDg4YAQAKTXlUZW1w
+bGF0ZQgxMC4wLjAuMAAABhUSGAESDAYVEhgBEggGFRIYARIRBhUSGAESFAQHARIMBAcBEggEBwES
+EQQHARIUBCABAQ4QAQALTXkuQ29tcHV0ZXIAAAwBAAdNeS5Vc2VyAAATAQAOTXkuQXBwbGljYXRp
+b24AABMBAA5NeS5XZWJTZXJ2aWNlcwAABAABHBwDBwECAwcBCAYAARIVEVEEBwESFQMHAQ4FEAEA
+HgAECgEeAAQHAR4AByAEAQ4ODg5hAQA0U3lzdGVtLldlYi5TZXJ2aWNlcy5Qcm90b2NvbHMuU29h
+cEh0dHBDbGllbnRQcm90b2NvbBJDcmVhdGVfX0luc3RhbmNlX18TRGlzcG9zZV9fSW5zdGFuY2Vf
+XwAAAAYVEhgBEwAGFRIZARMABAoBEwAFIAEBEwAIBwMTABMAEwAEIAEBAgUBAAAAAAQgABJhBiAC
+AQ4SYQYHAhIdEh0EBwESIQgBAAIAAAAAAAQAAQEcBAcBEiAEIAASdQQgABJ5BSABEn0cBCABARwD
+IAAcBgADDg4ODgUAAQEScQUAAg4ODgQgAQEIBwcDDhJtEnEIAQAIAAAAAAAeAQABAFQCFldyYXBO
+b25FeGNlcHRpb25UaHJvd3MBRwEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC4wAQBUDhRGcmFt
+ZXdvcmtEaXNwbGF5TmFtZRAuTkVUIEZyYW1ld29yayA0DAEABzEuMC4wLjAAACkBACQwNzhjOGIw
+ZS02NmE3LTRkOTEtOThiNC02MzhlNjQxMjQ4NDAAAAUBAAEAAB8BABpDb3B5cmlnaHQgQCBNaWNy
+b3NvZnQgMjAxMgAALwEAKlNUXzQ0Y2I3MzE1ODZiZTRkMjY5ZTJhMGQ3OGEyOWY5ZmUyLnZicHJv
+agAADgEACU1pY3Jvc29mdAAAANg7AAAAAAAAAAAAAO47AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AADgOwAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA
+EAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAEgAAABY
+QAAACAQAAAAAAAAAAAAACAQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAAAL0E
+7/4AAAEAAAABAAAAAAAAAAEAAAAAAD8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAAAQBW
+AGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8AbgAAAAAA
+AACwBGgDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAEQDAAABADAAMAAwADAAMAA0
+AGIAMAAAADQACgABAEMAbwBtAHAAYQBuAHkATgBhAG0AZQAAAAAATQBpAGMAcgBvAHMAbwBmAHQA
+AACAACsAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAAUwBUAF8ANAA0AGMAYgA3
+ADMAMQA1ADgANgBiAGUANABkADIANgA5AGUAMgBhADAAZAA3ADgAYQAyADkAZgA5AGYAZQAyAC4A
+dgBiAHAAcgBvAGoAAAAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAw
+AC4AMAAAAIAALwABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBUAF8ANAA0AGMAYgA3ADMA
+MQA1ADgANgBiAGUANABkADIANgA5AGUAMgBhADAAZAA3ADgAYQAyADkAZgA5AGYAZQAyAC4AdgBi
+AHAAcgBvAGoALgBkAGwAbAAAAAAAXAAbAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAA
+QwBvAHAAeQByAGkAZwBoAHQAIABAACAATQBpAGMAcgBvAHMAbwBmAHQAIAAyADAAMQAyAAAAAACI
+AC8AAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBUAF8ANAA0AGMAYgA3ADMA
+MQA1ADgANgBiAGUANABkADIANgA5AGUAMgBhADAAZAA3ADgAYQAyADkAZgA5AGYAZQAyAC4AdgBi
+AHAAcgBvAGoALgBkAGwAbAAAAAAAeAArAAEAUAByAG8AZAB1AGMAdABOAGEAbQBlAAAAAABTAFQA
+XwA0ADQAYwBiADcAMwAxADUAOAA2AGIAZQA0AGQAMgA2ADkAZQAyAGEAMABkADcAOABhADIAOQBm
+ADkAZgBlADIALgB2AGIAcAByAG8AagAAAAAANAAIAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkA
+bwBuAAAAMQAuADAALgAwAC4AMAAAADgACAABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBv
+AG4AAAAxAC4AMAAuADAALgAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAAAA8AAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Backup History\2b Log Failed Connections"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8407D89C-8B14-4B15-8130-55F613BEDAF9}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="2b Log Failed Connections"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B881E014-FB6E-4983-8B15-7F0C82830F82}"
+              SQLTask:SqlStatementSource="DECLARE @machinename nvarchar(128) = ?&#xA;DECLARE @packagename nvarchar(128) = ?&#xA;DECLARE @username nvarchar(128) = ?&#xA;DECLARE @errormessage varchar(max) = ?&#xA;DECLARE @serverconnection varchar(128) = ?&#xA;DECLARE @taskname varchar(128) = ?&#xA;&#xA;IF @errormessage &lt;&gt; ''&#xA;BEGIN&#xA;&#xA;INSERT INTO [DBA_Rep].[dbo].[SSIS_Job_Error_Log]&#xA;           ([machinename]&#xA;           ,[packagename]&#xA;           ,[taskname]&#xA;           ,[serverconnection]&#xA;           ,[errormessage]&#xA;           ,[username]&#xA;           ,[packagestartdate]&#xA;           ,[retrievedate])&#xA;     VALUES&#xA;           (@machinename&#xA;           ,@packagename&#xA;           ,@taskname&#xA;           ,@serverconnection &#xA;           ,@errormessage&#xA;           ,@username&#xA;           ,GETDATE()&#xA;           ,GETDATE())&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::MachineName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::UserName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::ServerErrors"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="User::SRV_Conn"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Backup History\3 Get Backup History"
+          DTS:CreationName="SSIS.Pipeline.3"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{0073E63D-620C-4759-9974-95F1294AF650}"
+          DTS:ExecutableType="SSIS.Pipeline.3"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="3 Get Backup History"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              BLOBTempStoragePath=""
+              bufferTempStoragePath=""
+              version="1">
+              <components>
+                <component
+                  refId="Package\Backup History\3 Get Backup History\OLE DB Destination"
+                  componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DBA_Backup_History_Stage]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Local.DBA_REP]"
+                      connectionManagerRefId="Package.ConnectionManagers[Local.DBA_REP]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[server_name]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="server_name"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Server_name]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[server_name]" />
+                        <inputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[database_name]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="database_name"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Database_name]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[database_name]" />
+                        <inputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[backup_size]"
+                          cachedDataType="numeric"
+                          cachedName="backup_size"
+                          cachedPrecision="20"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Backup_size]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backup_size]" />
+                        <inputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[backup_start_date]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="backup_start_date"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Backup_start_date]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backup_start_date]" />
+                        <inputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[backup_finish_date]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="backup_finish_date"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Backup_finish_date]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backup_finish_date]" />
+                        <inputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Runtime_Sec]"
+                          cachedDataType="i4"
+                          cachedName="Runtime_Sec"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Runtime_Sec]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[Runtime_Sec]" />
+                        <inputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[physical_device_name]"
+                          cachedDataType="wstr"
+                          cachedLength="260"
+                          cachedName="physical_device_name"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Physical_device_name]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[physical_device_name]" />
+                        <inputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[backupdevice]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="backupdevice"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BackupDevice]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backupdevice]" />
+                        <inputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[software_major_version]"
+                          cachedDataType="ui1"
+                          cachedName="software_major_version"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Software_major_version]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[software_major_version]" />
+                        <inputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[software_minor_version]"
+                          cachedDataType="ui1"
+                          cachedName="software_minor_version"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Software_minor_version]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[software_minor_version]" />
+                        <inputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[software_build_version]"
+                          cachedDataType="i2"
+                          cachedName="software_build_version"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Software_build_version]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[software_build_version]" />
+                        <inputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[backuptype]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="backuptype"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BackupType]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backuptype]" />
+                        <inputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[compatibility_level]"
+                          cachedDataType="ui1"
+                          cachedName="compatibility_level"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Compatibility_Level]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[compatibility_level]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Server_name]"
+                          dataType="wstr"
+                          length="128"
+                          name="Server_name" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Database_name]"
+                          dataType="wstr"
+                          length="128"
+                          name="Database_name" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Backup_size]"
+                          dataType="numeric"
+                          name="Backup_size"
+                          precision="20" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Backup_start_date]"
+                          dataType="dbTimeStamp"
+                          name="Backup_start_date" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Backup_finish_date]"
+                          dataType="dbTimeStamp"
+                          name="Backup_finish_date" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Runtime_Sec]"
+                          dataType="i4"
+                          name="Runtime_Sec" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Physical_device_name]"
+                          dataType="wstr"
+                          length="260"
+                          name="Physical_device_name" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BackupDevice]"
+                          dataType="wstr"
+                          length="128"
+                          name="BackupDevice" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Software_major_version]"
+                          dataType="ui1"
+                          name="Software_major_version" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Software_minor_version]"
+                          dataType="ui1"
+                          name="Software_minor_version" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Software_build_version]"
+                          dataType="i2"
+                          name="Software_build_version" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BackupType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="BackupType" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Compatibility_Level]"
+                          dataType="ui1"
+                          name="Compatibility_Level" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateEntered]"
+                          dataType="dbTimeStamp"
+                          name="DateEntered" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                          dataType="i8"
+                          name="ID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Backup History\3 Get Backup History\OLE DB Source"
+                  componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT B.server_name, B.database_name, B.backup_size, B.backup_start_date, B.backup_finish_date, datediff(ss, B.backup_start_date, B.backup_finish_date) as Runtime_Sec, 
+	F.physical_device_name, B.name as backupdevice, B.software_major_version, B.software_minor_version, B.software_build_version, B.type as backuptype, B.compatibility_level
+FROM msdb.dbo.backupset B 
+	INNER JOIN msdb.dbo.backupmediafamily F ON B.media_set_id = F.media_set_id 
+Where B.backup_finish_date &gt; GETDATE() -?</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"Parameter0",{CE1446DD-A1E6-4683-B4B1-F1CE5A1562F5};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Backup History\3 Get Backup History\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MultiServer]"
+                      connectionManagerRefId="Package.ConnectionManagers[MultiServer]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[server_name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[server_name]"
+                          length="128"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[server_name]"
+                          name="server_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[database_name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[database_name]"
+                          length="128"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[database_name]"
+                          name="database_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backup_size]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[backup_size]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backup_size]"
+                          name="backup_size"
+                          precision="20"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backup_start_date]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[backup_start_date]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backup_start_date]"
+                          name="backup_start_date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backup_finish_date]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[backup_finish_date]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backup_finish_date]"
+                          name="backup_finish_date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[Runtime_Sec]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Runtime_Sec]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[Runtime_Sec]"
+                          name="Runtime_Sec"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[physical_device_name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[physical_device_name]"
+                          length="260"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[physical_device_name]"
+                          name="physical_device_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backupdevice]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[backupdevice]"
+                          length="128"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backupdevice]"
+                          name="backupdevice"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[software_major_version]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[software_major_version]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[software_major_version]"
+                          name="software_major_version"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[software_minor_version]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[software_minor_version]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[software_minor_version]"
+                          name="software_minor_version"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[software_build_version]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[software_build_version]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[software_build_version]"
+                          name="software_build_version"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backuptype]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[backuptype]"
+                          length="1"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[backuptype]"
+                          name="backuptype"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[compatibility_level]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[compatibility_level]"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].Columns[compatibility_level]"
+                          name="compatibility_level"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[server_name]"
+                          dataType="wstr"
+                          length="128"
+                          name="server_name" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[database_name]"
+                          dataType="wstr"
+                          length="128"
+                          name="database_name" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[backup_size]"
+                          dataType="numeric"
+                          name="backup_size"
+                          precision="20" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[backup_start_date]"
+                          dataType="dbTimeStamp"
+                          name="backup_start_date" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[backup_finish_date]"
+                          dataType="dbTimeStamp"
+                          name="backup_finish_date" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Runtime_Sec]"
+                          dataType="i4"
+                          name="Runtime_Sec" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[physical_device_name]"
+                          dataType="wstr"
+                          length="260"
+                          name="physical_device_name" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[backupdevice]"
+                          dataType="wstr"
+                          length="128"
+                          name="backupdevice" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[software_major_version]"
+                          dataType="ui1"
+                          name="software_major_version" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[software_minor_version]"
+                          dataType="ui1"
+                          name="software_minor_version" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[software_build_version]"
+                          dataType="i2"
+                          name="software_build_version" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[backuptype]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="backuptype" />
+                        <externalMetadataColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[compatibility_level]"
+                          dataType="ui1"
+                          name="compatibility_level" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[server_name]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[server_name]"
+                          name="server_name" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[database_name]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[database_name]"
+                          name="database_name" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[backup_size]"
+                          dataType="numeric"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[backup_size]"
+                          name="backup_size"
+                          precision="20" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[backup_start_date]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[backup_start_date]"
+                          name="backup_start_date" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[backup_finish_date]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[backup_finish_date]"
+                          name="backup_finish_date" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Runtime_Sec]"
+                          dataType="i4"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Runtime_Sec]"
+                          name="Runtime_Sec" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[physical_device_name]"
+                          dataType="wstr"
+                          length="260"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[physical_device_name]"
+                          name="physical_device_name" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[backupdevice]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[backupdevice]"
+                          name="backupdevice" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[software_major_version]"
+                          dataType="ui1"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[software_major_version]"
+                          name="software_major_version" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[software_minor_version]"
+                          dataType="ui1"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[software_minor_version]"
+                          name="software_minor_version" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[software_build_version]"
+                          dataType="i2"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[software_build_version]"
+                          name="software_build_version" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[backuptype]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[backuptype]"
+                          name="backuptype" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[compatibility_level]"
+                          dataType="ui1"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[compatibility_level]"
+                          name="compatibility_level" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Backup History\3 Get Backup History.Paths[OLE DB Source Output]"
+                  endId="Package\Backup History\3 Get Backup History\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Backup History\3 Get Backup History\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Backup History\3b Log failed Get History Attempts"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9128F659-F10A-41E9-9F3F-6B27D578E0E4}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="3b Log failed Get History Attempts"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B881E014-FB6E-4983-8B15-7F0C82830F82}"
+              SQLTask:SqlStatementSource="DECLARE @machinename nvarchar(128) = ?&#xA;DECLARE @packagename nvarchar(128) = ?&#xA;DECLARE @username nvarchar(128) = ?&#xA;DECLARE @errormessage varchar(max) = 'Backup Data Flow Error'&#xA;DECLARE @serverconnection varchar(128) = ?&#xA;DECLARE @taskname varchar(128) = ?&#xA;&#xA;IF @errormessage &lt;&gt; ''&#xA;BEGIN&#xA;&#xA;INSERT INTO [DBA_Rep].[dbo].[SSIS_Job_Error_Log]&#xA;           ([machinename]&#xA;           ,[packagename]&#xA;           ,[taskname]&#xA;           ,[serverconnection]&#xA;           ,[errormessage]&#xA;           ,[username]&#xA;           ,[packagestartdate]&#xA;           ,[retrievedate])&#xA;     VALUES&#xA;           (@machinename&#xA;           ,@packagename&#xA;           ,@taskname&#xA;           ,@serverconnection &#xA;           ,@errormessage&#xA;           ,@username&#xA;           ,GETDATE()&#xA;           ,GETDATE())&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::MachineName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::UserName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::ServerErrors"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="User::SRV_Conn"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Backup History.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{095B8BC5-1E06-4650-80D4-D229503FA6B2}"
+          DTS:EvalOp="1"
+          DTS:Expression="@ConnectionSuccessful == False"
+          DTS:From="Package\Backup History\2 Test Connection"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Backup History\2b Log Failed Connections" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Backup History.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{26399A14-D4E5-4958-BC7F-8C327C8832B7}"
+          DTS:EvalOp="1"
+          DTS:Expression="@ConnectionSuccessful == True"
+          DTS:From="Package\Backup History\2 Test Connection"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Backup History\3 Get Backup History" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Backup History.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{861B22D3-DF75-4F6B-A47F-1F65E2555AE8}"
+          DTS:From="Package\Backup History\3 Get Backup History"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Backup History\3b Log failed Get History Attempts"
+          DTS:Value="1" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{63B40860-77DA-4FDD-8B89-1D29442A3152}"
+          DTS:ObjectName="{63B40860-77DA-4FDD-8B89-1D29442A3152}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::SRV_Conn" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{ECBEFEFB-8EA5-4AE1-B765-C1932E459AD4}"
+      DTS:From="Package\1 - Populate ADO Variable with Server Names from CMS view"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Backup History" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F607689B-510A-47C7-92D3-38EE2D7B87AB}"
+      DTS:From="Package\Backup History"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\4 - Send Errors Mail Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{4BA34FC6-C1B0-4714-875D-65CCE5874C3A}"
+      DTS:From="Package\Backup History"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\5 - ETL from Stage to Archive + clean up insert_sp_ETL_DBA_Backup_History" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{5E144498-1CF5-4FF5-B65F-38E3CD51AD86}"
+      DTS:From="Package\5 - ETL from Stage to Archive + clean up insert_sp_ETL_DBA_Backup_History"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\6 - Log Job Completion" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <NodeLayout
+          Size="265,63"
+          Id="Package\1 - Populate ADO Variable with Server Names from CMS view"
+          TopLeft="212.424528301886,204.38679245283" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\4 - Send Errors Mail Task"
+          TopLeft="664.5,343.198113207547" />
+        <NodeLayout
+          Size="256,76"
+          Id="Package\5 - ETL from Stage to Archive + clean up insert_sp_ETL_DBA_Backup_History"
+          TopLeft="1053.34905660377,132.103773584906" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\6 - Log Job Completion"
+          TopLeft="1050.5,237.198113207547" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Backup History\2 Test Connection"
+          TopLeft="31.7924528301892,19" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Backup History\2b Log Failed Connections"
+          TopLeft="224.754716981132,15.716981132075" />
+        <NodeLayout
+          Size="158,59"
+          Id="Package\Backup History\3 Get Backup History"
+          TopLeft="31.7547169811323,116.716981132075" />
+        <NodeLayout
+          Size="184,54"
+          Id="Package\Backup History\3b Log failed Get History Attempts"
+          TopLeft="238.754716981132,119.716981132075" />
+        <EdgeLayout
+          Id="Package\Backup History.PrecedenceConstraints[Constraint]"
+          TopLeft="190.792452830189,38.3584905660375">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.9622641509428,0"
+              Start="0,0"
+              End="26.4622641509428,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="26.4622641509428,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="5.23113207547141,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Backup History.PrecedenceConstraints[Constraint 1]"
+          TopLeft="111.023584905661,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.716981132075"
+              Start="0,0"
+              End="0,48.216981132075">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.216981132075" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,16.1084905660375,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Backup History.PrecedenceConstraints[Constraint 2]"
+          TopLeft="189.754716981132,146.466981132075">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49,0"
+              Start="0,0"
+              End="41.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="41.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="5.50865234375,5,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="453,237"
+          Size="453,281"
+          Id="Package\Backup History"
+          TopLeft="539.27358490566,22.358490566038" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="477.424528301886,235.88679245283">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="61.8490566037739,-73.028301886792"
+              Start="0,0"
+              End="54.3490566037739,-73.028301886792">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="26.924528301887,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="26.924528301887,0"
+                    Point2="30.924528301887,0"
+                    Point3="30.924528301887,-4" />
+                  <mssgle:LineSegment
+                    End="30.924528301887,-69.028301886792" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30.924528301887,-69.028301886792"
+                    Point2="30.924528301887,-73.028301886792"
+                    Point3="34.924528301887,-73.028301886792" />
+                  <mssgle:LineSegment
+                    End="54.3490566037739,-73.028301886792" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="764.88679245283,303.358490566038">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.839622641509"
+              Start="0,0"
+              End="0,32.339622641509">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.339622641509" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="992.27358490566,166.481132075472">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="61.0754716981099,0"
+              Start="0,0"
+              End="53.5754716981099,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53.5754716981099,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="1181.34905660377,208.103773584906">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-35.8490566037699,29.094339622641"
+              Start="0,0"
+              End="-35.8490566037699,21.594339622641">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.5471698113205" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.5471698113205"
+                    Point2="0,14.5471698113205"
+                    Point3="-4,14.5471698113205" />
+                  <mssgle:LineSegment
+                    End="-31.8490566037699,14.5471698113205" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-31.8490566037699,14.5471698113205"
+                    Point2="-35.8490566037699,14.5471698113205"
+                    Point3="-35.8490566037699,18.5471698113205" />
+                  <mssgle:LineSegment
+                    End="-35.8490566037699,21.594339622641" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="20131020DO: Pulls All Backup History Jobs from all Servers from CMS on SQLMDW1&#xA;Reports will be created on SQL2K12RPT1&#xA;Days Vairable determines the number of days data to pull from each server&#xA;Only Unique data is entered and duplicates are removed&#xA;20140318DO: Changed willidar@ohsu.edu to ottod@ohsu.edu, as this was causing the &#xA; package to hang&#xA;20140718DO: Modified the package for SQLMDW2&#xA;20141118VMJ: Added error logging and job completion logging&#xA;20141121VMJ: Renamed tables and merged ETL SQL code into 1 sproc (step 5)&#xD;&#xA;20150928VMJ: Changed step #1 to use CMS view instead of msdb.sys table"
+          ParentId="Package"
+          Size="465,162"
+          Id="8670e0b6-b924-4b6b-bc86-674f8ded55b8"
+          TopLeft="23.5,29.5">
+          <AnnotationLayout.FontInfo>
+            <mssge:FontInfo
+              Family="Tahoma"
+              Size="11.25"
+              Color="#FF080000">
+              <mssge:FontInfo.TextDecorations>
+                <av:TextDecorationCollection />
+              </mssge:FontInfo.TextDecorations>
+            </mssge:FontInfo>
+          </AnnotationLayout.FontInfo>
+        </AnnotationLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Backup History\3 Get Backup History">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Backup History\3 Get Backup History\OLE DB Source"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Backup History\3 Get Backup History\OLE DB Destination"
+          TopLeft="48.4433962264151,128.292452830189" />
+        <EdgeLayout
+          Id="Package\Backup History\3 Get Backup History.Paths[OLE DB Source Output]"
+          TopLeft="73.3867924528302,49.4245283018868">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="42.9433962264151,78.8679245283019"
+              Start="0,0"
+              End="42.9433962264151,71.3679245283019">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.4339622641509" />
+                  <mssgle:LineSegment
+                    End="42.9433962264151,39.4339622641509" />
+                  <mssgle:LineSegment
+                    End="42.9433962264151,71.3679245283019" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Backup History\3 Get Backup History\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="E:\repo\DBAD\Projects\LightSwitch_HTML\LightSwitch_HTML\bin\Debug\app.publish\" />
+  <setAcl path="E:\repo\DBAD\Projects\LightSwitch_HTML\LightSwitch_HTML\bin\Debug\app.publish\" setAclResourceType="Directory" />
+  <setAcl path="E:\repo\DBAD\Projects\LightSwitch_HTML\LightSwitch_HTML\bin\Debug\app.publish\" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+  <appPoolNetFx path="" NetFxVersion="v4.0" />
+  <appPoolPipeline path="" PipelineMode="Integrated" />
+</sitemanifest>

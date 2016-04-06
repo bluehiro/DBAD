@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ModelDocumentManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Documents>
+    <Document FullPath="E:\repo\DBAD\Projects\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept.Server\My Project\Service.lsml" Checksum="1A572F850EBF293C724FF6E054C05754302B15F8064CE93A7F51AC922723A6D6" />
+    <Document FullPath="E:\repo\DBAD\Projects\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept.Server\DataSources\NeuroPatData\Patient_Mains.lsml" Checksum="7733561773D2D80C6FA5C8F834E9A8C594E036B1172245ABABA3D418C8620F04" />
+    <Document FullPath="E:\repo\DBAD\Projects\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept.Server\My Project\DataSources\NeuroPatData.lsml" Checksum="91870B450878BEC907E0138EA48094A711F5E60397E8A30A8F52D8008F0F73BA" />
+  </Documents>
+</ModelDocumentManifest>

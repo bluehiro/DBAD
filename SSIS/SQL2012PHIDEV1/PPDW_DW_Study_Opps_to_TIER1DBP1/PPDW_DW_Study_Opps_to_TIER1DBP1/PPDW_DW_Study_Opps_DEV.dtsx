@@ -1,0 +1,1610 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/6/2015 8:53:19 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="MSBC477W7"
+  DTS:CreatorName="OHSUM01\jamesv"
+  DTS:DTSID="{5879D37B-77CA-4345-A016-CD764802B6C3}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="PPDW_DW_Study_Opps_DEV"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{E9873A16-47DD-4274-898C-9CF153423F30}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQL2012PHIDEV1.PublicPool_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F1300CC7-DC3C-4852-91BC-6CFEB00EED40}"
+      DTS:ObjectName="SQL2012PHIDEV1.PublicPool_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQL2012PHIDEV1;Initial Catalog=PublicPool_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TIER1DBD1.ThePublicPool]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{564CFB6F-7D5A-4353-BE50-74B738798141}"
+      DTS:ObjectName="TIER1DBD1.ThePublicPool">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=TIER1DBD1;Initial Catalog=ThePublicPool;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Study_Opps"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{870111F2-D1A5-4429-8DF2-F26F3EB4B34D}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Study_Opps"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Study_Opps\Dest Study_Opps"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Dest Study_Opps"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[STUDY_OPPS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Study_Opps\Dest Study_Opps.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TIER1DBD1.ThePublicPool]"
+                  connectionManagerRefId="Package.ConnectionManagers[TIER1DBD1.ThePublicPool]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[SITE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="31"
+                      cachedName="SITE"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[SITE]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[SITE]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[MINORS_INVOLVED]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="MINORS_INVOLVED"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[MINORS_INVOLVED]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[MINORS_INVOLVED]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[TRIAL_TYPE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TRIAL_TYPE"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[TRIAL_TYPE]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[TRIAL_TYPE]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[KCI_STUDY_ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="KCI_STUDY_ID"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[KCI_STUDY_ID]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[KCI_STUDY_ID]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[STUDY_TITLE]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="STUDY_TITLE"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[STUDY_TITLE]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[STUDY_TITLE]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[PI_LAST_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="PI_LAST_NAME"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PI_LAST_NAME]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_LAST_NAME]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[CONTACT]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="CONTACT"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[CONTACT]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[CONTACT]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[PHONE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="PHONE"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PHONE]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PHONE]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[TRIAL_DESCRIPTION]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="TRIAL_DESCRIPTION"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[TRIAL_DESCRIPTION]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[TRIAL_DESCRIPTION]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[EMAIL_ADDRESS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="EMAIL_ADDRESS"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[EMAIL_ADDRESS]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[EMAIL_ADDRESS]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[IRB_STUDY_ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="IRB_STUDY_ID"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[IRB_STUDY_ID]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[IRB_STUDY_ID]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[TRIAL_LOCATION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="TRIAL_LOCATION"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[TRIAL_LOCATION]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[TRIAL_LOCATION]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[NCI_SITE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NCI_SITE"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[NCI_SITE]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[NCI_SITE]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[PI_FIRST_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="PI_FIRST_NAME"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PI_FIRST_NAME]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_FIRST_NAME]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[PI_DEGREE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="PI_DEGREE"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PI_DEGREE]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_DEGREE]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[ADOLESCENTS_AND_YOUNG_ADULTS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="ADOLESCENTS_AND_YOUNG_ADULTS"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[ADOLESCENTS_AND_YOUNG_ADULTS]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[ADOLESCENTS_AND_YOUNG_ADULTS]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[PI_EMPLOYEE_NUMBER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="PI_EMPLOYEE_NUMBER"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PI_EMPLOYEE_NUMBER]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_EMPLOYEE_NUMBER]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[PI_EMAIL_ADDRESS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="PI_EMAIL_ADDRESS"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PI_EMAIL_ADDRESS]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_EMAIL_ADDRESS]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[MEDICAL_CONDITION]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="MEDICAL_CONDITION"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[MEDICAL_CONDITION]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[MEDICAL_CONDITION]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[ELIGIBILITY_CRITERIA]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="ELIGIBILITY_CRITERIA"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[ELIGIBILITY_CRITERIA]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[ELIGIBILITY_CRITERIA]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[HEALTHY_VOLUNTEERS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="HEALTHY_VOLUNTEERS"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[HEALTHY_VOLUNTEERS]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[HEALTHY_VOLUNTEERS]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[PLACEBO_CHANCE]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="PLACEBO_CHANCE"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PLACEBO_CHANCE]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PLACEBO_CHANCE]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[DURATION]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="DURATION"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[DURATION]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[DURATION]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[SPONSOR]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="SPONSOR"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[SPONSOR]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[SPONSOR]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[RECRUITMENT_END]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="RECRUITMENT_END"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[RECRUITMENT_END]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[RECRUITMENT_END]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[COMPENSATION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="COMPENSATION"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[COMPENSATION]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[COMPENSATION]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[COMPENSATION_AMOUNT]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="COMPENSATION_AMOUNT"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[COMPENSATION_AMOUNT]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[COMPENSATION_AMOUNT]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[STUDY_STATUS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="STUDY_STATUS"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[STUDY_STATUS]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[STUDY_STATUS]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[KCI_REQUIRED]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="KCI_REQUIRED"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[KCI_REQUIRED]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[KCI_REQUIRED]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[APPROVAL_EFFECTIVE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="APPROVAL_EFFECTIVE"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[APPROVAL_EFFECTIVE]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[APPROVAL_EFFECTIVE]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[STATE_ENTRY_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="STATE_ENTRY_DATE"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[STATE_ENTRY_DATE]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[STATE_ENTRY_DATE]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[SITE_GROUP]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="24"
+                      cachedName="SITE_GROUP"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[SITE_GROUP]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[SITE_GROUP]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[SOURCE_SYSTEM]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="SOURCE_SYSTEM"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[SOURCE_SYSTEM]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[SOURCE_SYSTEM]" />
+                    <inputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].Columns[Load_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Load_Date"
+                      externalMetadataColumnId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[Load_Date]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[Load_Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[SITE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="31"
+                      name="SITE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[MINORS_INVOLVED]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="MINORS_INVOLVED" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[TRIAL_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TRIAL_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[KCI_STUDY_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="KCI_STUDY_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[STUDY_TITLE]"
+                      codePage="1252"
+                      dataType="text"
+                      name="STUDY_TITLE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PI_LAST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="PI_LAST_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[CONTACT]"
+                      codePage="1252"
+                      dataType="text"
+                      name="CONTACT" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PHONE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PHONE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[TRIAL_DESCRIPTION]"
+                      codePage="1252"
+                      dataType="text"
+                      name="TRIAL_DESCRIPTION" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[EMAIL_ADDRESS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="EMAIL_ADDRESS" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[IRB_STUDY_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="IRB_STUDY_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[TRIAL_LOCATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="TRIAL_LOCATION" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[NCI_SITE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NCI_SITE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PI_FIRST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="PI_FIRST_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PI_DEGREE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="PI_DEGREE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[ADOLESCENTS_AND_YOUNG_ADULTS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ADOLESCENTS_AND_YOUNG_ADULTS" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PI_EMPLOYEE_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="PI_EMPLOYEE_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PI_EMAIL_ADDRESS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="PI_EMAIL_ADDRESS" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[MEDICAL_CONDITION]"
+                      codePage="1252"
+                      dataType="text"
+                      name="MEDICAL_CONDITION" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[ELIGIBILITY_CRITERIA]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ELIGIBILITY_CRITERIA" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[HEALTHY_VOLUNTEERS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="HEALTHY_VOLUNTEERS" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[PLACEBO_CHANCE]"
+                      codePage="1252"
+                      dataType="text"
+                      name="PLACEBO_CHANCE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[DURATION]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DURATION" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[SPONSOR]"
+                      codePage="1252"
+                      dataType="text"
+                      name="SPONSOR" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[RECRUITMENT_END]"
+                      dataType="dbTimeStamp"
+                      name="RECRUITMENT_END" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[COMPENSATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="COMPENSATION" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[COMPENSATION_AMOUNT]"
+                      codePage="1252"
+                      dataType="text"
+                      name="COMPENSATION_AMOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[STUDY_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="STUDY_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[KCI_REQUIRED]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="KCI_REQUIRED" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[APPROVAL_EFFECTIVE]"
+                      dataType="dbTimeStamp"
+                      name="APPROVAL_EFFECTIVE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[STATE_ENTRY_DATE]"
+                      dataType="dbTimeStamp"
+                      name="STATE_ENTRY_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[SITE_GROUP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="24"
+                      name="SITE_GROUP" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[SOURCE_SYSTEM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="SOURCE_SYSTEM" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input].ExternalColumns[Load_Date]"
+                      dataType="dbTimeStamp"
+                      name="Load_Date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Study_Opps\Dest Study_Opps.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Study_Opps\Dest Study_Opps.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\Dest Study_Opps.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Study_Opps\Dest Study_Opps.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Study_Opps\DW_Study_Opps"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DW_Study_Opps"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[STUDY_OPPS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Study_Opps\DW_Study_Opps.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SQL2012PHIDEV1.PublicPool_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[SQL2012PHIDEV1.PublicPool_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[SITE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[SITE]"
+                      length="31"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[SITE]"
+                      name="SITE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[MINORS_INVOLVED]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[MINORS_INVOLVED]"
+                      length="1"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[MINORS_INVOLVED]"
+                      name="MINORS_INVOLVED"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[TRIAL_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[TRIAL_TYPE]"
+                      length="50"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[TRIAL_TYPE]"
+                      name="TRIAL_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[KCI_STUDY_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[KCI_STUDY_ID]"
+                      length="50"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[KCI_STUDY_ID]"
+                      name="KCI_STUDY_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[STUDY_TITLE]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[STUDY_TITLE]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[STUDY_TITLE]"
+                      name="STUDY_TITLE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_LAST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PI_LAST_NAME]"
+                      length="150"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_LAST_NAME]"
+                      name="PI_LAST_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[CONTACT]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[CONTACT]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[CONTACT]"
+                      name="CONTACT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PHONE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PHONE]"
+                      length="20"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PHONE]"
+                      name="PHONE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[TRIAL_DESCRIPTION]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[TRIAL_DESCRIPTION]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[TRIAL_DESCRIPTION]"
+                      name="TRIAL_DESCRIPTION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[EMAIL_ADDRESS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[EMAIL_ADDRESS]"
+                      length="255"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[EMAIL_ADDRESS]"
+                      name="EMAIL_ADDRESS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[IRB_STUDY_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[IRB_STUDY_ID]"
+                      length="255"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[IRB_STUDY_ID]"
+                      name="IRB_STUDY_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[TRIAL_LOCATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[TRIAL_LOCATION]"
+                      length="60"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[TRIAL_LOCATION]"
+                      name="TRIAL_LOCATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[NCI_SITE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[NCI_SITE]"
+                      length="50"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[NCI_SITE]"
+                      name="NCI_SITE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_FIRST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PI_FIRST_NAME]"
+                      length="150"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_FIRST_NAME]"
+                      name="PI_FIRST_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_DEGREE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PI_DEGREE]"
+                      length="255"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_DEGREE]"
+                      name="PI_DEGREE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[ADOLESCENTS_AND_YOUNG_ADULTS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[ADOLESCENTS_AND_YOUNG_ADULTS]"
+                      length="1"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[ADOLESCENTS_AND_YOUNG_ADULTS]"
+                      name="ADOLESCENTS_AND_YOUNG_ADULTS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_EMPLOYEE_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PI_EMPLOYEE_NUMBER]"
+                      length="30"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_EMPLOYEE_NUMBER]"
+                      name="PI_EMPLOYEE_NUMBER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_EMAIL_ADDRESS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PI_EMAIL_ADDRESS]"
+                      length="255"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PI_EMAIL_ADDRESS]"
+                      name="PI_EMAIL_ADDRESS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[MEDICAL_CONDITION]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[MEDICAL_CONDITION]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[MEDICAL_CONDITION]"
+                      name="MEDICAL_CONDITION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[ELIGIBILITY_CRITERIA]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[ELIGIBILITY_CRITERIA]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[ELIGIBILITY_CRITERIA]"
+                      name="ELIGIBILITY_CRITERIA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[HEALTHY_VOLUNTEERS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[HEALTHY_VOLUNTEERS]"
+                      length="1"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[HEALTHY_VOLUNTEERS]"
+                      name="HEALTHY_VOLUNTEERS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PLACEBO_CHANCE]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PLACEBO_CHANCE]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[PLACEBO_CHANCE]"
+                      name="PLACEBO_CHANCE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[DURATION]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[DURATION]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[DURATION]"
+                      name="DURATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[SPONSOR]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[SPONSOR]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[SPONSOR]"
+                      name="SPONSOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[RECRUITMENT_END]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[RECRUITMENT_END]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[RECRUITMENT_END]"
+                      name="RECRUITMENT_END"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[COMPENSATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[COMPENSATION]"
+                      length="1"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[COMPENSATION]"
+                      name="COMPENSATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[COMPENSATION_AMOUNT]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[COMPENSATION_AMOUNT]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[COMPENSATION_AMOUNT]"
+                      name="COMPENSATION_AMOUNT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[STUDY_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[STUDY_STATUS]"
+                      length="255"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[STUDY_STATUS]"
+                      name="STUDY_STATUS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[KCI_REQUIRED]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[KCI_REQUIRED]"
+                      length="1"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[KCI_REQUIRED]"
+                      name="KCI_REQUIRED"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[APPROVAL_EFFECTIVE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[APPROVAL_EFFECTIVE]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[APPROVAL_EFFECTIVE]"
+                      name="APPROVAL_EFFECTIVE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[STATE_ENTRY_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[STATE_ENTRY_DATE]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[STATE_ENTRY_DATE]"
+                      name="STATE_ENTRY_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[SITE_GROUP]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[SITE_GROUP]"
+                      length="24"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[SITE_GROUP]"
+                      name="SITE_GROUP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[SOURCE_SYSTEM]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[SOURCE_SYSTEM]"
+                      length="3"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[SOURCE_SYSTEM]"
+                      name="SOURCE_SYSTEM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[Load_Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[Load_Date]"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].Columns[Load_Date]"
+                      name="Load_Date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[SITE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="31"
+                      name="SITE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[MINORS_INVOLVED]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="MINORS_INVOLVED" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[TRIAL_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TRIAL_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[KCI_STUDY_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="KCI_STUDY_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[STUDY_TITLE]"
+                      codePage="1252"
+                      dataType="text"
+                      name="STUDY_TITLE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PI_LAST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="PI_LAST_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[CONTACT]"
+                      codePage="1252"
+                      dataType="text"
+                      name="CONTACT" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PHONE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PHONE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[TRIAL_DESCRIPTION]"
+                      codePage="1252"
+                      dataType="text"
+                      name="TRIAL_DESCRIPTION" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[EMAIL_ADDRESS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="EMAIL_ADDRESS" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[IRB_STUDY_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="IRB_STUDY_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[TRIAL_LOCATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="TRIAL_LOCATION" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[NCI_SITE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NCI_SITE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PI_FIRST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="PI_FIRST_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PI_DEGREE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="PI_DEGREE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[ADOLESCENTS_AND_YOUNG_ADULTS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ADOLESCENTS_AND_YOUNG_ADULTS" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PI_EMPLOYEE_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="PI_EMPLOYEE_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PI_EMAIL_ADDRESS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="PI_EMAIL_ADDRESS" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[MEDICAL_CONDITION]"
+                      codePage="1252"
+                      dataType="text"
+                      name="MEDICAL_CONDITION" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[ELIGIBILITY_CRITERIA]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ELIGIBILITY_CRITERIA" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[HEALTHY_VOLUNTEERS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="HEALTHY_VOLUNTEERS" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[PLACEBO_CHANCE]"
+                      codePage="1252"
+                      dataType="text"
+                      name="PLACEBO_CHANCE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[DURATION]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DURATION" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[SPONSOR]"
+                      codePage="1252"
+                      dataType="text"
+                      name="SPONSOR" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[RECRUITMENT_END]"
+                      dataType="dbTimeStamp"
+                      name="RECRUITMENT_END" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[COMPENSATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="COMPENSATION" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[COMPENSATION_AMOUNT]"
+                      codePage="1252"
+                      dataType="text"
+                      name="COMPENSATION_AMOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[STUDY_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="STUDY_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[KCI_REQUIRED]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="KCI_REQUIRED" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[APPROVAL_EFFECTIVE]"
+                      dataType="dbTimeStamp"
+                      name="APPROVAL_EFFECTIVE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[STATE_ENTRY_DATE]"
+                      dataType="dbTimeStamp"
+                      name="STATE_ENTRY_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[SITE_GROUP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="24"
+                      name="SITE_GROUP" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[SOURCE_SYSTEM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="SOURCE_SYSTEM" />
+                    <externalMetadataColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output].ExternalColumns[Load_Date]"
+                      dataType="dbTimeStamp"
+                      name="Load_Date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[SITE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="31"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[SITE]"
+                      name="SITE" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[MINORS_INVOLVED]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[MINORS_INVOLVED]"
+                      name="MINORS_INVOLVED" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[TRIAL_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[TRIAL_TYPE]"
+                      name="TRIAL_TYPE" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[KCI_STUDY_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[KCI_STUDY_ID]"
+                      name="KCI_STUDY_ID" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[STUDY_TITLE]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[STUDY_TITLE]"
+                      name="STUDY_TITLE" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PI_LAST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PI_LAST_NAME]"
+                      name="PI_LAST_NAME" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[CONTACT]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[CONTACT]"
+                      name="CONTACT" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PHONE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PHONE]"
+                      name="PHONE" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[TRIAL_DESCRIPTION]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[TRIAL_DESCRIPTION]"
+                      name="TRIAL_DESCRIPTION" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[EMAIL_ADDRESS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[EMAIL_ADDRESS]"
+                      name="EMAIL_ADDRESS" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[IRB_STUDY_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[IRB_STUDY_ID]"
+                      name="IRB_STUDY_ID" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[TRIAL_LOCATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[TRIAL_LOCATION]"
+                      name="TRIAL_LOCATION" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[NCI_SITE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[NCI_SITE]"
+                      name="NCI_SITE" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PI_FIRST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PI_FIRST_NAME]"
+                      name="PI_FIRST_NAME" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PI_DEGREE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PI_DEGREE]"
+                      name="PI_DEGREE" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[ADOLESCENTS_AND_YOUNG_ADULTS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[ADOLESCENTS_AND_YOUNG_ADULTS]"
+                      name="ADOLESCENTS_AND_YOUNG_ADULTS" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PI_EMPLOYEE_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PI_EMPLOYEE_NUMBER]"
+                      name="PI_EMPLOYEE_NUMBER" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PI_EMAIL_ADDRESS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PI_EMAIL_ADDRESS]"
+                      name="PI_EMAIL_ADDRESS" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[MEDICAL_CONDITION]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[MEDICAL_CONDITION]"
+                      name="MEDICAL_CONDITION" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[ELIGIBILITY_CRITERIA]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[ELIGIBILITY_CRITERIA]"
+                      name="ELIGIBILITY_CRITERIA" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[HEALTHY_VOLUNTEERS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[HEALTHY_VOLUNTEERS]"
+                      name="HEALTHY_VOLUNTEERS" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PLACEBO_CHANCE]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[PLACEBO_CHANCE]"
+                      name="PLACEBO_CHANCE" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[DURATION]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[DURATION]"
+                      name="DURATION" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[SPONSOR]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[SPONSOR]"
+                      name="SPONSOR" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[RECRUITMENT_END]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[RECRUITMENT_END]"
+                      name="RECRUITMENT_END" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[COMPENSATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[COMPENSATION]"
+                      name="COMPENSATION" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[COMPENSATION_AMOUNT]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[COMPENSATION_AMOUNT]"
+                      name="COMPENSATION_AMOUNT" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[STUDY_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[STUDY_STATUS]"
+                      name="STUDY_STATUS" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[KCI_REQUIRED]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[KCI_REQUIRED]"
+                      name="KCI_REQUIRED" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[APPROVAL_EFFECTIVE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[APPROVAL_EFFECTIVE]"
+                      name="APPROVAL_EFFECTIVE" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[STATE_ENTRY_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[STATE_ENTRY_DATE]"
+                      name="STATE_ENTRY_DATE" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[SITE_GROUP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="24"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[SITE_GROUP]"
+                      name="SITE_GROUP" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[SOURCE_SYSTEM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[SOURCE_SYSTEM]"
+                      name="SOURCE_SYSTEM" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[Load_Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[Load_Date]"
+                      name="Load_Date" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Study_Opps.Paths[OLE DB Source Output]"
+              endId="Package\Load Study_Opps\Dest Study_Opps.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Study_Opps\DW_Study_Opps.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Dest Study_Opps Table"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DAC3286F-A520-4366-A8FB-C9981F6EA16B}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Dest Study_Opps Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{564CFB6F-7D5A-4353-BE50-74B738798141}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ThePublicPool.dbo.STUDY_OPPS" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{68C62977-593D-4F42-BB17-8DCFC4BCE67F}"
+      DTS:From="Package\Truncate Dest Study_Opps Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Study_Opps" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Load Study_Opps"
+          TopLeft="136,172" />
+        <NodeLayout
+          Size="177,52"
+          Id="Package\Truncate Dest Study_Opps Table"
+          TopLeft="132,68" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="219.25,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="DEV"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="51,60"
+          Id="79f5b888-c911-421f-b8fe-4089d8a0452b"
+          TopLeft="393,73" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Study_Opps">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Load Study_Opps\DW_Study_Opps"
+          TopLeft="72,64" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Load Study_Opps\Dest Study_Opps"
+          TopLeft="68,186" />
+        <EdgeLayout
+          Id="Package\Load Study_Opps.Paths[OLE DB Source Output]"
+          TopLeft="150.5,106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80"
+              Start="0,0"
+              End="0,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Study_Opps\DW_Study_Opps">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Study_Opps\Dest Study_Opps">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

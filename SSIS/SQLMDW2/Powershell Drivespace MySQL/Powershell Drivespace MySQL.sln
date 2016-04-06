@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Powershell Drivespace MySQL", "Powershell Drivespace MySQL\Powershell Drivespace MySQL.dtproj", "{C6C39899-B939-4669-A8A4-99D278031A6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6C39899-B939-4669-A8A4-99D278031A6B}.Development|Default.ActiveCfg = Development
+		{C6C39899-B939-4669-A8A4-99D278031A6B}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

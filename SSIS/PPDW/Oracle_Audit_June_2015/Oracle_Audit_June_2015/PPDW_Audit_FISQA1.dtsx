@@ -1,0 +1,1856 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/30/2015 3:25:17 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="MSBC477W7"
+  DTS:CreatorName="OHSUM01\jamesv"
+  DTS:DTSID="{DAF47772-4359-41F2-BE39-20E3E9F80413}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="PPDW_Audit_FISQA1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{8DB694B8-63AF-4CEF-B5D2-A30FD93528CC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ORACLE.xxdba]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{811BDB57-D9F2-4B18-B589-1AC91A136061}"
+      DTS:ObjectName="ORACLE.xxdba">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=FISQA1;User ID=xxdba;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAHcL5teP8PUul/vGHpikh1gAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAAgflZ4WGm3T0fKI8eAWicAAAAAASAAACgAAAAEAAAAFnkgfbZUqp1zlhTnBYACP8QAAAAwvBRLIDVaKmog/MLuMmXuxQAAADQRwd3L0UFpSnVTqZyUIXT6X1OoA</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQL2012PHIDEV1.ORA_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D1556812-D136-4705-A57C-3EFD59D05464}"
+      DTS:ObjectName="SQL2012PHIDEV1.ORA_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQL2012PHIDEV1;Initial Catalog=ORA_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Import AUD$"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DTSID="{2E9DA56E-C982-432F-BBBA-7FE957203703}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import AUD$">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          engineThreads="5"
+          version="1">
+          <components>
+            <component
+              refId="Package\Import AUD$\OLE DB Destination"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Audit_FISQA1]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import AUD$\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SQL2012PHIDEV1.ORA_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[SQL2012PHIDEV1.ORA_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SESSIONID]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="SESSIONID"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SESSIONID]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SESSIONID]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ENTRYID]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="ENTRYID"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ENTRYID]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[ENTRYID]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[STATEMENT]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="STATEMENT"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[STATEMENT]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[STATEMENT]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TIMESTAMP#]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TIMESTAMP#"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TIMESTAMP#]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[TIMESTAMP#]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[USERID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="USERID"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[USERID]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[USERID]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[USERHOST]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="USERHOST"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[USERHOST]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[USERHOST]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TERMINAL]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="TERMINAL"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TERMINAL]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[TERMINAL]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ACTION#]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="ACTION#"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTION#]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[ACTION#]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RETURNCODE]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="RETURNCODE"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RETURNCODE]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[RETURNCODE]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OBJ$CREATOR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="OBJ$CREATOR"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OBJ$CREATOR]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[OBJ$CREATOR]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OBJ$NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="OBJ$NAME"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OBJ$NAME]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[OBJ$NAME]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AUTH$PRIVILEGES]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="AUTH$PRIVILEGES"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AUTH$PRIVILEGES]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[AUTH$PRIVILEGES]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AUTH$GRANTEE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="AUTH$GRANTEE"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AUTH$GRANTEE]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[AUTH$GRANTEE]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW$OWNER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="NEW$OWNER"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NEW$OWNER]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[NEW$OWNER]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NEW$NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="NEW$NAME"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NEW$NAME]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[NEW$NAME]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SES$ACTIONS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="19"
+                      cachedName="SES$ACTIONS"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SES$ACTIONS]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SES$ACTIONS]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SES$TID]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="SES$TID"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SES$TID]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SES$TID]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LOGOFF$LREAD]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="LOGOFF$LREAD"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LOGOFF$LREAD]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$LREAD]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LOGOFF$PREAD]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="LOGOFF$PREAD"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LOGOFF$PREAD]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$PREAD]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LOGOFF$LWRITE]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="LOGOFF$LWRITE"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LOGOFF$LWRITE]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$LWRITE]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LOGOFF$DEAD]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="LOGOFF$DEAD"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LOGOFF$DEAD]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$DEAD]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LOGOFF$TIME]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LOGOFF$TIME"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LOGOFF$TIME]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$TIME]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[COMMENT$TEXT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="COMMENT$TEXT"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[COMMENT$TEXT]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[COMMENT$TEXT]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CLIENTID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="CLIENTID"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CLIENTID]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[CLIENTID]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SPARE1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="SPARE1"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SPARE1]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SPARE1]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SPARE2]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="SPARE2"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SPARE2]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SPARE2]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OBJ$LABEL]"
+                      cachedDataType="bytes"
+                      cachedLength="255"
+                      cachedName="OBJ$LABEL"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OBJ$LABEL]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[OBJ$LABEL]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SES$LABEL]"
+                      cachedDataType="bytes"
+                      cachedLength="255"
+                      cachedName="SES$LABEL"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SES$LABEL]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SES$LABEL]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PRIV$USED]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="PRIV$USED"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PRIV$USED]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[PRIV$USED]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SESSIONCPU]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="SESSIONCPU"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SESSIONCPU]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SESSIONCPU]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NTIMESTAMP#]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="NTIMESTAMP#"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NTIMESTAMP#]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[NTIMESTAMP#]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PROXY$SID]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="PROXY$SID"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PROXY$SID]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[PROXY$SID]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[USER$GUID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="USER$GUID"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[USER$GUID]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[USER$GUID]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[INSTANCE#]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="INSTANCE#"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[INSTANCE#]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[INSTANCE#]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PROCESS#]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="PROCESS#"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PROCESS#]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[PROCESS#]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[XID]"
+                      cachedDataType="bytes"
+                      cachedLength="8"
+                      cachedName="XID"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[XID]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[XID]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AUDITID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="64"
+                      cachedName="AUDITID"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AUDITID]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[AUDITID]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SCN]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="SCN"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SCN]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SCN]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DBID]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="DBID"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DBID]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[DBID]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SQLBIND]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="SQLBIND"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SQLBIND]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SQLBIND]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SQLTEXT]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="SQLTEXT"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SQLTEXT]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SQLTEXT]" />
+                    <inputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OBJ$EDITION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="OBJ$EDITION"
+                      externalMetadataColumnId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OBJ$EDITION]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[OBJ$EDITION]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SESSIONID]"
+                      dataType="wstr"
+                      length="38"
+                      name="SESSIONID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ENTRYID]"
+                      dataType="wstr"
+                      length="38"
+                      name="ENTRYID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[STATEMENT]"
+                      dataType="wstr"
+                      length="38"
+                      name="STATEMENT" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TIMESTAMP#]"
+                      dataType="dbTimeStamp"
+                      name="TIMESTAMP#" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[USERID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="USERID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[USERHOST]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="USERHOST" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TERMINAL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="TERMINAL" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTION#]"
+                      dataType="wstr"
+                      length="38"
+                      name="ACTION#" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RETURNCODE]"
+                      dataType="wstr"
+                      length="38"
+                      name="RETURNCODE" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OBJ$CREATOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="OBJ$CREATOR" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OBJ$NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="OBJ$NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AUTH$PRIVILEGES]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="AUTH$PRIVILEGES" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AUTH$GRANTEE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="AUTH$GRANTEE" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NEW$OWNER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="NEW$OWNER" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NEW$NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="NEW$NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SES$ACTIONS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="SES$ACTIONS" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SES$TID]"
+                      dataType="wstr"
+                      length="38"
+                      name="SES$TID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LOGOFF$LREAD]"
+                      dataType="wstr"
+                      length="38"
+                      name="LOGOFF$LREAD" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LOGOFF$PREAD]"
+                      dataType="wstr"
+                      length="38"
+                      name="LOGOFF$PREAD" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LOGOFF$LWRITE]"
+                      dataType="wstr"
+                      length="38"
+                      name="LOGOFF$LWRITE" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LOGOFF$DEAD]"
+                      dataType="wstr"
+                      length="38"
+                      name="LOGOFF$DEAD" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LOGOFF$TIME]"
+                      dataType="dbTimeStamp"
+                      name="LOGOFF$TIME" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[COMMENT$TEXT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COMMENT$TEXT" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CLIENTID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="CLIENTID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SPARE1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="SPARE1" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SPARE2]"
+                      dataType="wstr"
+                      length="38"
+                      name="SPARE2" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OBJ$LABEL]"
+                      dataType="bytes"
+                      length="255"
+                      name="OBJ$LABEL" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SES$LABEL]"
+                      dataType="bytes"
+                      length="255"
+                      name="SES$LABEL" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PRIV$USED]"
+                      dataType="wstr"
+                      length="38"
+                      name="PRIV$USED" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SESSIONCPU]"
+                      dataType="wstr"
+                      length="38"
+                      name="SESSIONCPU" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NTIMESTAMP#]"
+                      dataType="dbTimeStamp2"
+                      name="NTIMESTAMP#"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PROXY$SID]"
+                      dataType="wstr"
+                      length="38"
+                      name="PROXY$SID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[USER$GUID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="32"
+                      name="USER$GUID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[INSTANCE#]"
+                      dataType="wstr"
+                      length="38"
+                      name="INSTANCE#" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PROCESS#]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="PROCESS#" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[XID]"
+                      dataType="bytes"
+                      length="8"
+                      name="XID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AUDITID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="64"
+                      name="AUDITID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SCN]"
+                      dataType="wstr"
+                      length="38"
+                      name="SCN" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DBID]"
+                      dataType="wstr"
+                      length="38"
+                      name="DBID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SQLBIND]"
+                      codePage="1252"
+                      dataType="text"
+                      name="SQLBIND" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SQLTEXT]"
+                      codePage="1252"
+                      dataType="text"
+                      name="SQLTEXT" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OBJ$EDITION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="OBJ$EDITION" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import AUD$\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import AUD$\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import AUD$\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import AUD$\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import AUD$\Source - AUD$"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - AUD$"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">"XXOHSUHEALTH"."STUDY_OPPS"</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT SESSIONID
+      ,ENTRYID
+      ,STATEMENT
+      ,TIMESTAMP#
+      ,USERID
+      ,USERHOST
+      ,TERMINAL
+      ,ACTION#
+      ,RETURNCODE
+      ,OBJ$CREATOR
+      ,OBJ$NAME
+      ,AUTH$PRIVILEGES
+      ,AUTH$GRANTEE
+      ,NEW$OWNER
+      ,NEW$NAME
+      ,SES$ACTIONS
+      ,SES$TID
+      ,LOGOFF$LREAD
+      ,LOGOFF$PREAD
+      ,LOGOFF$LWRITE
+      ,LOGOFF$DEAD
+      ,LOGOFF$TIME
+      ,COMMENT$TEXT
+      ,CLIENTID
+      ,SPARE1
+      ,SPARE2
+      ,OBJ$LABEL
+      ,SES$LABEL
+      ,PRIV$USED
+      ,SESSIONCPU
+      ,NTIMESTAMP#
+      ,PROXY$SID
+      ,USER$GUID
+      ,INSTANCE#
+      ,PROCESS#
+      ,XID
+      ,AUDITID
+      ,SCN
+      ,DBID
+      ,SQLBIND
+      ,SQLTEXT
+      ,OBJ$EDITION
+  FROM sys.aud$</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import AUD$\Source - AUD$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ORACLE.xxdba]"
+                  connectionManagerRefId="Package.ConnectionManagers[ORACLE.xxdba]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SESSIONID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SESSIONID]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SESSIONID]"
+                      name="SESSIONID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[ENTRYID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[ENTRYID]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[ENTRYID]"
+                      name="ENTRYID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[STATEMENT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[STATEMENT]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[STATEMENT]"
+                      name="STATEMENT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[TIMESTAMP#]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[TIMESTAMP#]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[TIMESTAMP#]"
+                      name="TIMESTAMP#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[USERID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[USERID]"
+                      length="128"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[USERID]"
+                      name="USERID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[USERHOST]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[USERHOST]"
+                      length="128"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[USERHOST]"
+                      name="USERHOST"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[TERMINAL]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[TERMINAL]"
+                      length="255"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[TERMINAL]"
+                      name="TERMINAL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[ACTION#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[ACTION#]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[ACTION#]"
+                      name="ACTION#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[RETURNCODE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[RETURNCODE]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[RETURNCODE]"
+                      name="RETURNCODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[OBJ$CREATOR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[OBJ$CREATOR]"
+                      length="128"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[OBJ$CREATOR]"
+                      name="OBJ$CREATOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[OBJ$NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[OBJ$NAME]"
+                      length="128"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[OBJ$NAME]"
+                      name="OBJ$NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[AUTH$PRIVILEGES]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[AUTH$PRIVILEGES]"
+                      length="16"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[AUTH$PRIVILEGES]"
+                      name="AUTH$PRIVILEGES"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[AUTH$GRANTEE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[AUTH$GRANTEE]"
+                      length="128"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[AUTH$GRANTEE]"
+                      name="AUTH$GRANTEE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[NEW$OWNER]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[NEW$OWNER]"
+                      length="128"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[NEW$OWNER]"
+                      name="NEW$OWNER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[NEW$NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[NEW$NAME]"
+                      length="128"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[NEW$NAME]"
+                      name="NEW$NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SES$ACTIONS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SES$ACTIONS]"
+                      length="19"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SES$ACTIONS]"
+                      name="SES$ACTIONS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SES$TID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SES$TID]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SES$TID]"
+                      name="SES$TID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$LREAD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[LOGOFF$LREAD]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$LREAD]"
+                      name="LOGOFF$LREAD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$PREAD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[LOGOFF$PREAD]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$PREAD]"
+                      name="LOGOFF$PREAD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$LWRITE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[LOGOFF$LWRITE]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$LWRITE]"
+                      name="LOGOFF$LWRITE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$DEAD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[LOGOFF$DEAD]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$DEAD]"
+                      name="LOGOFF$DEAD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$TIME]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[LOGOFF$TIME]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[LOGOFF$TIME]"
+                      name="LOGOFF$TIME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[COMMENT$TEXT]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[COMMENT$TEXT]"
+                      length="4000"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[COMMENT$TEXT]"
+                      name="COMMENT$TEXT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[CLIENTID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[CLIENTID]"
+                      length="128"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[CLIENTID]"
+                      name="CLIENTID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SPARE1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SPARE1]"
+                      length="255"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SPARE1]"
+                      name="SPARE1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SPARE2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SPARE2]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SPARE2]"
+                      name="SPARE2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[OBJ$LABEL]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[OBJ$LABEL]"
+                      length="255"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[OBJ$LABEL]"
+                      name="OBJ$LABEL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SES$LABEL]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SES$LABEL]"
+                      length="255"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SES$LABEL]"
+                      name="SES$LABEL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[PRIV$USED]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[PRIV$USED]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[PRIV$USED]"
+                      name="PRIV$USED"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SESSIONCPU]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SESSIONCPU]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SESSIONCPU]"
+                      name="SESSIONCPU"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[NTIMESTAMP#]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[NTIMESTAMP#]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[NTIMESTAMP#]"
+                      name="NTIMESTAMP#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[PROXY$SID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[PROXY$SID]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[PROXY$SID]"
+                      name="PROXY$SID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[USER$GUID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[USER$GUID]"
+                      length="32"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[USER$GUID]"
+                      name="USER$GUID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[INSTANCE#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[INSTANCE#]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[INSTANCE#]"
+                      name="INSTANCE#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[PROCESS#]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[PROCESS#]"
+                      length="16"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[PROCESS#]"
+                      name="PROCESS#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[XID]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[XID]"
+                      length="8"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[XID]"
+                      name="XID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[AUDITID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[AUDITID]"
+                      length="64"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[AUDITID]"
+                      name="AUDITID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SCN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SCN]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SCN]"
+                      name="SCN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[DBID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[DBID]"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[DBID]"
+                      name="DBID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SQLBIND]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SQLBIND]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SQLBIND]"
+                      name="SQLBIND"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SQLTEXT]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SQLTEXT]"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[SQLTEXT]"
+                      name="SQLTEXT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[OBJ$EDITION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[OBJ$EDITION]"
+                      length="128"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].Columns[OBJ$EDITION]"
+                      name="OBJ$EDITION"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SESSIONID]"
+                      dataType="wstr"
+                      length="38"
+                      name="SESSIONID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[ENTRYID]"
+                      dataType="wstr"
+                      length="38"
+                      name="ENTRYID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[STATEMENT]"
+                      dataType="wstr"
+                      length="38"
+                      name="STATEMENT" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[TIMESTAMP#]"
+                      dataType="dbTimeStamp"
+                      name="TIMESTAMP#" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[USERID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="USERID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[USERHOST]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="USERHOST" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[TERMINAL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="TERMINAL" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[ACTION#]"
+                      dataType="wstr"
+                      length="38"
+                      name="ACTION#" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[RETURNCODE]"
+                      dataType="wstr"
+                      length="38"
+                      name="RETURNCODE" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[OBJ$CREATOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="OBJ$CREATOR" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[OBJ$NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="OBJ$NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[AUTH$PRIVILEGES]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="AUTH$PRIVILEGES" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[AUTH$GRANTEE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="AUTH$GRANTEE" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[NEW$OWNER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="NEW$OWNER" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[NEW$NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="NEW$NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SES$ACTIONS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="SES$ACTIONS" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SES$TID]"
+                      dataType="wstr"
+                      length="38"
+                      name="SES$TID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[LOGOFF$LREAD]"
+                      dataType="wstr"
+                      length="38"
+                      name="LOGOFF$LREAD" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[LOGOFF$PREAD]"
+                      dataType="wstr"
+                      length="38"
+                      name="LOGOFF$PREAD" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[LOGOFF$LWRITE]"
+                      dataType="wstr"
+                      length="38"
+                      name="LOGOFF$LWRITE" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[LOGOFF$DEAD]"
+                      dataType="wstr"
+                      length="38"
+                      name="LOGOFF$DEAD" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[LOGOFF$TIME]"
+                      dataType="dbTimeStamp"
+                      name="LOGOFF$TIME" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[COMMENT$TEXT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COMMENT$TEXT" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[CLIENTID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="64"
+                      name="CLIENTID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SPARE1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="SPARE1" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SPARE2]"
+                      dataType="wstr"
+                      length="38"
+                      name="SPARE2" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[OBJ$LABEL]"
+                      dataType="bytes"
+                      length="255"
+                      name="OBJ$LABEL" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SES$LABEL]"
+                      dataType="bytes"
+                      length="255"
+                      name="SES$LABEL" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[PRIV$USED]"
+                      dataType="wstr"
+                      length="38"
+                      name="PRIV$USED" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SESSIONCPU]"
+                      dataType="wstr"
+                      length="38"
+                      name="SESSIONCPU" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[NTIMESTAMP#]"
+                      dataType="dbTimeStamp"
+                      name="NTIMESTAMP#" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[PROXY$SID]"
+                      dataType="wstr"
+                      length="38"
+                      name="PROXY$SID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[USER$GUID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="32"
+                      name="USER$GUID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[INSTANCE#]"
+                      dataType="wstr"
+                      length="38"
+                      name="INSTANCE#" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[PROCESS#]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="PROCESS#" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[XID]"
+                      dataType="bytes"
+                      length="8"
+                      name="XID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[AUDITID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="64"
+                      name="AUDITID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SCN]"
+                      dataType="wstr"
+                      length="38"
+                      name="SCN" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[DBID]"
+                      dataType="wstr"
+                      length="38"
+                      name="DBID" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SQLBIND]"
+                      codePage="1252"
+                      dataType="text"
+                      name="SQLBIND" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[SQLTEXT]"
+                      codePage="1252"
+                      dataType="text"
+                      name="SQLTEXT" />
+                    <externalMetadataColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output].ExternalColumns[OBJ$EDITION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="OBJ$EDITION" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SESSIONID]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SESSIONID]"
+                      name="SESSIONID" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[ENTRYID]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[ENTRYID]"
+                      name="ENTRYID" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[STATEMENT]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[STATEMENT]"
+                      name="STATEMENT" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[TIMESTAMP#]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[TIMESTAMP#]"
+                      name="TIMESTAMP#" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[USERID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[USERID]"
+                      name="USERID" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[USERHOST]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[USERHOST]"
+                      name="USERHOST" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[TERMINAL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[TERMINAL]"
+                      name="TERMINAL" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[ACTION#]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[ACTION#]"
+                      name="ACTION#" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[RETURNCODE]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[RETURNCODE]"
+                      name="RETURNCODE" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[OBJ$CREATOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[OBJ$CREATOR]"
+                      name="OBJ$CREATOR" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[OBJ$NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[OBJ$NAME]"
+                      name="OBJ$NAME" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[AUTH$PRIVILEGES]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[AUTH$PRIVILEGES]"
+                      name="AUTH$PRIVILEGES" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[AUTH$GRANTEE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[AUTH$GRANTEE]"
+                      name="AUTH$GRANTEE" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[NEW$OWNER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[NEW$OWNER]"
+                      name="NEW$OWNER" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[NEW$NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[NEW$NAME]"
+                      name="NEW$NAME" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SES$ACTIONS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SES$ACTIONS]"
+                      name="SES$ACTIONS" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SES$TID]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SES$TID]"
+                      name="SES$TID" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[LOGOFF$LREAD]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[LOGOFF$LREAD]"
+                      name="LOGOFF$LREAD" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[LOGOFF$PREAD]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[LOGOFF$PREAD]"
+                      name="LOGOFF$PREAD" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[LOGOFF$LWRITE]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[LOGOFF$LWRITE]"
+                      name="LOGOFF$LWRITE" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[LOGOFF$DEAD]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[LOGOFF$DEAD]"
+                      name="LOGOFF$DEAD" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[LOGOFF$TIME]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[LOGOFF$TIME]"
+                      name="LOGOFF$TIME" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[COMMENT$TEXT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[COMMENT$TEXT]"
+                      name="COMMENT$TEXT" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[CLIENTID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="64"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[CLIENTID]"
+                      name="CLIENTID" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SPARE1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SPARE1]"
+                      name="SPARE1" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SPARE2]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SPARE2]"
+                      name="SPARE2" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[OBJ$LABEL]"
+                      dataType="bytes"
+                      length="255"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[OBJ$LABEL]"
+                      name="OBJ$LABEL" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SES$LABEL]"
+                      dataType="bytes"
+                      length="255"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SES$LABEL]"
+                      name="SES$LABEL" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[PRIV$USED]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[PRIV$USED]"
+                      name="PRIV$USED" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SESSIONCPU]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SESSIONCPU]"
+                      name="SESSIONCPU" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[NTIMESTAMP#]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[NTIMESTAMP#]"
+                      name="NTIMESTAMP#" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[PROXY$SID]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[PROXY$SID]"
+                      name="PROXY$SID" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[USER$GUID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="32"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[USER$GUID]"
+                      name="USER$GUID" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[INSTANCE#]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[INSTANCE#]"
+                      name="INSTANCE#" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[PROCESS#]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[PROCESS#]"
+                      name="PROCESS#" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[XID]"
+                      dataType="bytes"
+                      length="8"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[XID]"
+                      name="XID" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[AUDITID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="64"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[AUDITID]"
+                      name="AUDITID" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SCN]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SCN]"
+                      name="SCN" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[DBID]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[DBID]"
+                      name="DBID" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SQLBIND]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SQLBIND]"
+                      name="SQLBIND" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SQLTEXT]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[SQLTEXT]"
+                      name="SQLTEXT" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[OBJ$EDITION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[OBJ$EDITION]"
+                      name="OBJ$EDITION" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import AUD$.Paths[OLE DB Source Output]"
+              endId="Package\Import AUD$\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import AUD$\Source - AUD$.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Import AUD$"
+          TopLeft="52.7358490566038,51.641509433962" />
+        <AnnotationLayout
+          Text="FISQA1&#xD;&#xA;969"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="67,53"
+          Id="f69f64bb-a638-492c-b1c0-f41c8333fe7c"
+          TopLeft="245,64" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Import AUD$">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Import AUD$\Source - AUD$"
+          TopLeft="44.5,8.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Import AUD$\OLE DB Destination"
+          TopLeft="28,135" />
+        <EdgeLayout
+          Id="Package\Import AUD$.Paths[OLE DB Source Output]"
+          TopLeft="117,50.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84.5"
+              Start="0,0"
+              End="0,77">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import AUD$\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import AUD$\Source - AUD$">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

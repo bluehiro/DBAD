@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectInfo>
+    <Name>RIS_Study_Opps</Name>
+    <LastWriteTime>2015-02-09T18:44:43.2975569Z</LastWriteTime>
+    <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+    <Salt>siff0bVc</Salt>
+    <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjx6EMWaHZUOKxhKdds+7cQAAAAACAAAAAAADZgAAwAAAABAAAAC/BFJ/GvvSnVK+1mL+OXrBAAAAAASAAACgAAAAEAAAAJk3ro043lqxAlMcfp8wtKMoAAAAlc3f8xiJElvLsgEpzyRUfvMMqaLojbXmU4Hmk6N1NpS3s955VdwUZRQAAACYnX6/JVI01iQwviHPH8dT7sNeeQ==</LastKnownProtectedHashedPassword>
+  </ProjectInfo>
+  <LastBuildInfos>
+    <ProjectBuildItemInfo>
+      <Name>PPDW_Load_RIS_Study_Opps.dtsx</Name>
+      <LastWriteTime>2015-02-09T18:44:43.2663641Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+      <Salt>geAl/3gb</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjx6EMWaHZUOKxhKdds+7cQAAAAACAAAAAAADZgAAwAAAABAAAACEE9x1FkEoGpFI84ePUk6KAAAAAASAAACgAAAAEAAAAKuVFXj25guOvpMjmhKC+sUoAAAAHruGKqDmthakwD1prqDHjWUsBSLjVRhpdxM6gPn2I2bke4D+acBq9hQAAABjJr5v3f6tWPC8EUGlWSCrIiYUgQ==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+  </LastBuildInfos>
+</BuildLog>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectInfo>
+    <Name>DBA_DBITS_Sync</Name>
+    <LastWriteTime>2016-02-01T17:14:41.086237Z</LastWriteTime>
+    <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+    <Salt>TCSgfqgX</Salt>
+    <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAF6hEl1hcK0CrGHljTrz17gAAAAACAAAAAAADZgAAwAAAABAAAAAqXFv1al/9rPKMxReiuCYLAAAAAASAAACgAAAAEAAAAGpHCAiDr32G5AWvfouYT5coAAAAR4ZUyDvxaI7g2/BNwVr8ruMf1ipguN2hqcwIErX12pgMil0P2guKVhQAAABux/Zb4cNnNMYni6TtDQsBuDVhbw==</LastKnownProtectedHashedPassword>
+  </ProjectInfo>
+  <LastBuildInfos>
+    <ProjectBuildItemInfo>
+      <Name>DBA_DBITS_Sync_Contacts.dtsx</Name>
+      <LastWriteTime>2016-02-01T17:13:28.805237Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+      <Salt>Na0/vvke</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAF6hEl1hcK0CrGHljTrz17gAAAAACAAAAAAADZgAAwAAAABAAAACsQfqlsF38InZFnEkqkF5jAAAAAASAAACgAAAAEAAAAF6nT/4UtoC9aXCHdsA7xZ0oAAAAtxOm1K7KEOkM722JVdyMA3WC9lj2LmR+hYHxPARZhnL4H7XkXMBCihQAAABC9QHNvZjTW1OvLYl27+6rka4Dqw==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DBA_DBITS_Sync_Server.dtsx</Name>
+      <LastWriteTime>2016-02-01T17:14:27.754237Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+      <Salt>7J7DcOYS</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAF6hEl1hcK0CrGHljTrz17gAAAAACAAAAAAADZgAAwAAAABAAAABXwW42IfWk3FW8HEZ9NwkzAAAAAASAAACgAAAAEAAAAGhO5rFVZ8PBkgK0Zvbynb8oAAAA6Ct5a+Mde562eDyERzRHLekNYT0QXeYBLeN8ZQBNaBdZZoD+cuyucBQAAAAVeKOY50JRK7lUHL8fGOjCelyqRw==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DBA_DBITS_Sync_Databases.dtsx</Name>
+      <LastWriteTime>2016-02-01T17:12:18.371237Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+      <Salt>+bes/0gd</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAF6hEl1hcK0CrGHljTrz17gAAAAACAAAAAAADZgAAwAAAABAAAAAWMs6X1jrilJ+qnv6b34CFAAAAAASAAACgAAAAEAAAAFs3Yk2+Eap9jTBq4W28NUooAAAATomaxf5dQqsm3gwPMuP7CTbidbTBtKYIE35TEkiA1953d/QWfQjMZBQAAABVPmzDRBRNwMr5q7BcNZGh7NKjEg==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+  </LastBuildInfos>
+</BuildLog>

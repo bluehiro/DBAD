@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectInfo>
+    <Name>Tamtron_2_Octri_TEST</Name>
+    <LastWriteTime>2015-07-10T19:05:59.9499634Z</LastWriteTime>
+    <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+    <Salt>mRz1JhFD</Salt>
+    <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsaG64Hc990S8wRdP8kGj4AAAAAACAAAAAAADZgAAwAAAABAAAAB+xAjiIBW3j3DDvX+JuoAsAAAAAASAAACgAAAAEAAAAEfz4jC0Di682pa0sG19+NQoAAAASuYK/D2jR4QDvxnE76B9h3rsQ8OERg3HYq7mSnfc3MHmI9APc5bTmRQAAADyg/G9z+ou1yBxBal0FjkrVk2KiA==</LastKnownProtectedHashedPassword>
+  </ProjectInfo>
+  <LastBuildInfos>
+    <ProjectBuildItemInfo>
+      <Name>OCTRI_Test.dtsx</Name>
+      <LastWriteTime>2015-07-10T19:07:43.3909634Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+      <Salt>lLQmzULC</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsaG64Hc990S8wRdP8kGj4AAAAAACAAAAAAADZgAAwAAAABAAAACrf7GTrwsixt9rBXMdrW0ZAAAAAASAAACgAAAAEAAAAERARagocooYG6hPHn6TuzwoAAAAJefSCCYGr32WxRU0X24b2NCGKXVzFAXh+MEopRScBpCy8FgZ3v4jIRQAAAAd1tWmtvbK9XSxup/GTHGRb/Ukcw==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+  </LastBuildInfos>
+</BuildLog>

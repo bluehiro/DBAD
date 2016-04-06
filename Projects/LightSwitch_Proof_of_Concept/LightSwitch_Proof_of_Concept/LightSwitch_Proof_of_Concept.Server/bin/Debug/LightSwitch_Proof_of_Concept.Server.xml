@@ -1,0 +1,494 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Application.Server
+</name>
+</assembly>
+<members>
+<member name="M:LightSwitchApplication.DataWorkspace.#ctor">
+	<summary>
+ Initializes a new instance of a DataWorkspace.  Changes can be made to data sources in the new instance independent of changes made to data sources in the default DataWorkspace.
+ </summary>
+</member><member name="P:LightSwitchApplication.DataWorkspace.NeuroPatData">
+	<summary>
+ Gets the NeuroPatData datasource.  This provides members to query and update data in the data source.
+ </summary>
+</member><member name="M:LightSwitchApplication.NeuroPatData.#ctor">
+	<summary>
+ This constructor is used for the internal LightSwitch framework. Use DataWorkspace instead.
+ </summary>
+</member><member name="P:LightSwitchApplication.NeuroPatData.Patient_Mains">
+	<summary>
+ Gets the Patient_Mains entity set.  The entity set provides members to access entities of a specific type.
+ </summary>
+</member><member name="M:LightSwitchApplication.NeuroPatData.Patient_Mains_Single(System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+	<summary>
+ Returns the entity whose identity is specified by the parameter(s).
+ </summary>
+	<param name="Discharged">
+ The value of the 'Discharged' key property of the entity to retrieve.
+ </param>
+	<param name="Complication">
+ The value of the 'Complication' key property of the entity to retrieve.
+ </param>
+	<param name="M___M">
+ The value of the 'M___M' key property of the entity to retrieve.
+ </param>
+	<param name="TBI">
+ The value of the 'TBI' key property of the entity to retrieve.
+ </param>
+	<param name="TBI_f_u_complete">
+ The value of the 'TBI_f_u_complete' key property of the entity to retrieve.
+ </param>
+	<param name="Preferred_1">
+ The value of the 'Preferred_1' key property of the entity to retrieve.
+ </param>
+	<param name="Preferred_2">
+ The value of the 'Preferred_2' key property of the entity to retrieve.
+ </param>
+	<param name="Preferred_3">
+ The value of the 'Preferred_3' key property of the entity to retrieve.
+ </param>
+	<param name="PCP_f_u_done">
+ The value of the 'PCP_f_u_done' key property of the entity to retrieve.
+ </param>
+</member><member name="M:LightSwitchApplication.NeuroPatData.Patient_Mains_SingleOrDefault(System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+	<summary>
+ Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists.
+ </summary>
+	<param name="Discharged">
+ The value of the 'Discharged' key property of the entity to retrieve.
+ </param>
+	<param name="Complication">
+ The value of the 'Complication' key property of the entity to retrieve.
+ </param>
+	<param name="M___M">
+ The value of the 'M___M' key property of the entity to retrieve.
+ </param>
+	<param name="TBI">
+ The value of the 'TBI' key property of the entity to retrieve.
+ </param>
+	<param name="TBI_f_u_complete">
+ The value of the 'TBI_f_u_complete' key property of the entity to retrieve.
+ </param>
+	<param name="Preferred_1">
+ The value of the 'Preferred_1' key property of the entity to retrieve.
+ </param>
+	<param name="Preferred_2">
+ The value of the 'Preferred_2' key property of the entity to retrieve.
+ </param>
+	<param name="Preferred_3">
+ The value of the 'Preferred_3' key property of the entity to retrieve.
+ </param>
+	<param name="PCP_f_u_done">
+ The value of the 'PCP_f_u_done' key property of the entity to retrieve.
+ </param>
+</member><member name="T:LightSwitchApplication.NeuroPatData">
+	<summary>
+ Provides members to query and update data in the NeuroPatData datasource.
+ </summary>
+</member><member name="M:LightSwitchApplication.Implementation.NeuroPatData.#ctor">
+	<summary>
+ Initializes a new NeuroPatData object using the connection string found in the 'NeuroPatData' section of the application configuration file.
+ </summary>
+</member><member name="M:LightSwitchApplication.Implementation.NeuroPatData.#ctor(System.String)">
+	<summary>
+ Initialize a new NeuroPatData object.
+ </summary>
+</member><member name="M:LightSwitchApplication.Implementation.NeuroPatData.#ctor(System.Data.EntityClient.EntityConnection)">
+	<summary>
+ Initialize a new NeuroPatData object.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.NeuroPatData.Patient_Mains">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="M:LightSwitchApplication.Implementation.NeuroPatData.AddToPatient_Mains(LightSwitchApplication.Implementation.Patient_Main)">
+	<summary>
+ Deprecated Method for adding a new object to the Patient_Mains EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+ </summary>
+</member><member name="T:LightSwitchApplication.Implementation.NeuroPatData">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="M:LightSwitchApplication.Implementation.Patient_Main.CreatePatient_Main(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+	<summary>
+ Create a new Patient_Main object.
+ </summary>
+	<param name="discharged">Initial value of the Discharged property.</param>
+	<param name="complication">Initial value of the Complication property.</param>
+	<param name="m___M">Initial value of the M___M property.</param>
+	<param name="tBI">Initial value of the TBI property.</param>
+	<param name="tBI_f_u_complete">Initial value of the TBI_f_u_complete property.</param>
+	<param name="preferred_1">Initial value of the Preferred_1 property.</param>
+	<param name="preferred_2">Initial value of the Preferred_2 property.</param>
+	<param name="preferred_3">Initial value of the Preferred_3 property.</param>
+	<param name="pCP_f_u_done">Initial value of the PCP_f_u_done property.</param>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.ID1">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Last_Name">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.First_Name">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.MR">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Age">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Admit_Date">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Floor">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Bed">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Staff">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Op_Res">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Op_Res_2">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Consult_Inpatient">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Diagnosis">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Procedures">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Note">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Discharged">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Discharge_Date">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Complication">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Complication__1">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Complication__2">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Complication_Description">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Research_Pt">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.M___M">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Status">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.FT">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.TBI">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.TBI_f_u_complete">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.PCP">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Address_line__1">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Address_line__2">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Address_line__3">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Preferred_1">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.E_mail">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Preferred_2">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Tel">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Preferred_3">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.Referring_Phys">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.BC_notes">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.KJB_notes">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LightSwitchApplication.Implementation.Patient_Main.PCP_f_u_done">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="T:LightSwitchApplication.Implementation.Patient_Main">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="M:LightSwitchApplication.Patient_Main.#ctor">
+	<summary>
+ Initializes a new instance of the Patient_Main entity.
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Application">
+	<summary>
+ Gets the Application object for this application.  The Application object provides access to active screens, methods to open screens and access to the current user.
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.DataWorkspace">
+	<summary>
+ Gets the containing data workspace.  The data workspace provides access to all data sources in the application.
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.ID1">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Last_Name">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.First_Name">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.MR">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Age">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Admit_Date">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Floor">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Bed">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Staff">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Op_Res">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Op_Res_2">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Consult_Inpatient">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Diagnosis">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Procedures">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Note">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Discharged">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Discharge_Date">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Complication">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Complication__1">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Complication__2">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Complication_Description">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Research_Pt">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.M___M">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Status">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.FT">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.TBI">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.TBI_f_u_complete">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.PCP">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Address_line__1">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Address_line__2">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Address_line__3">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Preferred_1">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.E_mail">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Preferred_2">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Tel">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Preferred_3">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.Referring_Phys">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.BC_notes">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.KJB_notes">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.Patient_Main.PCP_f_u_done">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="T:LightSwitchApplication.Patient_Main">
+	<summary>
+ No Modeled Description Available
+ </summary>
+</member><member name="P:LightSwitchApplication.NeuroPatDataService.Application">
+	<summary>
+ Gets the Application object for this application.  The Application object provides access to active screens, methods to open screens and access to the current user.
+ </summary>
+</member><member name="P:LightSwitchApplication.NeuroPatDataService.DataWorkspace">
+	<summary>
+ Gets the containing data workspace.  The data workspace provides access to all data sources in the application.
+ </summary>
+</member><member name="T:LightSwitchApplication.NeuroPatDataService">
+	<summary>
+ Provides members to query and update data in the NeuroPatData datasource.
+ </summary>
+</member><member name="F:LightSwitchApplication.Permissions.SecurityAdministration">
+	<summary>
+ Provides the ability to manage security for the application.
+ </summary>
+</member><member name="P:LightSwitchApplication.Permissions.AllPermissions">
+	<summary>
+ Gets all permissions defined for the application.  This includes system and user-defined permissions.
+ </summary>
+</member><member name="T:LightSwitchApplication.Permissions">
+	<summary>
+ Defines the names of the application permissions.
+ </summary>
+</member>
+</members>
+</doc>

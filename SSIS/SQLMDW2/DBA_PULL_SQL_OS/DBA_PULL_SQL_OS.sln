@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SQL_OS_Collection", "DBA_PULL_SQL_OS\SQL_OS_Collection.dtproj", "{588DB7E2-557E-4CF2-BBCE-2A638E0D3D8A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{588DB7E2-557E-4CF2-BBCE-2A638E0D3D8A}.Development|Default.ActiveCfg = Development
+		{588DB7E2-557E-4CF2-BBCE-2A638E0D3D8A}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

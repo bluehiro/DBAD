@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ModelDocumentManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Documents>
+    <Document FullPath="E:\repo\DBAD\Projects\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept.HTMLClient\Properties\Client.lsml" Checksum="847B86CEDB0C48578E930830FDA59D61C574CB84775162A142E3C27806F50CCC" />
+    <Document FullPath="E:\repo\DBAD\Projects\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept.HTMLClient\Properties\Proxies.lsml" Checksum="10CE7BFA477E579F25094BB0E5AD33139F14ACBDF4F35BFC60F60E8BE8DE28C9" />
+    <Document FullPath="E:\repo\DBAD\Projects\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept.HTMLClient\Screens\AddEditPatient_Main.lsml" Checksum="C4BC931A4AE51DCD0A1EA506AD1FAD9FF84A4AF5CE151FFF7F906260E9A37861" />
+  </Documents>
+</ModelDocumentManifest>

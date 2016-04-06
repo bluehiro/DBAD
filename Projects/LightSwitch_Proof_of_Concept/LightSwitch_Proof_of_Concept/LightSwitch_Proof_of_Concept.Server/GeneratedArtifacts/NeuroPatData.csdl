@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Namespace="LightSwitchApplication" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="Patient_Main">
+    <Key>
+      <PropertyRef Name="Discharged" />
+      <PropertyRef Name="Complication" />
+      <PropertyRef Name="M___M" />
+      <PropertyRef Name="TBI" />
+      <PropertyRef Name="TBI_f_u_complete" />
+      <PropertyRef Name="Preferred_1" />
+      <PropertyRef Name="Preferred_2" />
+      <PropertyRef Name="Preferred_3" />
+      <PropertyRef Name="PCP_f_u_done" />
+    </Key>
+    <Property Name="ID1" Type="Edm.Int32" ConcurrencyMode="Fixed" />
+    <Property Name="Last_Name" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="First_Name" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="MR" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Age" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Admit_Date" Type="Edm.DateTime" Precision="0" ConcurrencyMode="Fixed" />
+    <Property Name="Floor" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Bed" Type="Edm.Int32" ConcurrencyMode="Fixed" />
+    <Property Name="Staff" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Op_Res" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Op_Res_2" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Consult_Inpatient" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Diagnosis" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Procedures" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Note" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Discharged" Type="Edm.Boolean" Nullable="false" />
+    <Property Name="Discharge_Date" Type="Edm.DateTime" Precision="0" ConcurrencyMode="Fixed" />
+    <Property Name="Complication" Type="Edm.Boolean" Nullable="false" />
+    <Property Name="Complication__1" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Complication__2" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Complication_Description" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Research_Pt" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="M___M" Type="Edm.Boolean" Nullable="false" />
+    <Property Name="Status" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="FT" Type="Edm.Int32" ConcurrencyMode="Fixed" />
+    <Property Name="TBI" Type="Edm.Boolean" Nullable="false" />
+    <Property Name="TBI_f_u_complete" Type="Edm.Boolean" Nullable="false" />
+    <Property Name="PCP" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Address_line__1" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Address_line__2" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Address_line__3" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Preferred_1" Type="Edm.Boolean" Nullable="false" />
+    <Property Name="E_mail" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Preferred_2" Type="Edm.Boolean" Nullable="false" />
+    <Property Name="Tel" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Preferred_3" Type="Edm.Boolean" Nullable="false" />
+    <Property Name="Referring_Phys" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="BC_notes" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="KJB_notes" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="PCP_f_u_done" Type="Edm.Boolean" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="NeuroPatData" m:IsDefaultEntityContainer="true">
+    <EntitySet Name="Patient_Mains" EntityType="LightSwitchApplication.Patient_Main" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,900 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/25/2014 1:39:13 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="MSBC477W7"
+  DTS:CreatorName="OHSUM01\jamesv"
+  DTS:DTSID="{2EE592F0-4433-43B0-AA62-0C82C332900E}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="DBA_DBITS_Mon_Sync_Servers"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{B479705D-83BB-4B0F-95FC-CE03989B895D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[dbad03.DBITS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BEF99A35-7FD1-4EB2-BB10-810881EBFD73}"
+      DTS:ObjectName="dbad03.DBITS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=dbad03;Initial Catalog=DBITS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DBAD03.DBITS_mon]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A59410A2-3028-4204-8584-2645CF17E2F0}"
+      DTS:ObjectName="DBAD03.DBITS_mon">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DBAD03;Initial Catalog=DBITS_mon;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MILCZUK_DEV.OHSUM01\jamesv]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{452F62DA-EF59-4A07-B21D-16752D14BA04}"
+      DTS:ObjectName="MILCZUK_DEV.OHSUM01\jamesv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="uid=OHSUM01\jamesv;Dsn=MILCZUK_DEV;">
+          <DTS:Password
+            DTS:Name="pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA24/SZIe8Hk6zaNZqbE2GFwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC7MKJ6nVy+z2niXxvHO67LAAAAAASAAACgAAAAEAAAAJ3v8tpkXjsnK4Kn+MVPBccYAAAAzEFWJC931plAAZKhye0SqGVCy0IxDKMuFAAAAGrNJjey2GGkEfWpymmz3PtignJ0</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQL2012PHIDEV1.Milczuk_CLP_VPI]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{39F3C459-AD4F-4BFB-9685-23C04590F5FC}"
+      DTS:ObjectName="SQL2012PHIDEV1.Milczuk_CLP_VPI">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQL2012PHIDEV1;Initial Catalog=Milczuk_CLP_VPI;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQLMDW2.DBA_Rep]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{64E19F43-F03A-4A97-A203-152BFC852159}"
+      DTS:ObjectName="SQLMDW2.DBA_Rep">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQLMDW2;Initial Catalog=DBA_Rep;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{25CA6D6E-66BB-4574-99BC-258A5DFF643D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceRows">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\1 - Check DBITS Table(s) &amp; Connection"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{4A8D94E3-43AB-4599-87E0-1D76CB0250E2}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="1 - Check DBITS Table(s) &amp; Connection"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A59410A2-3028-4204-8584-2645CF17E2F0}"
+          SQLTask:SqlStatementSource="SELECT TOP 1 CASE WHEN COUNT(*) &gt; 0 THEN 1 ELSE 0 END AS SourceRows  FROM [DBITS_Mon].[dbo].[servers] s"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="SourceRows"
+            SQLTask:DtsVariableName="User::SourceRows" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\2a - Truncate DBITS_mon Servers Table"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A7E1F046-06A3-4FEB-831E-FA85B996FCC7}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="2a - Truncate DBITS_mon Servers Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{64E19F43-F03A-4A97-A203-152BFC852159}"
+          SQLTask:SqlStatementSource="USE DBA_Rep&#xA;DECLARE @DBITSmon TINYINT = (SELECT TOP 1 CASE WHEN COUNT(*) &gt; 0 THEN 1 ELSE 0 END FROM DBA_Rep.dbo.DBITS_mon_Servers)&#xA;IF @DBITSmon = 0&#xA;BEGIN&#xA;&#x9;PRINT 'DBA_Rep.dbo.DBITS_mon_Servers is empty, no action taken'&#xA;END&#x9;&#xA;IF @DBITSmon &gt; 0&#xA;BEGIN&#xA;&#x9;TRUNCATE TABLE DBA_Rep.dbo.DBITS_mon_Servers&#xA;&#x9;PRINT 'Truncating DBA_Rep.dbo.DBITS_mon_Servers'&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{738AF29F-8104-465F-8D10-37AE5413274B}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DBITS_mon_Servers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SQLMDW2.DBA_Rep]"
+                  connectionManagerRefId="Package.ConnectionManagers[SQLMDW2.DBA_Rep]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ServerName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="ServerName"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServerName]"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerName]" />
+                    <inputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ServerLive]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="ServerLive"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServerLive]"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerLive]" />
+                    <inputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ServerGroup]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="ServerGroup"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServerGroup]"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerGroup]" />
+                    <inputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ServerDBType]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ServerDBType"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServerDBType]"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerDBType]" />
+                    <inputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Dbits_id]"
+                      cachedDataType="i4"
+                      cachedName="Dbits_id"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dbits_id]"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[Dbits_id]" />
+                    <inputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ServerComment]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="ServerComment"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServerComment]"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerComment]" />
+                    <inputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[port]"
+                      cachedDataType="i4"
+                      cachedName="port"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[port]"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[port]" />
+                    <inputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ver]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="Ver"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ver]"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ver]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServerName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="ServerName" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServerLive]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ServerLive" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServerGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="ServerGroup" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServerDBType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ServerDBType" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dbits_id]"
+                      dataType="i4"
+                      name="Dbits_id" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServerComment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="ServerComment" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[port]"
+                      dataType="i4"
+                      name="port" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ver]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Ver" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Servers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	s.server_id,
+		s.server_name,
+		s.server_location,
+		s.ip_address,
+		s.server_description,
+		s.flag,
+		s.server_status,
+		s.server_os,
+		s.date_added,
+		s.date_removed,
+		s.date_updated,
+		s.last_update_by,
+		s.newdbreq,
+		s.usage,
+		s.domain,
+		s.main_db_type,
+		s.sm_ticket
+  FROM [DBITS].[dbo].[server] s</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DBAD03.DBITS_mon]"
+                  connectionManagerRefId="Package.ConnectionManagers[DBAD03.DBITS_mon]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServerName]"
+                      length="128"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerName]"
+                      name="ServerName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerLive]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServerLive]"
+                      length="1"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerLive]"
+                      name="ServerLive"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServerGroup]"
+                      length="25"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerGroup]"
+                      name="ServerGroup"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerDBType]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServerDBType]"
+                      length="50"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerDBType]"
+                      name="ServerDBType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[Dbits_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Dbits_id]"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[Dbits_id]"
+                      name="Dbits_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerComment]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServerComment]"
+                      length="250"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServerComment]"
+                      name="ServerComment"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[port]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[port]"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[port]"
+                      name="port"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ver]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ver]"
+                      length="3"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ver]"
+                      name="Ver"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServerName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="ServerName" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServerLive]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ServerLive" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServerGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="ServerGroup" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServerDBType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ServerDBType" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Dbits_id]"
+                      dataType="i4"
+                      name="Dbits_id" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServerComment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="ServerComment" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[port]"
+                      dataType="i4"
+                      name="port" />
+                    <externalMetadataColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ver]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Ver" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServerName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServerName]"
+                      name="ServerName" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServerLive]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServerLive]"
+                      name="ServerLive" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServerGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServerGroup]"
+                      name="ServerGroup" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServerDBType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServerDBType]"
+                      name="ServerDBType" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Dbits_id]"
+                      dataType="i4"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Dbits_id]"
+                      name="Dbits_id" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServerComment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServerComment]"
+                      name="ServerComment" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[port]"
+                      dataType="i4"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[port]"
+                      name="port" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ver]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ver]"
+                      name="Ver" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2.Paths[OLE DB Source Output]"
+              endId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\3 - Log to SSIS_Job_History"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5D28E7DD-0C6F-40E4-865E-634F06C2E87A}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="3 - Log to SSIS_Job_History"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{64E19F43-F03A-4A97-A203-152BFC852159}"
+          SQLTask:SqlStatementSource="INSERT INTO [dbo].[SSIS_Job_History]&#xA;           ([machinename]&#xA;           ,[packagename]&#xA;           ,[username]&#xA;           ,[packagestartdate]&#xA;           ,[retrievedate])&#xA;     VALUES&#xA;           ( ? ,&#xA;            ?, &#xA;            ?, &#xA;            GETDATE() ,&#xA;            GETDATE() &#xA;           )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::MachineName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4BCB1842-CD66-4C11-A626-AC37EF8E4D5C}"
+      DTS:From="Package\2a - Truncate DBITS_mon Servers Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D0B80E1A-ADD5-4925-9FD4-EE4E0FE64AA5}"
+      DTS:EvalOp="3"
+      DTS:Expression="@SourceRows = 1"
+      DTS:From="Package\1 - Check DBITS Table(s) &amp; Connection"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\2a - Truncate DBITS_mon Servers Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{FEE2D633-2861-40E9-951C-526D5421EAF4}"
+      DTS:From="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\3 - Log to SSIS_Job_History" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="267,42"
+          Id="Package\1 - Check DBITS Table(s) &amp; Connection"
+          TopLeft="102,55" />
+        <NodeLayout
+          Size="272,42"
+          Id="Package\2a - Truncate DBITS_mon Servers Table"
+          TopLeft="94,152" />
+        <NodeLayout
+          Size="382,42"
+          Id="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2"
+          TopLeft="37,229" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\3 - Log to SSIS_Job_History"
+          TopLeft="126,325" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="229,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="232.75,97">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,15.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="230.25,271">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source"
+          TopLeft="10.5,139.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination"
+          TopLeft="4.5,262.5" />
+        <EdgeLayout
+          Id="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2.Paths[OLE DB Source Output]"
+          TopLeft="88.75,181.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81"
+              Start="0,0"
+              End="0,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\2b - Sync DBITS_mon servers table from DBAD03 to SQLMDW2\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

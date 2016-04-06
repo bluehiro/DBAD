@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Oncolog to OCTRI", "Oncolog to OCTRI\Oncolog to OCTRI.dtproj", "{A9AFE9E6-8E15-47C3-8B3F-3B76674D198E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9AFE9E6-8E15-47C3-8B3F-3B76674D198E}.Development|Default.ActiveCfg = Development
+		{A9AFE9E6-8E15-47C3-8B3F-3B76674D198E}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

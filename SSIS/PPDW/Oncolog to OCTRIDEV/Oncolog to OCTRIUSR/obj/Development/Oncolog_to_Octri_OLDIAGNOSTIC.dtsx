@@ -1,0 +1,2255 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/7/2015 11:31:31 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="MSBC477W7"
+  DTS:CreatorName="OHSUM01\jamesv"
+  DTS:DTSID="{EA3E437B-3A9F-4D54-BF62-E8FF3003C393}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Oncolog_to_Octri_OLDIAGNOSTIC"
+  DTS:PackageType="5"
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{B7750D37-DFC1-4A83-8D30-48267694AB43}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load OLDIAGNOSTIC_STG"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7A6BE03E-5F03-4CB0-AF78-D170C72A8ACB}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load OLDIAGNOSTIC_STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion"
+              componentClassID="{62B1106C-7DB8-4EC8-ADD6-4C664DFFC54A}"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Inputs[Data Conversion Input].Columns[PersonSer]"
+                      cachedDataType="i4"
+                      cachedName="PersonSer"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[PersonSer]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Inputs[Data Conversion Input].Columns[DiagnosticSer]"
+                      cachedDataType="i4"
+                      cachedName="DiagnosticSer"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiagnosticSer]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Inputs[Data Conversion Input].Columns[AgeAtDiagnosisYears]"
+                      cachedDataType="i4"
+                      cachedName="AgeAtDiagnosisYears"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[AgeAtDiagnosisYears]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Inputs[Data Conversion Input].Columns[TumorSize]"
+                      cachedDataType="i4"
+                      cachedName="TumorSize"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[TumorSize]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PersonSer]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PersonSer]"
+                      name="Copy of PersonSer"
+                      precision="38"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[PersonSer]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DiagnosticSer]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DiagnosticSer]"
+                      name="Copy of DiagnosticSer"
+                      precision="38"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiagnosticSer]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of AgeAtDiagnosisYears]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of AgeAtDiagnosisYears]"
+                      name="Copy of AgeAtDiagnosisYears"
+                      precision="38"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[AgeAtDiagnosisYears]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TumorSize]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TumorSize]"
+                      name="Copy of TumorSize"
+                      precision="38"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[TumorSize]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+	PersonSer,
+	DiagnosticSer,
+	NClassClin,
+	MClassClin,
+	TClassClin,
+	StageGroupingClin,
+	TClassPath,
+	NClassPath,
+	MClassPath,
+	StageGroupingPath,
+	ICDOSiteCode,
+	ICDOHistoCode,
+	GradeOrDiff,
+	AgeAtDiagnosisYears,
+	TumorSize,
+	CoCComorbidities1,
+	CoCComorbidities2,
+	CoCComorbidities3,
+	CoCComorbidities4,
+	CoCComorbidities5,
+	CoCComorbidities6,
+	BreastBxProc,
+	BreastGuidance,
+	BreastPalpOfPrime,
+	BreastFirstDetect,
+	ProstateBxProc,
+	ProstateGuidance,
+	ProstateApproach,
+	ProstateBxOther,
+	CONVERT(VARCHAR(20), dateinitialdiagnosis, 103) AS dateinitialdiagnosis,
+	CONVERT(VARCHAR(20), lastfollowupdate, 103) AS lastfollowupdate,
+	StageSeerSystem,
+	LastCancerStatus,
+	CONVERT(VARCHAR(20), hstrydatetime, 103) AS hstrydatetime,
+	PrefixSuffixPath,
+GETDATE() AS CREATE_DT
+FROM OlDiagnostic
+WHERE PersonSer IN (SELECT
+	PersonSer
+FROM OlPatientFacility
+WHERE Facility = 4444)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{3C733916-5460-46AC-A3B0-AC61FD62BBB7}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ONCOLOGTESTDB,1344.oncologtest]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[hstrydatetime]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hstrydatetime]"
+                      length="20"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[hstrydatetime]"
+                      name="hstrydatetime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[PersonSer]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PersonSer]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[PersonSer]"
+                      name="PersonSer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiagnosticSer]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiagnosticSer]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiagnosticSer]"
+                      name="DiagnosticSer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[NClassClin]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NClassClin]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[NClassClin]"
+                      name="NClassClin"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[MClassClin]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MClassClin]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[MClassClin]"
+                      name="MClassClin"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[TClassClin]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TClassClin]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[TClassClin]"
+                      name="TClassClin"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[StageGroupingClin]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StageGroupingClin]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[StageGroupingClin]"
+                      name="StageGroupingClin"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[TClassPath]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TClassPath]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[TClassPath]"
+                      name="TClassPath"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[NClassPath]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NClassPath]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[NClassPath]"
+                      name="NClassPath"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[MClassPath]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MClassPath]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[MClassPath]"
+                      name="MClassPath"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[StageGroupingPath]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StageGroupingPath]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[StageGroupingPath]"
+                      name="StageGroupingPath"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ICDOSiteCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ICDOSiteCode]"
+                      length="5"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ICDOSiteCode]"
+                      name="ICDOSiteCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ICDOHistoCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ICDOHistoCode]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ICDOHistoCode]"
+                      name="ICDOHistoCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[GradeOrDiff]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[GradeOrDiff]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[GradeOrDiff]"
+                      name="GradeOrDiff"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[AgeAtDiagnosisYears]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AgeAtDiagnosisYears]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[AgeAtDiagnosisYears]"
+                      name="AgeAtDiagnosisYears"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[TumorSize]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TumorSize]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[TumorSize]"
+                      name="TumorSize"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CoCComorbidities1]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities1]"
+                      name="CoCComorbidities1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CoCComorbidities2]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities2]"
+                      name="CoCComorbidities2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities3]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CoCComorbidities3]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities3]"
+                      name="CoCComorbidities3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities4]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CoCComorbidities4]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities4]"
+                      name="CoCComorbidities4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities5]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CoCComorbidities5]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities5]"
+                      name="CoCComorbidities5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities6]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CoCComorbidities6]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities6]"
+                      name="CoCComorbidities6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[BreastBxProc]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BreastBxProc]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[BreastBxProc]"
+                      name="BreastBxProc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[BreastGuidance]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BreastGuidance]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[BreastGuidance]"
+                      name="BreastGuidance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[BreastPalpOfPrime]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BreastPalpOfPrime]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[BreastPalpOfPrime]"
+                      name="BreastPalpOfPrime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[BreastFirstDetect]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BreastFirstDetect]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[BreastFirstDetect]"
+                      name="BreastFirstDetect"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProstateBxProc]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProstateBxProc]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProstateBxProc]"
+                      name="ProstateBxProc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProstateGuidance]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProstateGuidance]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProstateGuidance]"
+                      name="ProstateGuidance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProstateApproach]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProstateApproach]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProstateApproach]"
+                      name="ProstateApproach"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProstateBxOther]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProstateBxOther]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProstateBxOther]"
+                      name="ProstateBxOther"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[dateinitialdiagnosis]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[dateinitialdiagnosis]"
+                      length="20"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[dateinitialdiagnosis]"
+                      name="dateinitialdiagnosis"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[lastfollowupdate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[lastfollowupdate]"
+                      length="20"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[lastfollowupdate]"
+                      name="lastfollowupdate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[StageSeerSystem]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StageSeerSystem]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[StageSeerSystem]"
+                      name="StageSeerSystem"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastCancerStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LastCancerStatus]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastCancerStatus]"
+                      name="LastCancerStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrefixSuffixPath]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrefixSuffixPath]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrefixSuffixPath]"
+                      name="PrefixSuffixPath"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CREATE_DT]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CREATE_DT]"
+                      name="CREATE_DT"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hstrydatetime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="hstrydatetime" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PersonSer]"
+                      dataType="i4"
+                      name="PersonSer" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiagnosticSer]"
+                      dataType="i4"
+                      name="DiagnosticSer" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NClassClin]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="NClassClin" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MClassClin]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="MClassClin" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TClassClin]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="TClassClin" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StageGroupingClin]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="StageGroupingClin" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TClassPath]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="TClassPath" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NClassPath]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="NClassPath" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MClassPath]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="MClassPath" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StageGroupingPath]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="StageGroupingPath" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ICDOSiteCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="ICDOSiteCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ICDOHistoCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="ICDOHistoCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[GradeOrDiff]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="GradeOrDiff" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AgeAtDiagnosisYears]"
+                      dataType="i4"
+                      name="AgeAtDiagnosisYears" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TumorSize]"
+                      dataType="i4"
+                      name="TumorSize" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CoCComorbidities1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="CoCComorbidities1" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CoCComorbidities2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="CoCComorbidities2" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CoCComorbidities3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="CoCComorbidities3" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CoCComorbidities4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="CoCComorbidities4" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CoCComorbidities5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="CoCComorbidities5" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CoCComorbidities6]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="CoCComorbidities6" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BreastBxProc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="BreastBxProc" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BreastGuidance]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="BreastGuidance" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BreastPalpOfPrime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="BreastPalpOfPrime" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BreastFirstDetect]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="BreastFirstDetect" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProstateBxProc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ProstateBxProc" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProstateGuidance]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ProstateGuidance" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProstateApproach]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ProstateApproach" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProstateBxOther]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ProstateBxOther" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[dateinitialdiagnosis]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="dateinitialdiagnosis" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[lastfollowupdate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="lastfollowupdate" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StageSeerSystem]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="StageSeerSystem" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LastCancerStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="LastCancerStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrefixSuffixPath]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PrefixSuffixPath" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      name="CREATE_DT" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PersonSer]"
+                      dataType="i4"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PersonSer]"
+                      name="PersonSer" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiagnosticSer]"
+                      dataType="i4"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiagnosticSer]"
+                      name="DiagnosticSer" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NClassClin]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NClassClin]"
+                      name="NClassClin" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MClassClin]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MClassClin]"
+                      name="MClassClin" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TClassClin]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TClassClin]"
+                      name="TClassClin" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StageGroupingClin]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StageGroupingClin]"
+                      name="StageGroupingClin" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TClassPath]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TClassPath]"
+                      name="TClassPath" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NClassPath]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NClassPath]"
+                      name="NClassPath" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MClassPath]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MClassPath]"
+                      name="MClassPath" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StageGroupingPath]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StageGroupingPath]"
+                      name="StageGroupingPath" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ICDOSiteCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ICDOSiteCode]"
+                      name="ICDOSiteCode" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ICDOHistoCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ICDOHistoCode]"
+                      name="ICDOHistoCode" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[GradeOrDiff]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[GradeOrDiff]"
+                      name="GradeOrDiff" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AgeAtDiagnosisYears]"
+                      dataType="i4"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AgeAtDiagnosisYears]"
+                      name="AgeAtDiagnosisYears" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TumorSize]"
+                      dataType="i4"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TumorSize]"
+                      name="TumorSize" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CoCComorbidities1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CoCComorbidities1]"
+                      name="CoCComorbidities1" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CoCComorbidities2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CoCComorbidities2]"
+                      name="CoCComorbidities2" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CoCComorbidities3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CoCComorbidities3]"
+                      name="CoCComorbidities3" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CoCComorbidities4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CoCComorbidities4]"
+                      name="CoCComorbidities4" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CoCComorbidities5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CoCComorbidities5]"
+                      name="CoCComorbidities5" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CoCComorbidities6]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CoCComorbidities6]"
+                      name="CoCComorbidities6" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BreastBxProc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BreastBxProc]"
+                      name="BreastBxProc" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BreastGuidance]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BreastGuidance]"
+                      name="BreastGuidance" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BreastPalpOfPrime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BreastPalpOfPrime]"
+                      name="BreastPalpOfPrime" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BreastFirstDetect]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BreastFirstDetect]"
+                      name="BreastFirstDetect" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProstateBxProc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProstateBxProc]"
+                      name="ProstateBxProc" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProstateGuidance]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProstateGuidance]"
+                      name="ProstateGuidance" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProstateApproach]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProstateApproach]"
+                      name="ProstateApproach" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProstateBxOther]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProstateBxOther]"
+                      name="ProstateBxOther" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[dateinitialdiagnosis]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[dateinitialdiagnosis]"
+                      name="dateinitialdiagnosis" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[lastfollowupdate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[lastfollowupdate]"
+                      name="lastfollowupdate" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StageSeerSystem]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StageSeerSystem]"
+                      name="StageSeerSystem" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LastCancerStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LastCancerStatus]"
+                      name="LastCancerStatus" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hstrydatetime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hstrydatetime]"
+                      name="hstrydatetime" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrefixSuffixPath]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrefixSuffixPath]"
+                      name="PrefixSuffixPath" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CREATE_DT]"
+                      name="CREATE_DT" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination"
+              componentClassID="{96F6C478-E5BE-45A4-B39A-055F9787CCD4}"
+              contactInfo="Oracle Destination;Microsoft Connector for Oracle by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;4"
+              description="Microsoft Oracle Destination Component by Attunity"
+              name="Oracle Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Apply fast 'Direct Path' load."
+                  name="FastLoad">true</property>
+                <property
+                  dataType="System.String"
+                  description="Destination table"
+                  expressionType="Notify"
+                  name="TableName">"XXBIOLIBONC"."OLDIAGNOSTIC_STG"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum errors allowed."
+                  expressionType="Notify"
+                  name="MaxErrors">0</property>
+                <property
+                  dataType="System.String"
+                  description="Table sub-name (Partition, SubPartition)."
+                  expressionType="Notify"
+                  name="TableSubname"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Enables parallel loading of the target table."
+                  expressionType="Notify"
+                  name="Parallel">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Disables target table logging. Used to minimize the amount of redo generated."
+                  expressionType="Notify"
+                  name="NoLogging">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Trasfer data buffer size (KB)."
+                  expressionType="Notify"
+                  name="TransferBufferSize">64</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted in a batch."
+                  expressionType="Notify"
+                  name="BatchSize">100</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">100</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Connections[MSOraConnection]"
+                  connectionManagerID="{D220BFDD-2389-4D5B-A302-C5F6F6436976}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OCTRIDEV]"
+                  description="The Oracle runtime connection"
+                  name="MSOraConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Oracle Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[hstrydatetime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="hstrydatetime"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[HSTRYDATETIME]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[hstrydatetime]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[NClassClin]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="NClassClin"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[NCLASSCLIN]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[NClassClin]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[MClassClin]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="MClassClin"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[MCLASSCLIN]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[MClassClin]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[TClassClin]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="TClassClin"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[TCLASSCLIN]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[TClassClin]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[StageGroupingClin]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="StageGroupingClin"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[STAGEGROUPINGCLIN]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[StageGroupingClin]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[TClassPath]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="TClassPath"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[TCLASSPATH]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[TClassPath]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[NClassPath]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="NClassPath"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[NCLASSPATH]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[NClassPath]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[MClassPath]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="MClassPath"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[MCLASSPATH]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[MClassPath]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[StageGroupingPath]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="StageGroupingPath"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[STAGEGROUPINGPATH]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[StageGroupingPath]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[ICDOSiteCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="ICDOSiteCode"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[ICDOSITECODE]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ICDOSiteCode]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[ICDOHistoCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="ICDOHistoCode"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[ICDOHISTOCODE]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ICDOHistoCode]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[GradeOrDiff]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="GradeOrDiff"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[GRADEORDIFF]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[GradeOrDiff]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[CoCComorbidities1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="CoCComorbidities1"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES1]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities1]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[CoCComorbidities2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="CoCComorbidities2"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES2]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities2]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[CoCComorbidities3]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="CoCComorbidities3"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES3]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities3]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[CoCComorbidities4]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="CoCComorbidities4"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES4]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities4]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[CoCComorbidities5]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="CoCComorbidities5"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES5]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities5]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[CoCComorbidities6]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="CoCComorbidities6"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES6]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CoCComorbidities6]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[BreastBxProc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="BreastBxProc"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[BREASTBXPROC]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[BreastBxProc]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[BreastGuidance]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="BreastGuidance"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[BREASTGUIDANCE]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[BreastGuidance]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[BreastPalpOfPrime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="BreastPalpOfPrime"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[BREASTPALPOFPRIME]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[BreastPalpOfPrime]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[BreastFirstDetect]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="BreastFirstDetect"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[BREASTFIRSTDETECT]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[BreastFirstDetect]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[ProstateBxProc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ProstateBxProc"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PROSTATEBXPROC]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProstateBxProc]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[ProstateGuidance]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ProstateGuidance"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PROSTATEGUIDANCE]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProstateGuidance]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[ProstateApproach]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ProstateApproach"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PROSTATEAPPROACH]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProstateApproach]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[ProstateBxOther]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ProstateBxOther"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PROSTATEBXOTHER]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProstateBxOther]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[dateinitialdiagnosis]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="dateinitialdiagnosis"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[DATEINITIALDIAGNOSIS]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[dateinitialdiagnosis]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[lastfollowupdate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="lastfollowupdate"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[LASTFOLLOWUPDATE]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[lastfollowupdate]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[StageSeerSystem]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="StageSeerSystem"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[STAGESEERSYSTEM]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[StageSeerSystem]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[LastCancerStatus]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="LastCancerStatus"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[LASTCANCERSTATUS]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastCancerStatus]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[CREATE_DT]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CREATE_DT"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[CREATE_DT]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output].Columns[CREATE_DT]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[Copy of PersonSer]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of PersonSer"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PERSONSER]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PersonSer]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[Copy of DiagnosticSer]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of DiagnosticSer"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[DIAGNOSTICSER]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DiagnosticSer]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[Copy of AgeAtDiagnosisYears]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of AgeAtDiagnosisYears"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[AGEATDIAGNOSISYEARS]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of AgeAtDiagnosisYears]" />
+                    <inputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].Columns[Copy of TumorSize]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of TumorSize"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[TUMORSIZE]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TumorSize]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PERSONSER]"
+                      dataType="numeric"
+                      name="PERSONSER"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[DIAGNOSTICSER]"
+                      dataType="numeric"
+                      name="DIAGNOSTICSER"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[NCLASSCLIN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="NCLASSCLIN" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[MCLASSCLIN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="MCLASSCLIN" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[TCLASSCLIN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="TCLASSCLIN" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[STAGEGROUPINGCLIN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="STAGEGROUPINGCLIN" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[TCLASSPATH]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="TCLASSPATH" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[NCLASSPATH]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="NCLASSPATH" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[MCLASSPATH]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="MCLASSPATH" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[STAGEGROUPINGPATH]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="STAGEGROUPINGPATH" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[ICDOSITECODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="ICDOSITECODE" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[ICDOHISTOCODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="ICDOHISTOCODE" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[GRADEORDIFF]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="GRADEORDIFF" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[AGEATDIAGNOSISYEARS]"
+                      dataType="numeric"
+                      name="AGEATDIAGNOSISYEARS"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[TUMORSIZE]"
+                      dataType="numeric"
+                      name="TUMORSIZE"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="COCCOMORBIDITIES1" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="COCCOMORBIDITIES2" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="COCCOMORBIDITIES3" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="COCCOMORBIDITIES4" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="COCCOMORBIDITIES5" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES6]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="COCCOMORBIDITIES6" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[BREASTBXPROC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="BREASTBXPROC" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[BREASTGUIDANCE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="BREASTGUIDANCE" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[BREASTPALPOFPRIME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="BREASTPALPOFPRIME" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[BREASTFIRSTDETECT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="BREASTFIRSTDETECT" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PROSTATEBXPROC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PROSTATEBXPROC" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PROSTATEGUIDANCE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PROSTATEGUIDANCE" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PROSTATEAPPROACH]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PROSTATEAPPROACH" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PROSTATEBXOTHER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PROSTATEBXOTHER" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[DATEINITIALDIAGNOSIS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="DATEINITIALDIAGNOSIS" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[LASTFOLLOWUPDATE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="LASTFOLLOWUPDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[STAGESEERSYSTEM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="STAGESEERSYSTEM" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[LASTCANCERSTATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="LASTCANCERSTATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[HSTRYDATETIME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="HSTRYDATETIME" />
+                    <externalMetadataColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      name="CREATE_DT" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output]"
+                  isErrorOut="true"
+                  name="Oracle Destination Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[PERSONSER]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PERSONSER]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[PERSONSER]"
+                      name="PERSONSER"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[DIAGNOSTICSER]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[DIAGNOSTICSER]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[DIAGNOSTICSER]"
+                      name="DIAGNOSTICSER"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[NCLASSCLIN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[NCLASSCLIN]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[NCLASSCLIN]"
+                      name="NCLASSCLIN" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[MCLASSCLIN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[MCLASSCLIN]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[MCLASSCLIN]"
+                      name="MCLASSCLIN" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[TCLASSCLIN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[TCLASSCLIN]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[TCLASSCLIN]"
+                      name="TCLASSCLIN" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[STAGEGROUPINGCLIN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[STAGEGROUPINGCLIN]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[STAGEGROUPINGCLIN]"
+                      name="STAGEGROUPINGCLIN" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[TCLASSPATH]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[TCLASSPATH]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[TCLASSPATH]"
+                      name="TCLASSPATH" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[NCLASSPATH]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[NCLASSPATH]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[NCLASSPATH]"
+                      name="NCLASSPATH" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[MCLASSPATH]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[MCLASSPATH]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[MCLASSPATH]"
+                      name="MCLASSPATH" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[STAGEGROUPINGPATH]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[STAGEGROUPINGPATH]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[STAGEGROUPINGPATH]"
+                      name="STAGEGROUPINGPATH" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[ICDOSITECODE]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[ICDOSITECODE]"
+                      length="5"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[ICDOSITECODE]"
+                      name="ICDOSITECODE" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[ICDOHISTOCODE]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[ICDOHISTOCODE]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[ICDOHISTOCODE]"
+                      name="ICDOHISTOCODE" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[GRADEORDIFF]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[GRADEORDIFF]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[GRADEORDIFF]"
+                      name="GRADEORDIFF" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[AGEATDIAGNOSISYEARS]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[AGEATDIAGNOSISYEARS]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[AGEATDIAGNOSISYEARS]"
+                      name="AGEATDIAGNOSISYEARS"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[TUMORSIZE]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[TUMORSIZE]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[TUMORSIZE]"
+                      name="TUMORSIZE"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COCCOMORBIDITIES1]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES1]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COCCOMORBIDITIES1]"
+                      name="COCCOMORBIDITIES1" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COCCOMORBIDITIES2]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES2]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COCCOMORBIDITIES2]"
+                      name="COCCOMORBIDITIES2" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COCCOMORBIDITIES3]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES3]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COCCOMORBIDITIES3]"
+                      name="COCCOMORBIDITIES3" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COCCOMORBIDITIES4]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES4]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COCCOMORBIDITIES4]"
+                      name="COCCOMORBIDITIES4" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COCCOMORBIDITIES5]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES5]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COCCOMORBIDITIES5]"
+                      name="COCCOMORBIDITIES5" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COCCOMORBIDITIES6]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[COCCOMORBIDITIES6]"
+                      length="6"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[COCCOMORBIDITIES6]"
+                      name="COCCOMORBIDITIES6" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[BREASTBXPROC]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[BREASTBXPROC]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[BREASTBXPROC]"
+                      name="BREASTBXPROC" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[BREASTGUIDANCE]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[BREASTGUIDANCE]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[BREASTGUIDANCE]"
+                      name="BREASTGUIDANCE" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[BREASTPALPOFPRIME]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[BREASTPALPOFPRIME]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[BREASTPALPOFPRIME]"
+                      name="BREASTPALPOFPRIME" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[BREASTFIRSTDETECT]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[BREASTFIRSTDETECT]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[BREASTFIRSTDETECT]"
+                      name="BREASTFIRSTDETECT" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[PROSTATEBXPROC]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PROSTATEBXPROC]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[PROSTATEBXPROC]"
+                      name="PROSTATEBXPROC" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[PROSTATEGUIDANCE]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PROSTATEGUIDANCE]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[PROSTATEGUIDANCE]"
+                      name="PROSTATEGUIDANCE" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[PROSTATEAPPROACH]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PROSTATEAPPROACH]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[PROSTATEAPPROACH]"
+                      name="PROSTATEAPPROACH" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[PROSTATEBXOTHER]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[PROSTATEBXOTHER]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[PROSTATEBXOTHER]"
+                      name="PROSTATEBXOTHER" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[DATEINITIALDIAGNOSIS]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[DATEINITIALDIAGNOSIS]"
+                      length="20"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[DATEINITIALDIAGNOSIS]"
+                      name="DATEINITIALDIAGNOSIS" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[LASTFOLLOWUPDATE]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[LASTFOLLOWUPDATE]"
+                      length="20"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[LASTFOLLOWUPDATE]"
+                      name="LASTFOLLOWUPDATE" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[STAGESEERSYSTEM]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[STAGESEERSYSTEM]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[STAGESEERSYSTEM]"
+                      name="STAGESEERSYSTEM" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[LASTCANCERSTATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[LASTCANCERSTATUS]"
+                      length="10"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[LASTCANCERSTATUS]"
+                      name="LASTCANCERSTATUS" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[HSTRYDATETIME]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[HSTRYDATETIME]"
+                      length="20"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[HSTRYDATETIME]"
+                      name="HSTRYDATETIME" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input].ExternalColumns[CREATE_DT]"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[CREATE_DT]"
+                      name="CREATE_DT" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Outputs[Oracle Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load OLDIAGNOSTIC_STG.Paths[Data Conversion Output]"
+              endId="Package\Load OLDIAGNOSTIC_STG\Oracle Destination.Inputs[Oracle Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Load OLDIAGNOSTIC_STG.Paths[OLE DB Source Output]"
+              endId="Package\Load OLDIAGNOSTIC_STG\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load OLDIAGNOSTIC_STG\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Log to SSIS_Job_History"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{77F9772A-979B-41A4-8751-578D1F4750FE}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Log to SSIS_Job_History"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{03BCF62A-22E5-45D3-85CA-804A67ED3236}"
+          SQLTask:SqlStatementSource="INSERT INTO [dbo].[SSIS_Job_History]&#xA;           ([machinename]&#xA;           ,[packagename]&#xA;           ,[username]&#xA;           ,[packagestartdate]&#xA;           ,[retrievedate])&#xA;     VALUES&#xA;           ( ? ,&#xA;            ?, &#xA;            ?, &#xA;            GETDATE() ,&#xA;            GETDATE() &#xA;           )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::MachineName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate OLDIAGNOSTIC_STG"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{45215F2B-1939-421F-8B0E-27C375E84365}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate OLDIAGNOSTIC_STG"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AEB74F69-5028-46C9-89A4-8277387709FE}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE xxbiolibonc.oldiagnostic_stg" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{FBB6162C-2F69-4E01-B538-CA4E963102B0}"
+      DTS:From="Package\Truncate OLDIAGNOSTIC_STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load OLDIAGNOSTIC_STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{0C68F08D-9924-41D1-A4F2-13B4C167F26A}"
+      DTS:From="Package\Load OLDIAGNOSTIC_STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Log to SSIS_Job_History" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="207,42"
+          Id="Package\Load OLDIAGNOSTIC_STG"
+          TopLeft="130,163" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Log to SSIS_Job_History"
+          TopLeft="133,250" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Truncate OLDIAGNOSTIC_STG"
+          TopLeft="118,79" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="232.25,121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="232.5,205">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load OLDIAGNOSTIC_STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Load OLDIAGNOSTIC_STG\OLE DB Source"
+          TopLeft="115,110" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Load OLDIAGNOSTIC_STG\Data Conversion"
+          TopLeft="117,227" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Load OLDIAGNOSTIC_STG\Oracle Destination"
+          TopLeft="110,338" />
+        <EdgeLayout
+          Id="Package\Load OLDIAGNOSTIC_STG.Paths[OLE DB Source Output]"
+          TopLeft="193.5,152">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75"
+              Start="0,0"
+              End="0,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load OLDIAGNOSTIC_STG.Paths[Data Conversion Output]"
+          TopLeft="194.75,269">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load OLDIAGNOSTIC_STG\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load OLDIAGNOSTIC_STG\Oracle Destination">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

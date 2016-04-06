@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping CdmEntityContainer="NeuroPatData" StorageEntityContainer="NeuroPatDataStore">
+    <EntitySetMapping Name="Patient_Mains">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Patient_Main)">
+        <MappingFragment StoreEntitySet="Patient_Mains">
+          <ScalarProperty Name="ID1" ColumnName="ID1" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+          <ScalarProperty Name="First_Name" ColumnName="First Name" />
+          <ScalarProperty Name="MR" ColumnName="MR" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Admit_Date" ColumnName="Admit Date" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Bed" ColumnName="Bed" />
+          <ScalarProperty Name="Staff" ColumnName="Staff" />
+          <ScalarProperty Name="Op_Res" ColumnName="Op Res" />
+          <ScalarProperty Name="Op_Res_2" ColumnName="Op Res 2" />
+          <ScalarProperty Name="Consult_Inpatient" ColumnName="Consult/Inpatient" />
+          <ScalarProperty Name="Diagnosis" ColumnName="Diagnosis" />
+          <ScalarProperty Name="Procedures" ColumnName="Procedures" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Discharged" ColumnName="Discharged" />
+          <ScalarProperty Name="Discharge_Date" ColumnName="Discharge Date" />
+          <ScalarProperty Name="Complication" ColumnName="Complication" />
+          <ScalarProperty Name="Complication__1" ColumnName="Complication #1" />
+          <ScalarProperty Name="Complication__2" ColumnName="Complication #2" />
+          <ScalarProperty Name="Complication_Description" ColumnName="Complication Description" />
+          <ScalarProperty Name="Research_Pt" ColumnName="Research Pt" />
+          <ScalarProperty Name="M___M" ColumnName="M &amp; M" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="FT" ColumnName="FT" />
+          <ScalarProperty Name="TBI" ColumnName="TBI" />
+          <ScalarProperty Name="TBI_f_u_complete" ColumnName="TBI f/u complete" />
+          <ScalarProperty Name="PCP" ColumnName="PCP" />
+          <ScalarProperty Name="Address_line__1" ColumnName="Address line #1" />
+          <ScalarProperty Name="Address_line__2" ColumnName="Address line #2" />
+          <ScalarProperty Name="Address_line__3" ColumnName="Address line #3" />
+          <ScalarProperty Name="Preferred_1" ColumnName="Preferred 1" />
+          <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+          <ScalarProperty Name="Preferred_2" ColumnName="Preferred 2" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Preferred_3" ColumnName="Preferred 3" />
+          <ScalarProperty Name="Referring_Phys" ColumnName="Referring Phys" />
+          <ScalarProperty Name="BC_notes" ColumnName="BC notes" />
+          <ScalarProperty Name="KJB_notes" ColumnName="KJB notes" />
+          <ScalarProperty Name="PCP_f_u_done" ColumnName="PCP f/u done" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

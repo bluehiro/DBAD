@@ -1,0 +1,2480 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/27/2015 2:09:35 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="MSBC477W7"
+  DTS:CreatorName="OHSUM01\jamesv"
+  DTS:DTSID="{6506CF1F-0E24-4D72-A76B-04AA792BA464}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="PULL Emp - ZPER_POOL_INTERFACE_MV"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{F03E9F1A-80B3-4EB7-83B3-27C80D4F0408}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FISPRD.XXHPATRNDP]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D6E87906-291A-470D-9D7D-64AC07013624}"
+      DTS:ObjectName="FISPRD.XXHPATRNDP">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=FISPRD;User ID=xxhpatrndp;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAHcL5teP8PUul/vGHpikh1gAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADrPzCEfM8veBXsbA2JUiSUAAAAAASAAACgAAAAEAAAACC9apmBMVbdMPgE4VzYjOIYAAAA9x+fiDN6+s3+w28vxrH8FiCn1bjIp5npFAAAAFyDFpCSzCPrrlzZKo8MopolCpyR</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQL2012PHIPRD1.PublicPool_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D407630A-A599-4648-91FB-129C6E51D3BC}"
+      DTS:ObjectName="SQL2012PHIPRD1.PublicPool_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQL2012PHIPRD1;Initial Catalog=PublicPool_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQLMDW2.DBA_Rep]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{63073D02-C5BA-4E66-A51E-AC4E1B421B2C}"
+      DTS:ObjectName="SQLMDW2.DBA_Rep">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQLMDW2;Initial Catalog=DBA_Rep;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{09ABFF48-BD75-4E8F-AE04-46C973BA6B01}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\FIS - XXHPATRNDP"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="FIS - XXHPATRNDP"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT * FROM APPS.ZPER_POOL_INTERFACE_MV</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\FIS - XXHPATRNDP.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[FISPRD.XXHPATRNDP]"
+                  connectionManagerRefId="Package.ConnectionManagers[FISPRD.XXHPATRNDP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[FIRST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[FIRST_NAME]"
+                      length="150"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[FIRST_NAME]"
+                      name="FIRST_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LAST_NAME]"
+                      length="150"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_NAME]"
+                      name="LAST_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[EMPLOYEE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[EMPLOYEE_NAME]"
+                      length="240"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[EMPLOYEE_NAME]"
+                      name="EMPLOYEE_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[PERSON_ID]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[PERSON_ID]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[PERSON_ID]"
+                      name="PERSON_ID"
+                      precision="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[MIDDLE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[MIDDLE_NAME]"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[MIDDLE_NAME]"
+                      name="MIDDLE_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[PREFERRED_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[PREFERRED_NAME]"
+                      length="80"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[PREFERRED_NAME]"
+                      name="PREFERRED_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[USER_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[USER_NAME]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[USER_NAME]"
+                      name="USER_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[EMPLOYEE_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[EMPLOYEE_NUMBER]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[EMPLOYEE_NUMBER]"
+                      name="EMPLOYEE_NUMBER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[SSN]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SSN]"
+                      name="SSN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DATE_OF_BIRTH]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[DATE_OF_BIRTH]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DATE_OF_BIRTH]"
+                      name="DATE_OF_BIRTH"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[PERSON_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[PERSON_TYPE]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[PERSON_TYPE]"
+                      name="PERSON_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[TERMINATION_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[TERMINATION_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[TERMINATION_DATE]"
+                      name="TERMINATION_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[FINAL_PROCESS_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[FINAL_PROCESS_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[FINAL_PROCESS_DATE]"
+                      name="FINAL_PROCESS_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ORIGINAL_HIRE_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ORIGINAL_HIRE_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ORIGINAL_HIRE_DATE]"
+                      name="ORIGINAL_HIRE_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CURRENT_HIRE_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[CURRENT_HIRE_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CURRENT_HIRE_DATE]"
+                      name="CURRENT_HIRE_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CAMPUS_PHONE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[CAMPUS_PHONE]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CAMPUS_PHONE]"
+                      name="CAMPUS_PHONE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CAMPUS_FAX]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[CAMPUS_FAX]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CAMPUS_FAX]"
+                      name="CAMPUS_FAX"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[EMAIL_ADDRESS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[EMAIL_ADDRESS]"
+                      length="240"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[EMAIL_ADDRESS]"
+                      name="EMAIL_ADDRESS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[POSITION_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[POSITION_NUMBER]"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[POSITION_NUMBER]"
+                      name="POSITION_NUMBER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[POSITION_SUFFIX]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[POSITION_SUFFIX]"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[POSITION_SUFFIX]"
+                      name="POSITION_SUFFIX"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[WORKING_TITLE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[WORKING_TITLE]"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[WORKING_TITLE]"
+                      name="WORKING_TITLE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[JOB_CLASSIFICATION_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[JOB_CLASSIFICATION_CODE]"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[JOB_CLASSIFICATION_CODE]"
+                      name="JOB_CLASSIFICATION_CODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[JOB_CLASSIFICATION_TITLE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[JOB_CLASSIFICATION_TITLE]"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[JOB_CLASSIFICATION_TITLE]"
+                      name="JOB_CLASSIFICATION_TITLE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[FTE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[FTE]"
+                      length="38"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[FTE]"
+                      name="FTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[EMPLOYMENT_CATEGORY]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[EMPLOYMENT_CATEGORY]"
+                      length="80"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[EMPLOYMENT_CATEGORY]"
+                      name="EMPLOYMENT_CATEGORY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[IS_SUPERVISOR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[IS_SUPERVISOR]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[IS_SUPERVISOR]"
+                      name="IS_SUPERVISOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SUPERVISOR_PERSONID]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[SUPERVISOR_PERSONID]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SUPERVISOR_PERSONID]"
+                      name="SUPERVISOR_PERSONID"
+                      precision="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SUPERVISOR_EMPLOYEEID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[SUPERVISOR_EMPLOYEEID]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SUPERVISOR_EMPLOYEEID]"
+                      name="SUPERVISOR_EMPLOYEEID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SUPERVISOR_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[SUPERVISOR_NAME]"
+                      length="240"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SUPERVISOR_NAME]"
+                      name="SUPERVISOR_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEPT_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[DEPT_NAME]"
+                      length="240"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEPT_NAME]"
+                      name="DEPT_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEPT_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[DEPT_TYPE]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEPT_TYPE]"
+                      name="DEPT_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ORGANIZATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ORGANIZATION]"
+                      length="240"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ORGANIZATION]"
+                      name="ORGANIZATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[REPRESENTATIONAL_GROUP]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[REPRESENTATIONAL_GROUP]"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[REPRESENTATIONAL_GROUP]"
+                      name="REPRESENTATIONAL_GROUP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SUB_REPRESENTATIONAL_GROUP]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[SUB_REPRESENTATIONAL_GROUP]"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SUB_REPRESENTATIONAL_GROUP]"
+                      name="SUB_REPRESENTATIONAL_GROUP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSIGNMENT_ID]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ASSIGNMENT_ID]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSIGNMENT_ID]"
+                      name="ASSIGNMENT_ID"
+                      precision="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSIGNMENT_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ASSIGNMENT_NUMBER]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSIGNMENT_NUMBER]"
+                      name="ASSIGNMENT_NUMBER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSG_EFF_END_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ASSG_EFF_END_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSG_EFF_END_DATE]"
+                      name="ASSG_EFF_END_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSG_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ASSG_STATUS]"
+                      length="1"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSG_STATUS]"
+                      name="ASSG_STATUS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[PRIMARY_FLAG]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[PRIMARY_FLAG]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[PRIMARY_FLAG]"
+                      name="PRIMARY_FLAG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSG_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ASSG_TYPE]"
+                      length="1"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSG_TYPE]"
+                      name="ASSG_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[MAIL_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[MAIL_CODE]"
+                      length="150"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[MAIL_CODE]"
+                      name="MAIL_CODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LOCATION_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LOCATION_CODE]"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LOCATION_CODE]"
+                      name="LOCATION_CODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ORG]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ORG]"
+                      length="150"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ORG]"
+                      name="ORG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_UPDATE_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LAST_UPDATE_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_UPDATE_DATE]"
+                      name="LAST_UPDATE_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_UPDATED_BY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LAST_UPDATED_BY]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_UPDATED_BY]"
+                      name="LAST_UPDATED_BY"
+                      precision="15"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_UPDATE_LOGIN]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LAST_UPDATE_LOGIN]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_UPDATE_LOGIN]"
+                      name="LAST_UPDATE_LOGIN"
+                      precision="15"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CREATED_BY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[CREATED_BY]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CREATED_BY]"
+                      name="CREATED_BY"
+                      precision="15"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CREATION_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[CREATION_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CREATION_DATE]"
+                      name="CREATION_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_UPDATE_DATE_ASGN]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LAST_UPDATE_DATE_ASGN]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_UPDATE_DATE_ASGN]"
+                      name="LAST_UPDATE_DATE_ASGN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LOAD_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LOAD_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LOAD_DATE]"
+                      name="LOAD_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[FISCAL_AUTHORITY]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[FISCAL_AUTHORITY]"
+                      length="1"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[FISCAL_AUTHORITY]"
+                      name="FISCAL_AUTHORITY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEGREE_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[DEGREE_CODE]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEGREE_CODE]"
+                      name="DEGREE_CODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEGREE_ABBR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[DEGREE_ABBR]"
+                      length="80"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEGREE_ABBR]"
+                      name="DEGREE_ABBR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEGREE_DESCRIPTION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[DEGREE_DESCRIPTION]"
+                      length="240"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEGREE_DESCRIPTION]"
+                      name="DEGREE_DESCRIPTION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[GENDER]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[GENDER]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[GENDER]"
+                      name="GENDER"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[FIRST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="FIRST_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LAST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="LAST_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[EMPLOYEE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      name="EMPLOYEE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[PERSON_ID]"
+                      dataType="numeric"
+                      name="PERSON_ID"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[MIDDLE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="MIDDLE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[PREFERRED_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="PREFERRED_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[USER_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="USER_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[EMPLOYEE_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="EMPLOYEE_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="SSN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[DATE_OF_BIRTH]"
+                      dataType="dbTimeStamp"
+                      name="DATE_OF_BIRTH" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[PERSON_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="PERSON_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[TERMINATION_DATE]"
+                      dataType="dbTimeStamp"
+                      name="TERMINATION_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[FINAL_PROCESS_DATE]"
+                      dataType="dbTimeStamp"
+                      name="FINAL_PROCESS_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ORIGINAL_HIRE_DATE]"
+                      dataType="dbTimeStamp"
+                      name="ORIGINAL_HIRE_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[CURRENT_HIRE_DATE]"
+                      dataType="dbTimeStamp"
+                      name="CURRENT_HIRE_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[CAMPUS_PHONE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="CAMPUS_PHONE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[CAMPUS_FAX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="CAMPUS_FAX" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[EMAIL_ADDRESS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      name="EMAIL_ADDRESS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[POSITION_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="POSITION_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[POSITION_SUFFIX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="POSITION_SUFFIX" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[WORKING_TITLE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="WORKING_TITLE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[JOB_CLASSIFICATION_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="JOB_CLASSIFICATION_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[JOB_CLASSIFICATION_TITLE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="JOB_CLASSIFICATION_TITLE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[FTE]"
+                      dataType="wstr"
+                      length="38"
+                      name="FTE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[EMPLOYMENT_CATEGORY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="EMPLOYMENT_CATEGORY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[IS_SUPERVISOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="IS_SUPERVISOR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[SUPERVISOR_PERSONID]"
+                      dataType="numeric"
+                      name="SUPERVISOR_PERSONID"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[SUPERVISOR_EMPLOYEEID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="SUPERVISOR_EMPLOYEEID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[SUPERVISOR_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      name="SUPERVISOR_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[DEPT_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      name="DEPT_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[DEPT_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DEPT_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ORGANIZATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      name="ORGANIZATION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[REPRESENTATIONAL_GROUP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="REPRESENTATIONAL_GROUP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[SUB_REPRESENTATIONAL_GROUP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="SUB_REPRESENTATIONAL_GROUP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ASSIGNMENT_ID]"
+                      dataType="numeric"
+                      name="ASSIGNMENT_ID"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ASSIGNMENT_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="ASSIGNMENT_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ASSG_EFF_END_DATE]"
+                      dataType="dbTimeStamp"
+                      name="ASSG_EFF_END_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ASSG_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ASSG_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[PRIMARY_FLAG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="PRIMARY_FLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ASSG_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ASSG_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[MAIL_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="MAIL_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LOCATION_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="LOCATION_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[ORG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="ORG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LAST_UPDATE_DATE]"
+                      dataType="dbTimeStamp"
+                      name="LAST_UPDATE_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LAST_UPDATED_BY]"
+                      dataType="numeric"
+                      name="LAST_UPDATED_BY"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LAST_UPDATE_LOGIN]"
+                      dataType="numeric"
+                      name="LAST_UPDATE_LOGIN"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[CREATED_BY]"
+                      dataType="numeric"
+                      name="CREATED_BY"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[CREATION_DATE]"
+                      dataType="dbTimeStamp"
+                      name="CREATION_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LAST_UPDATE_DATE_ASGN]"
+                      dataType="dbTimeStamp"
+                      name="LAST_UPDATE_DATE_ASGN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[LOAD_DATE]"
+                      dataType="dbTimeStamp"
+                      name="LOAD_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[FISCAL_AUTHORITY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="FISCAL_AUTHORITY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[DEGREE_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DEGREE_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[DEGREE_ABBR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="DEGREE_ABBR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[DEGREE_DESCRIPTION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      name="DEGREE_DESCRIPTION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].ExternalColumns[GENDER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="GENDER" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[EMPLOYEE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[EMPLOYEE_NAME]"
+                      name="EMPLOYEE_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[PERSON_ID]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[PERSON_ID]"
+                      name="PERSON_ID"
+                      precision="10" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[FIRST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[FIRST_NAME]"
+                      name="FIRST_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[MIDDLE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[MIDDLE_NAME]"
+                      name="MIDDLE_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LAST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LAST_NAME]"
+                      name="LAST_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[PREFERRED_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[PREFERRED_NAME]"
+                      name="PREFERRED_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[USER_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[USER_NAME]"
+                      name="USER_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[EMPLOYEE_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[EMPLOYEE_NUMBER]"
+                      name="EMPLOYEE_NUMBER" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[SSN]"
+                      name="SSN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[DATE_OF_BIRTH]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[DATE_OF_BIRTH]"
+                      name="DATE_OF_BIRTH" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[PERSON_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[PERSON_TYPE]"
+                      name="PERSON_TYPE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[TERMINATION_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[TERMINATION_DATE]"
+                      name="TERMINATION_DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[FINAL_PROCESS_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[FINAL_PROCESS_DATE]"
+                      name="FINAL_PROCESS_DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ORIGINAL_HIRE_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ORIGINAL_HIRE_DATE]"
+                      name="ORIGINAL_HIRE_DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[CURRENT_HIRE_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[CURRENT_HIRE_DATE]"
+                      name="CURRENT_HIRE_DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[CAMPUS_PHONE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[CAMPUS_PHONE]"
+                      name="CAMPUS_PHONE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[CAMPUS_FAX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[CAMPUS_FAX]"
+                      name="CAMPUS_FAX" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[EMAIL_ADDRESS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[EMAIL_ADDRESS]"
+                      name="EMAIL_ADDRESS" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[POSITION_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[POSITION_NUMBER]"
+                      name="POSITION_NUMBER" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[POSITION_SUFFIX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[POSITION_SUFFIX]"
+                      name="POSITION_SUFFIX" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[WORKING_TITLE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[WORKING_TITLE]"
+                      name="WORKING_TITLE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[JOB_CLASSIFICATION_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[JOB_CLASSIFICATION_CODE]"
+                      name="JOB_CLASSIFICATION_CODE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[JOB_CLASSIFICATION_TITLE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[JOB_CLASSIFICATION_TITLE]"
+                      name="JOB_CLASSIFICATION_TITLE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[FTE]"
+                      dataType="wstr"
+                      length="38"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[FTE]"
+                      name="FTE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[EMPLOYMENT_CATEGORY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[EMPLOYMENT_CATEGORY]"
+                      name="EMPLOYMENT_CATEGORY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[IS_SUPERVISOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[IS_SUPERVISOR]"
+                      name="IS_SUPERVISOR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[SUPERVISOR_PERSONID]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[SUPERVISOR_PERSONID]"
+                      name="SUPERVISOR_PERSONID"
+                      precision="10" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[SUPERVISOR_EMPLOYEEID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[SUPERVISOR_EMPLOYEEID]"
+                      name="SUPERVISOR_EMPLOYEEID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[SUPERVISOR_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[SUPERVISOR_NAME]"
+                      name="SUPERVISOR_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[DEPT_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[DEPT_NAME]"
+                      name="DEPT_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[DEPT_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[DEPT_TYPE]"
+                      name="DEPT_TYPE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ORGANIZATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ORGANIZATION]"
+                      name="ORGANIZATION" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[REPRESENTATIONAL_GROUP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[REPRESENTATIONAL_GROUP]"
+                      name="REPRESENTATIONAL_GROUP" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[SUB_REPRESENTATIONAL_GROUP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[SUB_REPRESENTATIONAL_GROUP]"
+                      name="SUB_REPRESENTATIONAL_GROUP" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ASSIGNMENT_ID]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ASSIGNMENT_ID]"
+                      name="ASSIGNMENT_ID"
+                      precision="10" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ASSIGNMENT_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ASSIGNMENT_NUMBER]"
+                      name="ASSIGNMENT_NUMBER" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ASSG_EFF_END_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ASSG_EFF_END_DATE]"
+                      name="ASSG_EFF_END_DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ASSG_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ASSG_STATUS]"
+                      name="ASSG_STATUS" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[PRIMARY_FLAG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[PRIMARY_FLAG]"
+                      name="PRIMARY_FLAG" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ASSG_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ASSG_TYPE]"
+                      name="ASSG_TYPE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[MAIL_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[MAIL_CODE]"
+                      name="MAIL_CODE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LOCATION_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LOCATION_CODE]"
+                      name="LOCATION_CODE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ORG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ORG]"
+                      name="ORG" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LAST_UPDATE_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LAST_UPDATE_DATE]"
+                      name="LAST_UPDATE_DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LAST_UPDATED_BY]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LAST_UPDATED_BY]"
+                      name="LAST_UPDATED_BY"
+                      precision="15" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LAST_UPDATE_LOGIN]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LAST_UPDATE_LOGIN]"
+                      name="LAST_UPDATE_LOGIN"
+                      precision="15" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[CREATED_BY]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[CREATED_BY]"
+                      name="CREATED_BY"
+                      precision="15" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[CREATION_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[CREATION_DATE]"
+                      name="CREATION_DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LAST_UPDATE_DATE_ASGN]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LAST_UPDATE_DATE_ASGN]"
+                      name="LAST_UPDATE_DATE_ASGN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LOAD_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[LOAD_DATE]"
+                      name="LOAD_DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[FISCAL_AUTHORITY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[FISCAL_AUTHORITY]"
+                      name="FISCAL_AUTHORITY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[DEGREE_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[DEGREE_CODE]"
+                      name="DEGREE_CODE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[DEGREE_ABBR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[DEGREE_ABBR]"
+                      name="DEGREE_ABBR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[DEGREE_DESCRIPTION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[DEGREE_DESCRIPTION]"
+                      name="DEGREE_DESCRIPTION" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[GENDER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[GENDER]"
+                      name="GENDER" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="PPDW - XXHPATRNDP_EMP_Staging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[XXHPATRNDP_Emp_Staging]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SQL2012PHIPRD1.PublicPool_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[SQL2012PHIPRD1.PublicPool_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[FIRST_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="FIRST_NAME"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[FIRST_NAME]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[FIRST_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[LAST_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="LAST_NAME"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[LAST_NAME]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[EMPLOYEE_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="240"
+                      cachedName="EMPLOYEE_NAME"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[EMPLOYEE_NAME]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[EMPLOYEE_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[PERSON_ID]"
+                      cachedDataType="numeric"
+                      cachedName="PERSON_ID"
+                      cachedPrecision="10"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[PERSON_ID]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[PERSON_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[MIDDLE_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="MIDDLE_NAME"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[MIDDLE_NAME]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[MIDDLE_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[PREFERRED_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="PREFERRED_NAME"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[PREFERRED_NAME]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[PREFERRED_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[USER_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="USER_NAME"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[USER_NAME]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[USER_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[EMPLOYEE_NUMBER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="EMPLOYEE_NUMBER"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[EMPLOYEE_NUMBER]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[EMPLOYEE_NUMBER]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="SSN"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SSN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[DATE_OF_BIRTH]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DATE_OF_BIRTH"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[DATE_OF_BIRTH]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DATE_OF_BIRTH]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[PERSON_TYPE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="PERSON_TYPE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[PERSON_TYPE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[PERSON_TYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[TERMINATION_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TERMINATION_DATE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[TERMINATION_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[TERMINATION_DATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[FINAL_PROCESS_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FINAL_PROCESS_DATE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[FINAL_PROCESS_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[FINAL_PROCESS_DATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[ORIGINAL_HIRE_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ORIGINAL_HIRE_DATE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ORIGINAL_HIRE_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ORIGINAL_HIRE_DATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[CURRENT_HIRE_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CURRENT_HIRE_DATE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[CURRENT_HIRE_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CURRENT_HIRE_DATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[CAMPUS_PHONE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="CAMPUS_PHONE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[CAMPUS_PHONE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CAMPUS_PHONE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[CAMPUS_FAX]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="CAMPUS_FAX"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[CAMPUS_FAX]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CAMPUS_FAX]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[EMAIL_ADDRESS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="240"
+                      cachedName="EMAIL_ADDRESS"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[EMAIL_ADDRESS]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[EMAIL_ADDRESS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[POSITION_NUMBER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="POSITION_NUMBER"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[POSITION_NUMBER]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[POSITION_NUMBER]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[POSITION_SUFFIX]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="POSITION_SUFFIX"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[POSITION_SUFFIX]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[POSITION_SUFFIX]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[WORKING_TITLE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="WORKING_TITLE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[WORKING_TITLE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[WORKING_TITLE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[JOB_CLASSIFICATION_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="JOB_CLASSIFICATION_CODE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[JOB_CLASSIFICATION_CODE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[JOB_CLASSIFICATION_CODE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[JOB_CLASSIFICATION_TITLE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="JOB_CLASSIFICATION_TITLE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[JOB_CLASSIFICATION_TITLE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[JOB_CLASSIFICATION_TITLE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[FTE]"
+                      cachedDataType="wstr"
+                      cachedLength="38"
+                      cachedName="FTE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[FTE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[FTE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[EMPLOYMENT_CATEGORY]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="EMPLOYMENT_CATEGORY"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[EMPLOYMENT_CATEGORY]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[EMPLOYMENT_CATEGORY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[IS_SUPERVISOR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="IS_SUPERVISOR"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[IS_SUPERVISOR]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[IS_SUPERVISOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[SUPERVISOR_PERSONID]"
+                      cachedDataType="numeric"
+                      cachedName="SUPERVISOR_PERSONID"
+                      cachedPrecision="10"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SUPERVISOR_PERSONID]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SUPERVISOR_PERSONID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[SUPERVISOR_EMPLOYEEID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="SUPERVISOR_EMPLOYEEID"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SUPERVISOR_EMPLOYEEID]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SUPERVISOR_EMPLOYEEID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[SUPERVISOR_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="240"
+                      cachedName="SUPERVISOR_NAME"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SUPERVISOR_NAME]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SUPERVISOR_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[DEPT_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="240"
+                      cachedName="DEPT_NAME"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[DEPT_NAME]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEPT_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[DEPT_TYPE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="DEPT_TYPE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[DEPT_TYPE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEPT_TYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[ORGANIZATION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="240"
+                      cachedName="ORGANIZATION"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ORGANIZATION]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ORGANIZATION]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[REPRESENTATIONAL_GROUP]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="REPRESENTATIONAL_GROUP"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[REPRESENTATIONAL_GROUP]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[REPRESENTATIONAL_GROUP]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[SUB_REPRESENTATIONAL_GROUP]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="SUB_REPRESENTATIONAL_GROUP"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SUB_REPRESENTATIONAL_GROUP]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[SUB_REPRESENTATIONAL_GROUP]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[ASSIGNMENT_ID]"
+                      cachedDataType="numeric"
+                      cachedName="ASSIGNMENT_ID"
+                      cachedPrecision="10"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ASSIGNMENT_ID]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSIGNMENT_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[ASSIGNMENT_NUMBER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="ASSIGNMENT_NUMBER"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ASSIGNMENT_NUMBER]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSIGNMENT_NUMBER]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[ASSG_EFF_END_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ASSG_EFF_END_DATE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ASSG_EFF_END_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSG_EFF_END_DATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[ASSG_STATUS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="ASSG_STATUS"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ASSG_STATUS]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSG_STATUS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[PRIMARY_FLAG]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="PRIMARY_FLAG"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[PRIMARY_FLAG]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[PRIMARY_FLAG]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[ASSG_TYPE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="ASSG_TYPE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ASSG_TYPE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ASSG_TYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[MAIL_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="MAIL_CODE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[MAIL_CODE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[MAIL_CODE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[LOCATION_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="LOCATION_CODE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[LOCATION_CODE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LOCATION_CODE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[ORG]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="ORG"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ORG]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[ORG]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[LAST_UPDATE_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LAST_UPDATE_DATE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[LAST_UPDATE_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_UPDATE_DATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[LAST_UPDATED_BY]"
+                      cachedDataType="numeric"
+                      cachedName="LAST_UPDATED_BY"
+                      cachedPrecision="15"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[LAST_UPDATED_BY]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_UPDATED_BY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[LAST_UPDATE_LOGIN]"
+                      cachedDataType="numeric"
+                      cachedName="LAST_UPDATE_LOGIN"
+                      cachedPrecision="15"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[LAST_UPDATE_LOGIN]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LAST_UPDATE_LOGIN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[CREATED_BY]"
+                      cachedDataType="numeric"
+                      cachedName="CREATED_BY"
+                      cachedPrecision="15"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[CREATED_BY]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CREATED_BY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[CREATION_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CREATION_DATE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[CREATION_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[CREATION_DATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[LOAD_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LOAD_DATE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[LOAD_DATE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[LOAD_DATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[FISCAL_AUTHORITY]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="FISCAL_AUTHORITY"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal_Authority]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[FISCAL_AUTHORITY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[DEGREE_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="DEGREE_CODE"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[DEGREE_CODE]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEGREE_CODE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[DEGREE_ABBR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="DEGREE_ABBR"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[DEGREE_ABBR]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEGREE_ABBR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].Columns[DEGREE_DESCRIPTION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="240"
+                      cachedName="DEGREE_DESCRIPTION"
+                      externalMetadataColumnId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[DEGREE_DESCRIPTION]"
+                      lineageId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output].Columns[DEGREE_DESCRIPTION]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[PERSON_ID]"
+                      dataType="numeric"
+                      name="PERSON_ID"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[FIRST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="FIRST_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[MIDDLE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="MIDDLE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[LAST_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="LAST_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[PREFERRED_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="PREFERRED_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[EMPLOYEE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      name="EMPLOYEE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[USER_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="USER_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[EMPLOYEE_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="EMPLOYEE_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="SSN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[DATE_OF_BIRTH]"
+                      dataType="wstr"
+                      length="50"
+                      name="DATE_OF_BIRTH" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[PERSON_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="PERSON_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[TERMINATION_DATE]"
+                      dataType="wstr"
+                      length="50"
+                      name="TERMINATION_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[FINAL_PROCESS_DATE]"
+                      dataType="wstr"
+                      length="50"
+                      name="FINAL_PROCESS_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ORIGINAL_HIRE_DATE]"
+                      dataType="wstr"
+                      length="50"
+                      name="ORIGINAL_HIRE_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[CURRENT_HIRE_DATE]"
+                      dataType="wstr"
+                      length="50"
+                      name="CURRENT_HIRE_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[BIRTHDAY_MMDD]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="BIRTHDAY_MMDD" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[CAMPUS_PHONE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="CAMPUS_PHONE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[CAMPUS_FAX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="CAMPUS_FAX" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[EMAIL_ADDRESS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      name="EMAIL_ADDRESS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[POSITION_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="POSITION_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[POSITION_SUFFIX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="POSITION_SUFFIX" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[WORKING_TITLE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="WORKING_TITLE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[JOB_CLASSIFICATION_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="JOB_CLASSIFICATION_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[JOB_CLASSIFICATION_TITLE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="JOB_CLASSIFICATION_TITLE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[FTE]"
+                      dataType="r8"
+                      name="FTE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[EMPLOYMENT_CATEGORY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="EMPLOYMENT_CATEGORY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[IS_SUPERVISOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="IS_SUPERVISOR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SUPERVISOR_PERSONID]"
+                      dataType="numeric"
+                      name="SUPERVISOR_PERSONID"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SUPERVISOR_EMPLOYEEID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="SUPERVISOR_EMPLOYEEID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SUPERVISOR_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      name="SUPERVISOR_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[DEPT_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      name="DEPT_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[DEPT_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DEPT_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ORGANIZATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      name="ORGANIZATION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[REPRESENTATIONAL_GROUP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="REPRESENTATIONAL_GROUP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SUB_REPRESENTATIONAL_GROUP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="SUB_REPRESENTATIONAL_GROUP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ASSIGNMENT_ID]"
+                      dataType="numeric"
+                      name="ASSIGNMENT_ID"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ASSIGNMENT_NUMBER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="ASSIGNMENT_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ASSG_EFF_START_DATE]"
+                      dataType="wstr"
+                      length="50"
+                      name="ASSG_EFF_START_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ASSG_EFF_END_DATE]"
+                      dataType="wstr"
+                      length="50"
+                      name="ASSG_EFF_END_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ASSG_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ASSG_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[PRIMARY_FLAG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="PRIMARY_FLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ASSG_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ASSG_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[MAIL_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="MAIL_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[LOCATION_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="LOCATION_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[ORG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="ORG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[LAST_UPDATE_DATE]"
+                      dataType="dbTimeStamp"
+                      name="LAST_UPDATE_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[LAST_UPDATED_BY]"
+                      dataType="numeric"
+                      name="LAST_UPDATED_BY"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[LAST_UPDATE_LOGIN]"
+                      dataType="numeric"
+                      name="LAST_UPDATE_LOGIN"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[CREATED_BY]"
+                      dataType="numeric"
+                      name="CREATED_BY"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[CREATION_DATE]"
+                      dataType="wstr"
+                      length="50"
+                      name="CREATION_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[LOAD_DATE]"
+                      dataType="wstr"
+                      length="50"
+                      name="LOAD_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SQL_LOAD_DATE]"
+                      dataType="dbTimeStamp"
+                      name="SQL_LOAD_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal_Authority]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Fiscal_Authority" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[DEGREE_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="DEGREE_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[DEGREE_ABBR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="DEGREE_ABBR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input].ExternalColumns[DEGREE_DESCRIPTION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="240"
+                      name="DEGREE_DESCRIPTION" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\FIS - XXHPATRNDP.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Log Job Completion"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{37B34713-4EB1-4B1A-8E3F-A06F61B5429D}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Log Job Completion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{63073D02-C5BA-4E66-A51E-AC4E1B421B2C}"
+          SQLTask:SqlStatementSource="INSERT INTO [dbo].[SSIS_Job_History]&#xA;           ([machinename]&#xA;           ,[packagename]&#xA;           ,[username]&#xA;           ,[packagestartdate]&#xA;           ,[retrievedate])&#xA;     VALUES&#xA;           ( ? ,&#xA;            ?, &#xA;            ?, &#xA;            GETDATE() ,&#xA;            GETDATE() &#xA;           )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::MachineName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate EMP_Staging"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A05C4024-9B47-46C3-8FEA-E9FB13DB441E}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate EMP_Staging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D407630A-A599-4648-91FB-129C6E51D3BC}"
+          SQLTask:SqlStatementSource="  USE PublicPool_DW&#xA;DECLARE @TARGETrows TINYINT &#xA;SET @TARGETrows = (SELECT TOP 1 CASE WHEN COUNT(*) &gt; 0 THEN 1 ELSE 0 END FROM dbo.XXHPATRNDP_Emp_Staging ds)&#xA;IF @TARGETrows = 0&#xA;BEGIN&#xA; PRINT 'dbo.XXHPATRNDP_Emp_Staging is empty, no action taken'&#xA;END &#xA;IF @TARGETrows &gt; 0&#xA;BEGIN&#xA; TRUNCATE TABLE dbo.XXHPATRNDP_Emp_Staging&#xA; PRINT 'Truncating dbo.XXHPATRNDP_Emp_Staging'&#xA;END&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update retrievedate"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6DCDE766-C422-4C25-8C2B-5E5D51C48790}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update retrievedate"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D407630A-A599-4648-91FB-129C6E51D3BC}"
+          SQLTask:SqlStatementSource="UPDATE dbo.XXHPATRNDP_EMP_Staging&#xA;SET retrievedate = GETDATE()" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{137CA733-8EEC-4FE2-8398-893E7079B9A1}"
+      DTS:From="Package\Truncate EMP_Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{70EC56F8-7BB9-4F1B-8501-8CB40D723D01}"
+      DTS:From="Package\Data Flow Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Update retrievedate" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{AF249F94-C38C-4616-B6E6-AA6DD7CBBC96}"
+      DTS:From="Package\Update retrievedate"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Log Job Completion" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Data Flow Task"
+          TopLeft="111,151" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Truncate EMP_Staging"
+          TopLeft="100,69" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Update retrievedate"
+          TopLeft="101,233" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="190.5,111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="187.75,193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Log Job Completion"
+          TopLeft="98,322" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="186.5,275">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Data Flow Task\FIS - XXHPATRNDP"
+          TopLeft="109,92" />
+        <NodeLayout
+          Size="252,42"
+          Id="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging"
+          TopLeft="65,216" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="193,134">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82"
+              Start="0,0"
+              End="0,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\FIS - XXHPATRNDP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\PPDW - XXHPATRNDP_EMP_Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

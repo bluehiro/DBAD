@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectInfo>
+    <Name>mssql_drivespace</Name>
+    <LastWriteTime>2016-02-29T23:27:18.5033318Z</LastWriteTime>
+    <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+    <Salt>/ojX8sXL</Salt>
+    <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAygWGt22Tv0Wlbg+e8ZZ9WQAAAAACAAAAAAADZgAAwAAAABAAAADIQAZ1C6IWpg09L/xzFio0AAAAAASAAACgAAAAEAAAAFDD+VCcfVxSXuGY23Py9eMoAAAAkGjRGrHPdadMNOg/TZ1IfLHoF2zcgufP3hfMZuz+YC4wZ0PGTvcYyxQAAACXckTyFatcbhxR37epzj/0/17JYg==</LastKnownProtectedHashedPassword>
+  </ProjectInfo>
+  <LastBuildInfos>
+    <ProjectBuildItemInfo>
+      <Name>MSSQL_drivespace.dtsx</Name>
+      <LastWriteTime>2016-02-29T23:32:59.5827318Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+      <Salt>UJQbB6JT</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAygWGt22Tv0Wlbg+e8ZZ9WQAAAAACAAAAAAADZgAAwAAAABAAAAB3RWY94/baAmOQpRpy+2uIAAAAAASAAACgAAAAEAAAAC2jhKwUAyhLMxoVLnx2dvwoAAAAumYJSHkM4AxDmzgVJe3868lMNJCjlrIyK1jzc5hIGZIjnu+vbgwkBhQAAACx1KvAoXj7mL5p5S0cJwKHOZQ3FA==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+  </LastBuildInfos>
+</BuildLog>

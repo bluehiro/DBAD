@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Report_Missing_Backups", "Backup_Monitor_To_OHSUBackups\Report_Missing_Backups.dtproj", "{F4DC6B94-30A1-4781-95D8-D47582F19D98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4DC6B94-30A1-4781-95D8-D47582F19D98}.Development|Default.ActiveCfg = Development
+		{F4DC6B94-30A1-4781-95D8-D47582F19D98}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

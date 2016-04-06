@@ -1,0 +1,1078 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/7/2015 11:31:31 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="MSBC477W7"
+  DTS:CreatorName="OHSUM01\jamesv"
+  DTS:DTSID="{40E998DC-D868-47E7-850C-C863BAF60DC7}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{C1C15F26-DDAF-401A-8FD8-A360F2D97A0C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[OCTRIDEV.xxbiolibonc]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{11B100D7-760F-47BC-8B9C-45ECA7028750}"
+      DTS:ObjectName="OCTRIDEV.xxbiolibonc">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=OCTRIDEV;User ID=xxbiolibonc;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAHcL5teP8PUul/vGHpikh1gAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAhCthTBFy3mPLon9jOD1ZsAAAAAASAAACgAAAAEAAAAJDqKZwY/AFS7L5BZQ6YsY04AAAAXoEaWR9rbxAMhTxmWPJWY4DaLTwl9WcUPOGS965cGNJkHBK1DerYalf3kRPwSlUxfA6WPsKcLdMUAAAA06eFhft5+oA4YjAaDIVz4rPegyU</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ONCOLOG4.oncolog]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3C26B0B4-9B8D-456E-BF45-540E5DE8815F}"
+      DTS:ObjectName="ONCOLOG4.oncolog">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ONCOLOG4, 1344;Initial Catalog=oncolog;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQLMDW2.DBA_Rep]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F2CCCE92-CBFC-4A22-8945-E8285E33A18C}"
+      DTS:ObjectName="SQLMDW2.DBA_Rep">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQLMDW2;Initial Catalog=DBA_Rep;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\olcourse table"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5BD8324E-A224-42F0-976A-3E95C3049367}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="olcourse table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\olcourse table\Data Conversion"
+              componentClassID="{62B1106C-7DB8-4EC8-ADD6-4C664DFFC54A}"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\olcourse table\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\olcourse table\Data Conversion.Inputs[Data Conversion Input].Columns[datefirsttreatment]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="datefirsttreatment"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[datefirsttreatment]" />
+                    <inputColumn
+                      refId="Package\olcourse table\Data Conversion.Inputs[Data Conversion Input].Columns[daterecur]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="daterecur"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[daterecur]" />
+                    <inputColumn
+                      refId="Package\olcourse table\Data Conversion.Inputs[Data Conversion Input].Columns[datesystemictherapystart]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="datesystemictherapystart"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[datesystemictherapystart]" />
+                    <inputColumn
+                      refId="Package\olcourse table\Data Conversion.Inputs[Data Conversion Input].Columns[hstrydatetime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="hstrydatetime"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[hstrydatetime]" />
+                    <inputColumn
+                      refId="Package\olcourse table\Data Conversion.Inputs[Data Conversion Input].Columns[siterecur1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="siterecur1"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[siterecur1]" />
+                    <inputColumn
+                      refId="Package\olcourse table\Data Conversion.Inputs[Data Conversion Input].Columns[siterecur2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="siterecur2"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[siterecur2]" />
+                    <inputColumn
+                      refId="Package\olcourse table\Data Conversion.Inputs[Data Conversion Input].Columns[siterecur3]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="siterecur3"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[siterecur3]" />
+                    <inputColumn
+                      refId="Package\olcourse table\Data Conversion.Inputs[Data Conversion Input].Columns[typerecur]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="typerecur"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[typerecur]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\olcourse table\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_datefirsttreatment]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_datefirsttreatment]"
+                      name="Unicode_datefirsttreatment"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[datefirsttreatment]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_daterecur]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_daterecur]"
+                      name="Unicode_daterecur"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[daterecur]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_datesystemictherapystart]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_datesystemictherapystart]"
+                      name="Unicode_datesystemictherapystart"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[datesystemictherapystart]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_hstrydatetime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_hstrydatetime]"
+                      name="Unicode_hstrydatetime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[hstrydatetime]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_siterecur1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_siterecur1]"
+                      name="Unicode_siterecur1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[siterecur1]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_siterecur2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_siterecur2]"
+                      name="Unicode_siterecur2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[siterecur2]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_siterecur3]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_siterecur3]"
+                      name="Unicode_siterecur3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[siterecur3]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_typerecur]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_typerecur]"
+                      name="Unicode_typerecur"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[typerecur]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\olcourse table\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\olcourse table\OLE DB Destination"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">"XXBIOLIBONC"."OLCOURSE_STG"</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\olcourse table\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OCTRIDEV.xxbiolibonc]"
+                  connectionManagerRefId="Package.ConnectionManagers[OCTRIDEV.xxbiolibonc]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PersonSer]"
+                      cachedDataType="i4"
+                      cachedName="PersonSer"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PERSONSER]"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[PersonSer]" />
+                    <inputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DiagnosticSer]"
+                      cachedDataType="i4"
+                      cachedName="DiagnosticSer"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DIAGNOSTICSER]"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiagnosticSer]" />
+                    <inputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CourseSer]"
+                      cachedDataType="i4"
+                      cachedName="CourseSer"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[COURSESER]"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[CourseSer]" />
+                    <inputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CREATE_DT]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CREATE_DT"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CREATE_DT]"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[CREATE_DT]" />
+                    <inputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Unicode_datefirsttreatment]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Unicode_datefirsttreatment"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DATEFIRSTTREATMENT]"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_datefirsttreatment]" />
+                    <inputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Unicode_daterecur]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Unicode_daterecur"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DATERECUR]"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_daterecur]" />
+                    <inputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Unicode_datesystemictherapystart]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Unicode_datesystemictherapystart"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DATESYSTEMICTHERAPYSTART]"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_datesystemictherapystart]" />
+                    <inputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Unicode_hstrydatetime]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Unicode_hstrydatetime"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HSTRYDATETIME]"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_hstrydatetime]" />
+                    <inputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Unicode_siterecur1]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Unicode_siterecur1"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SITERECUR1]"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_siterecur1]" />
+                    <inputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Unicode_siterecur2]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Unicode_siterecur2"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SITERECUR2]"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_siterecur2]" />
+                    <inputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Unicode_siterecur3]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Unicode_siterecur3"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SITERECUR3]"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_siterecur3]" />
+                    <inputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Unicode_typerecur]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Unicode_typerecur"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TYPERECUR]"
+                      lineageId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output].Columns[Unicode_typerecur]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PERSONSER]"
+                      dataType="numeric"
+                      name="PERSONSER"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DIAGNOSTICSER]"
+                      dataType="numeric"
+                      name="DIAGNOSTICSER"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[COURSESER]"
+                      dataType="numeric"
+                      name="COURSESER"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DATEFIRSTTREATMENT]"
+                      dataType="wstr"
+                      length="20"
+                      name="DATEFIRSTTREATMENT" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SITERECUR1]"
+                      dataType="wstr"
+                      length="10"
+                      name="SITERECUR1" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SITERECUR2]"
+                      dataType="wstr"
+                      length="10"
+                      name="SITERECUR2" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SITERECUR3]"
+                      dataType="wstr"
+                      length="10"
+                      name="SITERECUR3" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DATERECUR]"
+                      dataType="wstr"
+                      length="20"
+                      name="DATERECUR" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TYPERECUR]"
+                      dataType="wstr"
+                      length="10"
+                      name="TYPERECUR" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DATESYSTEMICTHERAPYSTART]"
+                      dataType="wstr"
+                      length="20"
+                      name="DATESYSTEMICTHERAPYSTART" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HSTRYDATETIME]"
+                      dataType="wstr"
+                      length="20"
+                      name="HSTRYDATETIME" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      name="CREATE_DT" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\olcourse table\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\olcourse table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\olcourse table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\olcourse table\OLE DB Source"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+	PersonSer,
+	DiagnosticSer,
+	CourseSer,
+	CONVERT(VARCHAR(20), datefirsttreatment, 103) AS datefirsttreatment,
+	siterecur1,
+	siterecur2,
+	siterecur3,
+	CONVERT(VARCHAR(20), daterecur, 103) AS daterecur,
+	typerecur,
+	CONVERT(VARCHAR(20), datesystemictherapystart, 103) AS datesystemictherapystart,
+	CONVERT(VARCHAR(20), hstrydatetime, 103) AS hstrydatetime,
+GETDATE() AS CREATE_DT
+FROM oncolog.dbo.OlCourse
+WHERE PersonSer IN (SELECT
+	PersonSer
+FROM oncolog.dbo.OlPatientFacility
+WHERE Facility = 4444)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\olcourse table\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ONCOLOG4.oncolog]"
+                  connectionManagerRefId="Package.ConnectionManagers[ONCOLOG4.oncolog]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[PersonSer]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PersonSer]"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[PersonSer]"
+                      name="PersonSer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiagnosticSer]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiagnosticSer]"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiagnosticSer]"
+                      name="DiagnosticSer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[CourseSer]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CourseSer]"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[CourseSer]"
+                      name="CourseSer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[datefirsttreatment]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[datefirsttreatment]"
+                      length="20"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[datefirsttreatment]"
+                      name="datefirsttreatment"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[siterecur1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[siterecur1]"
+                      length="10"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[siterecur1]"
+                      name="siterecur1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[siterecur2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[siterecur2]"
+                      length="10"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[siterecur2]"
+                      name="siterecur2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[siterecur3]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[siterecur3]"
+                      length="10"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[siterecur3]"
+                      name="siterecur3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[daterecur]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[daterecur]"
+                      length="20"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[daterecur]"
+                      name="daterecur"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[typerecur]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[typerecur]"
+                      length="10"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[typerecur]"
+                      name="typerecur"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[datesystemictherapystart]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[datesystemictherapystart]"
+                      length="20"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[datesystemictherapystart]"
+                      name="datesystemictherapystart"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[hstrydatetime]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hstrydatetime]"
+                      length="20"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[hstrydatetime]"
+                      name="hstrydatetime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CREATE_DT]"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].Columns[CREATE_DT]"
+                      name="CREATE_DT"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PersonSer]"
+                      dataType="i4"
+                      name="PersonSer" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiagnosticSer]"
+                      dataType="i4"
+                      name="DiagnosticSer" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CourseSer]"
+                      dataType="i4"
+                      name="CourseSer" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[datefirsttreatment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="datefirsttreatment" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[siterecur1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="siterecur1" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[siterecur2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="siterecur2" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[siterecur3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="siterecur3" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[daterecur]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="daterecur" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[typerecur]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="typerecur" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[datesystemictherapystart]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="datesystemictherapystart" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hstrydatetime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="hstrydatetime" />
+                    <externalMetadataColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      name="CREATE_DT" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PersonSer]"
+                      dataType="i4"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PersonSer]"
+                      name="PersonSer" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiagnosticSer]"
+                      dataType="i4"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiagnosticSer]"
+                      name="DiagnosticSer" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CourseSer]"
+                      dataType="i4"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CourseSer]"
+                      name="CourseSer" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[datefirsttreatment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[datefirsttreatment]"
+                      name="datefirsttreatment" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[siterecur1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[siterecur1]"
+                      name="siterecur1" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[siterecur2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[siterecur2]"
+                      name="siterecur2" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[siterecur3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[siterecur3]"
+                      name="siterecur3" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[daterecur]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[daterecur]"
+                      name="daterecur" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[typerecur]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[typerecur]"
+                      name="typerecur" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[datesystemictherapystart]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[datesystemictherapystart]"
+                      name="datesystemictherapystart" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hstrydatetime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hstrydatetime]"
+                      name="hstrydatetime" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CREATE_DT]"
+                      name="CREATE_DT" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\olcourse table.Paths[Data Conversion Output]"
+              endId="Package\olcourse table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\olcourse table\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\olcourse table.Paths[OLE DB Source Output]"
+              endId="Package\olcourse table\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\olcourse table\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="147,42"
+          Id="Package\olcourse table"
+          TopLeft="110,87" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\olcourse table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\olcourse table\OLE DB Source"
+          TopLeft="115,110" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\olcourse table\OLE DB Destination"
+          TopLeft="112,275" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\olcourse table\Data Conversion"
+          TopLeft="115,188" />
+        <EdgeLayout
+          Id="Package\olcourse table.Paths[OLE DB Source Output]"
+          TopLeft="192.5,152">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\olcourse table.Paths[Data Conversion Output]"
+          TopLeft="196.25,230">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\olcourse table\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\olcourse table\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

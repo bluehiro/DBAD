@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="NeuroPatDataStore" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="NeuroPatDataStore">
+    <EntitySet Name="Patient_Mains" EntityType="NeuroPatDataStore.Patient_Main" store:Type="Tables" Schema="dbo" Table="Patient_Main" />
+  </EntityContainer>
+  <EntityType Name="Patient_Main">
+    <Key>
+      <PropertyRef Name="Discharged" />
+      <PropertyRef Name="Complication" />
+      <PropertyRef Name="M &amp; M" />
+      <PropertyRef Name="TBI" />
+      <PropertyRef Name="TBI f/u complete" />
+      <PropertyRef Name="Preferred 1" />
+      <PropertyRef Name="Preferred 2" />
+      <PropertyRef Name="Preferred 3" />
+      <PropertyRef Name="PCP f/u done" />
+    </Key>
+    <Property Name="ID1" Type="int" />
+    <Property Name="Last Name" Type="varchar" MaxLength="255" />
+    <Property Name="First Name" Type="varchar" MaxLength="255" />
+    <Property Name="MR" Type="varchar" MaxLength="255" />
+    <Property Name="Age" Type="varchar" MaxLength="255" />
+    <Property Name="Admit Date" Type="datetime2" Precision="0" />
+    <Property Name="Floor" Type="varchar" MaxLength="255" />
+    <Property Name="Bed" Type="int" />
+    <Property Name="Staff" Type="varchar" MaxLength="255" />
+    <Property Name="Op Res" Type="varchar" MaxLength="255" />
+    <Property Name="Op Res 2" Type="varchar" MaxLength="255" />
+    <Property Name="Consult/Inpatient" Type="varchar" MaxLength="255" />
+    <Property Name="Diagnosis" Type="varchar" MaxLength="255" />
+    <Property Name="Procedures" Type="varchar" MaxLength="255" />
+    <Property Name="Note" Type="varchar" MaxLength="255" />
+    <Property Name="Discharged" Type="bit" Nullable="false" />
+    <Property Name="Discharge Date" Type="datetime2" Precision="0" />
+    <Property Name="Complication" Type="bit" Nullable="false" />
+    <Property Name="Complication #1" Type="varchar" MaxLength="255" />
+    <Property Name="Complication #2" Type="varchar" MaxLength="255" />
+    <Property Name="Complication Description" Type="varchar" MaxLength="255" />
+    <Property Name="Research Pt" Type="varchar" MaxLength="255" />
+    <Property Name="M &amp; M" Type="bit" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="255" />
+    <Property Name="FT" Type="int" />
+    <Property Name="TBI" Type="bit" Nullable="false" />
+    <Property Name="TBI f/u complete" Type="bit" Nullable="false" />
+    <Property Name="PCP" Type="varchar" MaxLength="255" />
+    <Property Name="Address line #1" Type="varchar" MaxLength="255" />
+    <Property Name="Address line #2" Type="varchar" MaxLength="255" />
+    <Property Name="Address line #3" Type="varchar" MaxLength="255" />
+    <Property Name="Preferred 1" Type="bit" Nullable="false" />
+    <Property Name="E-mail" Type="varchar" MaxLength="255" />
+    <Property Name="Preferred 2" Type="bit" Nullable="false" />
+    <Property Name="Tel" Type="varchar" MaxLength="255" />
+    <Property Name="Preferred 3" Type="bit" Nullable="false" />
+    <Property Name="Referring Phys" Type="varchar" MaxLength="255" />
+    <Property Name="BC notes" Type="varchar" MaxLength="255" />
+    <Property Name="KJB notes" Type="varchar" MaxLength="255" />
+    <Property Name="PCP f/u done" Type="bit" Nullable="false" />
+  </EntityType>
+</Schema>

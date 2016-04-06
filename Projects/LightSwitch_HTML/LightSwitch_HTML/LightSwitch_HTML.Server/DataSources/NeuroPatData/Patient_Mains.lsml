@@ -1,0 +1,1146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="Patient_Main">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <EntityProperty
+        Name="ID1"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Last_Name"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="First_Name"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="MR"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Age"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Admit_Date"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="0"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Floor"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Bed"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Staff"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Op_Res"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Op_Res_2"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Consult_Inpatient"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Diagnosis"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Procedures"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Note"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <KeyProperty
+        Name="Discharged"
+        PropertyType=":Boolean">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Discharge_Date"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="0"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <KeyProperty
+        Name="Complication"
+        PropertyType=":Boolean">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Complication__1"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Complication__2"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Complication_Description"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Research_Pt"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <KeyProperty
+        Name="M___M"
+        PropertyType=":Boolean">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Status"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FT"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <KeyProperty
+        Name="TBI"
+        PropertyType=":Boolean">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <KeyProperty
+        Name="TBI_f_u_complete"
+        PropertyType=":Boolean">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="PCP"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Address_line__1"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Address_line__2"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Address_line__3"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <KeyProperty
+        Name="Preferred_1"
+        PropertyType=":Boolean">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="E_mail"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <KeyProperty
+        Name="Preferred_2"
+        PropertyType=":Boolean">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Tel"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <KeyProperty
+        Name="Preferred_3"
+        PropertyType=":Boolean">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Referring_Phys"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="BC_notes"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="KJB_notes"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <KeyProperty
+        Name="PCP_f_u_done"
+        PropertyType=":Boolean">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="NeuroPatData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="Patient_Mains"
+      EntityType="Patient_Main" />
+    <QueryOperation
+      Name="Patient_Mains_Single"
+      ReturnType="Patient_Main">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="And">
+            <BinaryExpression.Left>
+              <BinaryExpression
+                NodeType="And">
+                <BinaryExpression.Left>
+                  <BinaryExpression
+                    NodeType="And">
+                    <BinaryExpression.Left>
+                      <BinaryExpression
+                        NodeType="And">
+                        <BinaryExpression.Left>
+                          <BinaryExpression
+                            NodeType="And">
+                            <BinaryExpression.Left>
+                              <BinaryExpression
+                                NodeType="And">
+                                <BinaryExpression.Left>
+                                  <BinaryExpression
+                                    NodeType="And">
+                                    <BinaryExpression.Left>
+                                      <BinaryExpression
+                                        NodeType="And">
+                                        <BinaryExpression.Left>
+                                          <BinaryExpression
+                                            NodeType="Equal">
+                                            <BinaryExpression.Left>
+                                              <ChainExpression>
+                                                <MemberExpression
+                                                  Member="PCP_f_u_done" />
+                                              </ChainExpression>
+                                            </BinaryExpression.Left>
+                                            <BinaryExpression.Right>
+                                              <ParameterExpression
+                                                Parameter="PCP_f_u_done" />
+                                            </BinaryExpression.Right>
+                                          </BinaryExpression>
+                                        </BinaryExpression.Left>
+                                        <BinaryExpression.Right>
+                                          <BinaryExpression
+                                            NodeType="Equal">
+                                            <BinaryExpression.Left>
+                                              <ChainExpression>
+                                                <MemberExpression
+                                                  Member="Preferred_3" />
+                                              </ChainExpression>
+                                            </BinaryExpression.Left>
+                                            <BinaryExpression.Right>
+                                              <ParameterExpression
+                                                Parameter="Preferred_3" />
+                                            </BinaryExpression.Right>
+                                          </BinaryExpression>
+                                        </BinaryExpression.Right>
+                                      </BinaryExpression>
+                                    </BinaryExpression.Left>
+                                    <BinaryExpression.Right>
+                                      <BinaryExpression
+                                        NodeType="Equal">
+                                        <BinaryExpression.Left>
+                                          <ChainExpression>
+                                            <MemberExpression
+                                              Member="Preferred_2" />
+                                          </ChainExpression>
+                                        </BinaryExpression.Left>
+                                        <BinaryExpression.Right>
+                                          <ParameterExpression
+                                            Parameter="Preferred_2" />
+                                        </BinaryExpression.Right>
+                                      </BinaryExpression>
+                                    </BinaryExpression.Right>
+                                  </BinaryExpression>
+                                </BinaryExpression.Left>
+                                <BinaryExpression.Right>
+                                  <BinaryExpression
+                                    NodeType="Equal">
+                                    <BinaryExpression.Left>
+                                      <ChainExpression>
+                                        <MemberExpression
+                                          Member="Preferred_1" />
+                                      </ChainExpression>
+                                    </BinaryExpression.Left>
+                                    <BinaryExpression.Right>
+                                      <ParameterExpression
+                                        Parameter="Preferred_1" />
+                                    </BinaryExpression.Right>
+                                  </BinaryExpression>
+                                </BinaryExpression.Right>
+                              </BinaryExpression>
+                            </BinaryExpression.Left>
+                            <BinaryExpression.Right>
+                              <BinaryExpression
+                                NodeType="Equal">
+                                <BinaryExpression.Left>
+                                  <ChainExpression>
+                                    <MemberExpression
+                                      Member="TBI_f_u_complete" />
+                                  </ChainExpression>
+                                </BinaryExpression.Left>
+                                <BinaryExpression.Right>
+                                  <ParameterExpression
+                                    Parameter="TBI_f_u_complete" />
+                                </BinaryExpression.Right>
+                              </BinaryExpression>
+                            </BinaryExpression.Right>
+                          </BinaryExpression>
+                        </BinaryExpression.Left>
+                        <BinaryExpression.Right>
+                          <BinaryExpression
+                            NodeType="Equal">
+                            <BinaryExpression.Left>
+                              <ChainExpression>
+                                <MemberExpression
+                                  Member="TBI" />
+                              </ChainExpression>
+                            </BinaryExpression.Left>
+                            <BinaryExpression.Right>
+                              <ParameterExpression
+                                Parameter="TBI" />
+                            </BinaryExpression.Right>
+                          </BinaryExpression>
+                        </BinaryExpression.Right>
+                      </BinaryExpression>
+                    </BinaryExpression.Left>
+                    <BinaryExpression.Right>
+                      <BinaryExpression
+                        NodeType="Equal">
+                        <BinaryExpression.Left>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="M___M" />
+                          </ChainExpression>
+                        </BinaryExpression.Left>
+                        <BinaryExpression.Right>
+                          <ParameterExpression
+                            Parameter="M___M" />
+                        </BinaryExpression.Right>
+                      </BinaryExpression>
+                    </BinaryExpression.Right>
+                  </BinaryExpression>
+                </BinaryExpression.Left>
+                <BinaryExpression.Right>
+                  <BinaryExpression
+                    NodeType="Equal">
+                    <BinaryExpression.Left>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Complication" />
+                      </ChainExpression>
+                    </BinaryExpression.Left>
+                    <BinaryExpression.Right>
+                      <ParameterExpression
+                        Parameter="Complication" />
+                    </BinaryExpression.Right>
+                  </BinaryExpression>
+                </BinaryExpression.Right>
+              </BinaryExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <BinaryExpression
+                NodeType="Equal">
+                <BinaryExpression.Left>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="Discharged" />
+                  </ChainExpression>
+                </BinaryExpression.Left>
+                <BinaryExpression.Right>
+                  <ParameterExpression
+                    Parameter="Discharged" />
+                </BinaryExpression.Right>
+              </BinaryExpression>
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Patient_Mains" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Discharged"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Discharged' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="Complication"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Complication' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="M___M"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'M___M' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="TBI"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'TBI' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="TBI_f_u_complete"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'TBI_f_u_complete' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="Preferred_1"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Preferred_1' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="Preferred_2"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Preferred_2' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="Preferred_3"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Preferred_3' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="PCP_f_u_done"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'PCP_f_u_done' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="Patient_Mains_SingleOrDefault"
+      ReturnType="Patient_Main">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="And">
+            <BinaryExpression.Left>
+              <BinaryExpression
+                NodeType="And">
+                <BinaryExpression.Left>
+                  <BinaryExpression
+                    NodeType="And">
+                    <BinaryExpression.Left>
+                      <BinaryExpression
+                        NodeType="And">
+                        <BinaryExpression.Left>
+                          <BinaryExpression
+                            NodeType="And">
+                            <BinaryExpression.Left>
+                              <BinaryExpression
+                                NodeType="And">
+                                <BinaryExpression.Left>
+                                  <BinaryExpression
+                                    NodeType="And">
+                                    <BinaryExpression.Left>
+                                      <BinaryExpression
+                                        NodeType="And">
+                                        <BinaryExpression.Left>
+                                          <BinaryExpression
+                                            NodeType="Equal">
+                                            <BinaryExpression.Left>
+                                              <ChainExpression>
+                                                <MemberExpression
+                                                  Member="PCP_f_u_done" />
+                                              </ChainExpression>
+                                            </BinaryExpression.Left>
+                                            <BinaryExpression.Right>
+                                              <ParameterExpression
+                                                Parameter="PCP_f_u_done" />
+                                            </BinaryExpression.Right>
+                                          </BinaryExpression>
+                                        </BinaryExpression.Left>
+                                        <BinaryExpression.Right>
+                                          <BinaryExpression
+                                            NodeType="Equal">
+                                            <BinaryExpression.Left>
+                                              <ChainExpression>
+                                                <MemberExpression
+                                                  Member="Preferred_3" />
+                                              </ChainExpression>
+                                            </BinaryExpression.Left>
+                                            <BinaryExpression.Right>
+                                              <ParameterExpression
+                                                Parameter="Preferred_3" />
+                                            </BinaryExpression.Right>
+                                          </BinaryExpression>
+                                        </BinaryExpression.Right>
+                                      </BinaryExpression>
+                                    </BinaryExpression.Left>
+                                    <BinaryExpression.Right>
+                                      <BinaryExpression
+                                        NodeType="Equal">
+                                        <BinaryExpression.Left>
+                                          <ChainExpression>
+                                            <MemberExpression
+                                              Member="Preferred_2" />
+                                          </ChainExpression>
+                                        </BinaryExpression.Left>
+                                        <BinaryExpression.Right>
+                                          <ParameterExpression
+                                            Parameter="Preferred_2" />
+                                        </BinaryExpression.Right>
+                                      </BinaryExpression>
+                                    </BinaryExpression.Right>
+                                  </BinaryExpression>
+                                </BinaryExpression.Left>
+                                <BinaryExpression.Right>
+                                  <BinaryExpression
+                                    NodeType="Equal">
+                                    <BinaryExpression.Left>
+                                      <ChainExpression>
+                                        <MemberExpression
+                                          Member="Preferred_1" />
+                                      </ChainExpression>
+                                    </BinaryExpression.Left>
+                                    <BinaryExpression.Right>
+                                      <ParameterExpression
+                                        Parameter="Preferred_1" />
+                                    </BinaryExpression.Right>
+                                  </BinaryExpression>
+                                </BinaryExpression.Right>
+                              </BinaryExpression>
+                            </BinaryExpression.Left>
+                            <BinaryExpression.Right>
+                              <BinaryExpression
+                                NodeType="Equal">
+                                <BinaryExpression.Left>
+                                  <ChainExpression>
+                                    <MemberExpression
+                                      Member="TBI_f_u_complete" />
+                                  </ChainExpression>
+                                </BinaryExpression.Left>
+                                <BinaryExpression.Right>
+                                  <ParameterExpression
+                                    Parameter="TBI_f_u_complete" />
+                                </BinaryExpression.Right>
+                              </BinaryExpression>
+                            </BinaryExpression.Right>
+                          </BinaryExpression>
+                        </BinaryExpression.Left>
+                        <BinaryExpression.Right>
+                          <BinaryExpression
+                            NodeType="Equal">
+                            <BinaryExpression.Left>
+                              <ChainExpression>
+                                <MemberExpression
+                                  Member="TBI" />
+                              </ChainExpression>
+                            </BinaryExpression.Left>
+                            <BinaryExpression.Right>
+                              <ParameterExpression
+                                Parameter="TBI" />
+                            </BinaryExpression.Right>
+                          </BinaryExpression>
+                        </BinaryExpression.Right>
+                      </BinaryExpression>
+                    </BinaryExpression.Left>
+                    <BinaryExpression.Right>
+                      <BinaryExpression
+                        NodeType="Equal">
+                        <BinaryExpression.Left>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="M___M" />
+                          </ChainExpression>
+                        </BinaryExpression.Left>
+                        <BinaryExpression.Right>
+                          <ParameterExpression
+                            Parameter="M___M" />
+                        </BinaryExpression.Right>
+                      </BinaryExpression>
+                    </BinaryExpression.Right>
+                  </BinaryExpression>
+                </BinaryExpression.Left>
+                <BinaryExpression.Right>
+                  <BinaryExpression
+                    NodeType="Equal">
+                    <BinaryExpression.Left>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Complication" />
+                      </ChainExpression>
+                    </BinaryExpression.Left>
+                    <BinaryExpression.Right>
+                      <ParameterExpression
+                        Parameter="Complication" />
+                    </BinaryExpression.Right>
+                  </BinaryExpression>
+                </BinaryExpression.Right>
+              </BinaryExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <BinaryExpression
+                NodeType="Equal">
+                <BinaryExpression.Left>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="Discharged" />
+                  </ChainExpression>
+                </BinaryExpression.Left>
+                <BinaryExpression.Right>
+                  <ParameterExpression
+                    Parameter="Discharged" />
+                </BinaryExpression.Right>
+              </BinaryExpression>
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Patient_Mains" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Discharged"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Discharged' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="Complication"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Complication' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="M___M"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'M___M' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="TBI"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'TBI' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="TBI_f_u_complete"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'TBI_f_u_complete' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="Preferred_1"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Preferred_1' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="Preferred_2"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Preferred_2' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="Preferred_3"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Preferred_3' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+      <QueryOperationParameter
+        Name="PCP_f_u_done"
+        ParameterType="Microsoft.LightSwitch:Boolean?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'PCP_f_u_done' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="NeuroPatDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="Patient_Mains">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="Patient_Main" />
+        <SsdlProperty
+          Name="ID1"
+          Nullable="True"
+          Type="int"
+          Property="Patient_Main/Properties[ID1]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Last Name"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Last_Name]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="First Name"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[First_Name]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="MR"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[MR]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Age"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Age]" />
+        <SsdlProperty
+          Name="Admit Date"
+          Nullable="True"
+          Precision="0"
+          Type="datetime2"
+          Property="Patient_Main/Properties[Admit_Date]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Floor"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Floor]" />
+        <SsdlProperty
+          Name="Bed"
+          Nullable="True"
+          Type="int"
+          Property="Patient_Main/Properties[Bed]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Staff"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Staff]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Op Res"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Op_Res]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Op Res 2"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Op_Res_2]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Consult/Inpatient"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Consult_Inpatient]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Diagnosis"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Diagnosis]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Procedures"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Procedures]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Note"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Note]" />
+        <SsdlProperty
+          Name="Discharged"
+          Nullable="False"
+          Type="bit"
+          Property="Patient_Main/Properties[Discharged]" />
+        <SsdlProperty
+          Name="Discharge Date"
+          Nullable="True"
+          Precision="0"
+          Type="datetime2"
+          Property="Patient_Main/Properties[Discharge_Date]" />
+        <SsdlProperty
+          Name="Complication"
+          Nullable="False"
+          Type="bit"
+          Property="Patient_Main/Properties[Complication]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Complication #1"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Complication__1]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Complication #2"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Complication__2]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Complication Description"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Complication_Description]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Research Pt"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Research_Pt]" />
+        <SsdlProperty
+          Name="M &amp; M"
+          Nullable="False"
+          Type="bit"
+          Property="Patient_Main/Properties[M___M]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Status"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Status]" />
+        <SsdlProperty
+          Name="FT"
+          Nullable="True"
+          Type="int"
+          Property="Patient_Main/Properties[FT]" />
+        <SsdlProperty
+          Name="TBI"
+          Nullable="False"
+          Type="bit"
+          Property="Patient_Main/Properties[TBI]" />
+        <SsdlProperty
+          Name="TBI f/u complete"
+          Nullable="False"
+          Type="bit"
+          Property="Patient_Main/Properties[TBI_f_u_complete]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="PCP"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[PCP]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Address line #1"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Address_line__1]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Address line #2"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Address_line__2]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Address line #3"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Address_line__3]" />
+        <SsdlProperty
+          Name="Preferred 1"
+          Nullable="False"
+          Type="bit"
+          Property="Patient_Main/Properties[Preferred_1]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="E-mail"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[E_mail]" />
+        <SsdlProperty
+          Name="Preferred 2"
+          Nullable="False"
+          Type="bit"
+          Property="Patient_Main/Properties[Preferred_2]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Tel"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Tel]" />
+        <SsdlProperty
+          Name="Preferred 3"
+          Nullable="False"
+          Type="bit"
+          Property="Patient_Main/Properties[Preferred_3]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Referring Phys"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[Referring_Phys]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="BC notes"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[BC_notes]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="KJB notes"
+          Nullable="True"
+          Type="varchar"
+          Property="Patient_Main/Properties[KJB_notes]" />
+        <SsdlProperty
+          Name="PCP f/u done"
+          Nullable="False"
+          Type="bit"
+          Property="Patient_Main/Properties[PCP_f_u_done]" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+  </DataService>
+</ServiceApplication>

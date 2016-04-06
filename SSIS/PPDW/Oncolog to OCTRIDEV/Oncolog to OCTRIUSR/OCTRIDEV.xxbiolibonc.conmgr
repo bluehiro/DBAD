@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="OCTRIDEV xxbiolibonc"
+  DTS:DTSID="{AEB74F69-5028-46C9-89A4-8277387709FE}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=OCTRIDEV;User ID=xxbiolibonc;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAygWGt22Tv0Wlbg+e8ZZ9WQAAAAACAAAAAAADZgAAwAAAABAAAACc8pVOAoaQF25zzjAmen2UAAAAAASAAACgAAAAEAAAAIbOsd1trY11IL3MBP1O2H6IAAAA5Tou3U28aLlRDWM83bL28p6aUM5w6qJNOIoy6549Nu7WML7irIAvDw89zykn9Z8ck0QLekDuNVepFL6whI1yoXCzTQFGwKU+cV86Dx5ocig+zKFwSsqtpxunKpMUeqfdWWBVr0NIWvjTUQbuab8YnRQSxRRrDNhEAbuqE6DbisEyj2vM5xGptRQAAABq8vwJVJt8ePfyW4WdI4Ii6Mc2Aw==</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

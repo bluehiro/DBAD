@@ -1,0 +1,2 @@
+E:\repo\DBAD\Projects\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept.HTMLClient\bin\Debug\LSResourceGeneratorsTask.mcs
+E:\repo\DBAD\Projects\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept\LightSwitch_Proof_of_Concept.HTMLClient\bin\Debug\LSClientCodeGeneratorsTask.mcs

@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "BigBrain to Eres", "BigBrain to Eres\BigBrain to Eres.dtproj", "{7F124AD7-03F8-4984-812A-6FB73DB04F06}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F124AD7-03F8-4984-812A-6FB73DB04F06}.Development|Default.ActiveCfg = Development
+		{7F124AD7-03F8-4984-812A-6FB73DB04F06}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

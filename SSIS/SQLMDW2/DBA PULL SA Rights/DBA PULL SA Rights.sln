@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SA Rights", "DBA PULL SA Rights\SA Rights.dtproj", "{20572B3E-9383-4B09-87B8-B88BD6E46C87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20572B3E-9383-4B09-87B8-B88BD6E46C87}.Development|Default.ActiveCfg = Development
+		{20572B3E-9383-4B09-87B8-B88BD6E46C87}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,486 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/16/2015 3:57:18 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="MSBC477W7"
+  DTS:CreatorName="OHSUM01\jamesv"
+  DTS:DTSID="{60169559-6527-478D-82CE-766719C3342A}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="SCOM_to_WatchDog"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{D8855A20-0DA8-41EE-9759-65135EC6F64E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SCOMDB01,1344.OperationsManager]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B04F9C2E-7D10-4C42-A62E-BCEEF2F9F32E}"
+      DTS:ObjectName="SCOMDB01,1344.OperationsManager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SCOMDB01,1344;Initial Catalog=OperationsManager;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQLMDW2.WatchDog]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{04A55504-497C-45DC-BDCE-8B7DD7B89444}"
+      DTS:ObjectName="SQLMDW2.WatchDog">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQLMDW2;Initial Catalog=WatchDog;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SCOM to WatchDog"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{73EC3BFD-B8B2-4539-B369-999D20FEC902}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SCOM to WatchDog"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SCOMDB01 SQL Query"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT DISTINCT
+	rgv.SourceObjectDisplayName AS 'GroupName',
+	rgv.TargetObjectPath,
+	UPPER(SUBSTRING(rgv.TargetObjectPath, 1, PATINDEX('%.%', rgv.TargetObjectPath) - 1)) AS ServerName 
+FROM RelationshipGenericView rgv
+WHERE IsDeleted = 0
+AND rgv.SourceObjectDisplayName LIKE 'MSSQLSERVER'
+ORDER BY TargetObjectPath</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SCOMDB01,1344.OperationsManager]"
+                  connectionManagerRefId="Package.ConnectionManagers[SCOMDB01,1344.OperationsManager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].Columns[GroupName]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].ExternalColumns[GroupName]"
+                      lineageId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].Columns[GroupName]"
+                      name="GroupName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].Columns[TargetObjectPath]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].ExternalColumns[TargetObjectPath]"
+                      lineageId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].Columns[TargetObjectPath]"
+                      name="TargetObjectPath"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].Columns[ServerName]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].ExternalColumns[ServerName]"
+                      lineageId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].Columns[ServerName]"
+                      name="ServerName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].ExternalColumns[GroupName]"
+                      dataType="nText"
+                      name="GroupName" />
+                    <externalMetadataColumn
+                      refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].ExternalColumns[TargetObjectPath]"
+                      dataType="nText"
+                      name="TargetObjectPath" />
+                    <externalMetadataColumn
+                      refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].ExternalColumns[ServerName]"
+                      dataType="nText"
+                      name="ServerName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Error Output].Columns[GroupName]"
+                      dataType="nText"
+                      lineageId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Error Output].Columns[GroupName]"
+                      name="GroupName" />
+                    <outputColumn
+                      refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Error Output].Columns[TargetObjectPath]"
+                      dataType="nText"
+                      lineageId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Error Output].Columns[TargetObjectPath]"
+                      name="TargetObjectPath" />
+                    <outputColumn
+                      refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Error Output].Columns[ServerName]"
+                      dataType="nText"
+                      lineageId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Error Output].Columns[ServerName]"
+                      name="ServerName" />
+                    <outputColumn
+                      refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SQLMDW2 WatchDog DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SCOM_SQLServer_Staging]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SQLMDW2.WatchDog]"
+                  connectionManagerRefId="Package.ConnectionManagers[SQLMDW2.WatchDog]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Inputs[OLE DB Destination Input].Columns[GroupName]"
+                      cachedDataType="nText"
+                      cachedName="GroupName"
+                      externalMetadataColumnId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Inputs[OLE DB Destination Input].ExternalColumns[GroupName]"
+                      lineageId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].Columns[GroupName]" />
+                    <inputColumn
+                      refId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Inputs[OLE DB Destination Input].Columns[TargetObjectPath]"
+                      cachedDataType="nText"
+                      cachedName="TargetObjectPath"
+                      externalMetadataColumnId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Inputs[OLE DB Destination Input].ExternalColumns[TargetObjectPath]"
+                      lineageId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].Columns[TargetObjectPath]" />
+                    <inputColumn
+                      refId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Inputs[OLE DB Destination Input].Columns[ServerName]"
+                      cachedDataType="nText"
+                      cachedName="ServerName"
+                      externalMetadataColumnId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Inputs[OLE DB Destination Input].ExternalColumns[ServerName]"
+                      lineageId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output].Columns[ServerName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Inputs[OLE DB Destination Input].ExternalColumns[GroupName]"
+                      dataType="nText"
+                      name="GroupName" />
+                    <externalMetadataColumn
+                      refId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Inputs[OLE DB Destination Input].ExternalColumns[TargetObjectPath]"
+                      dataType="nText"
+                      name="TargetObjectPath" />
+                    <externalMetadataColumn
+                      refId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Inputs[OLE DB Destination Input].ExternalColumns[ServerName]"
+                      dataType="nText"
+                      name="ServerName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\SCOM to WatchDog.Paths[OLE DB Source Output]"
+              endId="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\SCOM to WatchDog\SCOMDB01 SQL Query.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Staging Table"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B5024E34-3B36-42B7-9E0F-F66A2C04C58B}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Staging Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{04A55504-497C-45DC-BDCE-8B7DD7B89444}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [SCOM_SQLServer_Staging]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{85B52647-DD19-47A2-8E52-C359F0BB66A8}"
+      DTS:From="Package\Truncate Staging Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SCOM to WatchDog" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="174,42"
+          Id="Package\SCOM to WatchDog"
+          TopLeft="142,207" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Truncate Staging Table"
+          TopLeft="130,116" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="227,158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SCOM to WatchDog">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188,42"
+          Id="Package\SCOM to WatchDog\SCOMDB01 SQL Query"
+          TopLeft="62.5,40.5" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB"
+          TopLeft="59.5,131.5" />
+        <EdgeLayout
+          Id="Package\SCOM to WatchDog.Paths[OLE DB Source Output]"
+          TopLeft="157.75,82.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SCOM to WatchDog\SCOMDB01 SQL Query">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SCOM to WatchDog\SQLMDW2 WatchDog DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

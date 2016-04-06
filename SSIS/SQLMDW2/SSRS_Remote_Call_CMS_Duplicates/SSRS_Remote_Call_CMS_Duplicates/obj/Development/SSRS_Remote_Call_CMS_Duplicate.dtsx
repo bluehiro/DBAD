@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/12/2015 8:34:46 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="MSBC477W7"
+  DTS:CreatorName="OHSUM01\jamesv"
+  DTS:DTSID="{4E54BF15-C23A-4C41-B15A-EDC260C18AB6}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="SSRS_Remote_Call_CMS_Duplicate"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{C3C6B694-A051-47E0-9CF1-BA7A1153EC68}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQL2K12RPT1, 1344.master]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7725741B-815E-437E-9953-D7ED3A0CF5EB}"
+      DTS:ObjectName="SQL2K12RPT1, 1344.master">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQL2K12RPT1, 1344;Initial Catalog=master;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SSRS Subscription - f4398e8a-3c3b-4aff-888c-9091fbd51ce0"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5A1B6F52-B64B-48FA-BE47-2FABA61A0255}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SSRS Subscription - f4398e8a-3c3b-4aff-888c-9091fbd51ce0"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7725741B-815E-437E-9953-D7ED3A0CF5EB}"
+          SQLTask:SqlStatementSource="exec [ReportServer].dbo.AddEvent @EventType='TimedSubscription', @EventData='f4398e8a-3c3b-4aff-888c-9091fbd51ce0'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="225,79"
+          Id="Package\Execute SSRS Subscription - f4398e8a-3c3b-4aff-888c-9091fbd51ce0"
+          TopLeft="104,128" />
+        <AnnotationLayout
+          Text="This package is used to execute an SSRS subscription&#xD;&#xA;on sql2k12rpt1. This is done FROM SQLMDW2 because&#xD;&#xA;we only want to run the report IF there are duplicate&#xD;&#xA;entries in CMS, and CMS is stored on SQLMDW2"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="298,79"
+          Id="f016a1e4-36a5-47a0-b77c-63f515ccfb5d"
+          TopLeft="399,119" />
+        <AnnotationLayout
+          Text="Created by Vince James on 20150212"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="214,60"
+          Id="5da14f36-9301-4513-8bb1-229e0e7b2c82"
+          TopLeft="59,55" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1115 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/15/2010 12:59:11 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="SQLDEV03"
+  DTS:CreatorName="OHSUM01\shaykiny"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{09C1A835-DBD4-4750-AD02-EAA3B865B7A0}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Tamtron_2_OCTRI_vw_case_result_v2"
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{8747D701-CEFF-4552-87F1-58271745E0F3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[OCTRIDEV]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D307EF59-F921-4466-892C-2F459DC741FE}"
+      DTS:ObjectName="OCTRIDEV">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=OCTRIDEV;User ID=xxbiolibonc;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA8awSWPMPB0qpIRmct1bs/wAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABbAA18XYDl5WHT0ZnkacKRAAAAAASAAACgAAAAEAAAAD/1tjMroGbjUADEa+G3i944AAAA1WK5q+otaKVhghtC/6npOfEd7QjHc5YmXge3gdrXOgl4zLWKZuW7Yf6FT8xiBhKzBMZsaX9o5rUUAAAAUEO9k2zozMjEbt0PE+CA2Yx/cMg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PPDBTST]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1E807370-7974-4170-BFD5-18704AF92E80}"
+      DTS:ObjectName="PPDBTST">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=PPDBTST;Initial Catalog=powerpath_v10_test;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2D2E8702-FE00-44FC-81B9-2D222DDD5FD6}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;select id,Accession#,pt_name,MRN,account_number,collection_date,order_number,name,text_data,description,completed_date FROM vw_case_result where completed_date &gt; &quot; + &quot;'&quot; + @[User::TargetMaxDate] + &quot;'&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DataFlowQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">select id,Accession#,pt_name,MRN,account_number,collection_date,order_number,name,text_data,description,completed_date FROM vw_case_result where completed_date &gt; '2015-05-07 10:57:19'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{627C1C99-71D9-4389-9CA0-2BC36E9B4189}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TargetMaxDate">
+      <DTS:VariableValue
+        DTS:DataType="8">2015-05-07 10:57:19</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{64D78971-0C21-44F7-A723-06A55706C4B6}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          engineThreads="5"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Data Conversion"
+              componentClassID="{62B1106C-7DB8-4EC8-ADD6-4C664DFFC54A}"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[MRN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="MRN"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[MRN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Accession#]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Accession#"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[Accession#]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[account_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="account_number"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[account_number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="name"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[pt_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="pt_name"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[pt_name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[order_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="order_number"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[order_number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="description"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[text_data]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="text_data"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[text_data]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of MRN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of MRN]"
+                      name="Copy of MRN"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[MRN]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Accession#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Accession#]"
+                      name="Copy of Accession#"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[Accession#]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of account_number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of account_number]"
+                      name="Copy of account_number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[account_number]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="80"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of name]"
+                      name="Copy of name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of pt_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="60"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of pt_name]"
+                      name="Copy of pt_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[pt_name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of order_number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of order_number]"
+                      name="Copy of order_number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[order_number]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="80"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of description]"
+                      name="Copy of description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[description]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of text_data]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of text_data]"
+                      name="Copy of text_data"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[text_data]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Destination - vw_case_result"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - vw_case_result"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">"XXBIOLIBONC"."VW_CASE_RESULT"</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destinaton. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Destination - vw_case_result.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OCTRIDEV]"
+                  connectionManagerRefId="Package.ConnectionManagers[OCTRIDEV]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].Columns[collection_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="collection_date"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[COLLECTION_DATE]"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[collection_date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].Columns[completed_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="completed_date"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[COMPLETED_DATE]"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[completed_date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].Columns[Copy of MRN]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Copy of MRN"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[MRN]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of MRN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].Columns[Copy of Accession#]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Copy of Accession#"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[ACCESSION#]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Accession#]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].Columns[Copy of account_number]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Copy of account_number"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[ACCOUNT_NUMBER]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of account_number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].Columns[Copy of name]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="Copy of name"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[NAME]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].Columns[Copy of pt_name]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Copy of pt_name"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[PT_NAME]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of pt_name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].Columns[Copy of order_number]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Copy of order_number"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[ORDER_NUMBER]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of order_number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].Columns[Copy of text_data]"
+                      cachedDataType="nText"
+                      cachedName="Copy of text_data"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[TEXT_DATA]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of text_data]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].Columns[Copy of description]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="Copy of description"
+                      externalMetadataColumnId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[DESCRIPTION]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of description]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[MRN]"
+                      dataType="wstr"
+                      length="30"
+                      name="MRN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[ID]"
+                      dataType="numeric"
+                      name="ID"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[ACCESSION#]"
+                      dataType="wstr"
+                      length="30"
+                      name="ACCESSION#" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[PT_NAME]"
+                      dataType="wstr"
+                      length="60"
+                      name="PT_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[ACCOUNT_NUMBER]"
+                      dataType="wstr"
+                      length="30"
+                      name="ACCOUNT_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[COLLECTION_DATE]"
+                      dataType="dbTimeStamp"
+                      name="COLLECTION_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[ORDER_NUMBER]"
+                      dataType="wstr"
+                      length="30"
+                      name="ORDER_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[NAME]"
+                      dataType="wstr"
+                      length="80"
+                      name="NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[TEXT_DATA]"
+                      dataType="nText"
+                      name="TEXT_DATA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[DESCRIPTION]"
+                      dataType="wstr"
+                      length="80"
+                      name="DESCRIPTION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[COMPLETED_DATE]"
+                      dataType="dbTimeStamp"
+                      name="COMPLETED_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input].ExternalColumns[CREATE_DT]"
+                      dataType="dbTimeStamp"
+                      name="CREATE_DT" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Destination - vw_case_result.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Destination - vw_case_result.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Destination - vw_case_result.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Destination - vw_case_result.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Source - vw_case_result"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - vw_case_result"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[powerpath_91_test].[dbo].[vw_case_result]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::DataFlowQuery</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Source - vw_case_result.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PPDBTST]"
+                  connectionManagerRefId="Package.ConnectionManagers[PPDBTST]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[Accession#]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[Accession#]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[Accession#]"
+                      name="Accession#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[pt_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[pt_name]"
+                      length="60"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[pt_name]"
+                      name="pt_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[MRN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[MRN]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[MRN]"
+                      name="MRN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[account_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[account_number]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[account_number]"
+                      name="account_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[collection_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[collection_date]"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[collection_date]"
+                      name="collection_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[order_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[order_number]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[order_number]"
+                      name="order_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      length="80"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[text_data]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[text_data]"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[text_data]"
+                      name="text_data"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      length="80"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[description]"
+                      name="description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[completed_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[completed_date]"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].Columns[completed_date]"
+                      name="completed_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[Accession#]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Accession#" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[pt_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="pt_name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[MRN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="MRN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[account_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="account_number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[collection_date]"
+                      dataType="dbTimeStamp"
+                      name="collection_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[order_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="order_number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[text_data]"
+                      codePage="1252"
+                      dataType="text"
+                      name="text_data" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output].ExternalColumns[completed_date]"
+                      dataType="dbTimeStamp"
+                      name="completed_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[Accession#]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[Accession#]"
+                      name="Accession#" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[pt_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[pt_name]"
+                      name="pt_name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[MRN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[MRN]"
+                      name="MRN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[account_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[account_number]"
+                      name="account_number" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[collection_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[collection_date]"
+                      name="collection_date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[order_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[order_number]"
+                      name="order_number" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[text_data]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[text_data]"
+                      name="text_data" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[completed_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[completed_date]"
+                      name="completed_date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\Destination - vw_case_result.Inputs[Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Source - vw_case_result.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get Max Date on Target"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{52C5F8A0-5A43-42CD-B118-1676BADAE3E4}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Max Date on Target"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D307EF59-F921-4466-892C-2F459DC741FE}"
+          SQLTask:SqlStatementSource="SELECT TO_CHAR(max(completed_date), 'YYYY-MM-DD HH24:MI:SS') as proc FROM vw_case_result"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="proc"
+            SQLTask:DtsVariableName="User::TargetMaxDate" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TargetMaxDate"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{7A4202C8-860E-41FF-9C57-36F3382E47B5}"
+      DTS:From="Package\Get Max Date on Target"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="169,58"
+          Id="Package\Data Flow Task"
+          TopLeft="44.9905660377358,186.61320754717" />
+        <NodeLayout
+          Size="169,62"
+          Id="Package\Get Max Date on Target"
+          TopLeft="39.5,37.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="126.745283018868,99.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87.1132075471698"
+              Start="0,0"
+              End="0,79.6132075471698">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.6132075471698" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="20150722 VMJ - Migrated from SQLDEV03 &amp; uplifted to 2012 &amp; rewrote portions of job to increase stability"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="550,39"
+          Id="0ef4d150-2e09-416b-a5cc-9e49539814a7"
+          TopLeft="285,74" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Data Flow Task\Destination - vw_case_result"
+          TopLeft="40.5,220.160377358491" />
+        <NodeLayout
+          Size="186,64"
+          Id="Package\Data Flow Task\Source - vw_case_result"
+          TopLeft="50.5,14.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="63,124" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="142.75,78.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.5"
+              Start="0,0"
+              End="0,38">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="145.25,166">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.1603773584906"
+              Start="0,0"
+              End="0,46.6603773584906">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.6603773584906" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Destination - vw_case_result">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Source - vw_case_result">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

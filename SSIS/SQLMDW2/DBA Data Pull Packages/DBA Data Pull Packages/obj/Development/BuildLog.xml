@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectInfo>
+    <Name>DBA Data Pull Packages</Name>
+    <LastWriteTime>2015-09-28T17:40:25.7072701Z</LastWriteTime>
+    <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+    <Salt>hUFSoMy6</Salt>
+    <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAApWgj0CHIWE23/DWSTPDJ0QAAAAACAAAAAAADZgAAwAAAABAAAACuUGgsRmK/QT9OEmwyfoq8AAAAAASAAACgAAAAEAAAAPybiiNdAl9XHe1CWbnh2rUoAAAAKYxCxNmwfWCrDO4Z1c79aIMOl+GBu/9Ft4OqHhABexCHxPdYo2hcyxQAAACLns2c+m2QdJXb54nCIljO4psyJA==</LastKnownProtectedHashedPassword>
+  </ProjectInfo>
+  <LastBuildInfos>
+    <ProjectBuildItemInfo>
+      <Name>DBA_PULL_SA_Rights.dtsx</Name>
+      <LastWriteTime>2015-09-28T17:39:31.3586951Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+      <Salt>+aHLRfvO</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAApWgj0CHIWE23/DWSTPDJ0QAAAAACAAAAAAADZgAAwAAAABAAAACnSTXd/n8ViLwcxjA1iKb/AAAAAASAAACgAAAAEAAAAKUM+/nuHW3gcKEcgdy4GwooAAAAAyo49FOfIuPP0mSUSzWl0hsGs+k3Ew1yUYhHrSblD4gZcfXd+X91MhQAAABhSa8aaSwbW/HmPPycF46ZIZ5B3w==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DBA_PULL_DBOwner.dtsx</Name>
+      <LastWriteTime>2015-09-28T17:38:56.0158485Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+      <Salt>Tsm404Os</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAApWgj0CHIWE23/DWSTPDJ0QAAAAACAAAAAAADZgAAwAAAABAAAADiHNwzRhZZ7OlTZ3WoCNCIAAAAAASAAACgAAAAEAAAADfg/zFo6xHOPc6PmvLyyu0oAAAADRd6GBmqKpjOFyfhswjxkK8Wq3qUyDqJZwipchFBXZ29AQQfujTEZRQAAACacBx++Hpw65VQdGViMnXPqBhfPA==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+  </LastBuildInfos>
+</BuildLog>

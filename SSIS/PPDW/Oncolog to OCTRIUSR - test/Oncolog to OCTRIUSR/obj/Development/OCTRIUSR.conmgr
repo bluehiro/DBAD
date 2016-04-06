@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="OCTRIUSR"
+  DTS:DTSID="{D220BFDD-2389-4D5B-A302-C5F6F6436976}"
+  DTS:CreationName="MSORA">
+  <DTS:ObjectData>
+    <OracleXMLPackage>
+      <OraConnectionString>SERVER=OCTRIUSR;USERNAME=xxbiolibonc;ORACLEHOME=;ORACLEHOME64=;WINAUTH=0</OraConnectionString>
+      <OraRetain>False</OraRetain>
+      <OraInitialCatalog></OraInitialCatalog>
+      <OraServerName>OCTRIUSR</OraServerName>
+      <OraUserName>xxbiolibonc</OraUserName>
+      <OraOracleHome></OraOracleHome>
+      <OraOracleHome64></OraOracleHome64>
+      <OraWinAuthentication>False</OraWinAuthentication>
+      <OraEnableDetailedTracing>False</OraEnableDetailedTracing>
+      <OraPassword
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAygWGt22Tv0Wlbg+e8ZZ9WQAAAAACAAAAAAADZgAAwAAAABAAAAAttfLFh7dVdgW6ErgTCLSrAAAAAASAAACgAAAAEAAAACtWTC7rMu+EKDY61d7bcIVAAAAASzXoTV6UsBw+KQJ78tge19KRHWzsb8VNSJTvc+PfVBlEPJT9O7lgC+Wqy/yaqWZOh2cFbxUHZig2f25MMG/LrhQAAACffotho+78wG17KS93c/Ezj0RIwg==</OraPassword>
+    </OracleXMLPackage>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
